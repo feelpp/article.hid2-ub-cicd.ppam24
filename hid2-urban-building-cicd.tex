@@ -28,19 +28,17 @@ The building sector in the European Union significantly impacts energy consumpti
 \section{Introduction}
 The building sector accounts for approximately 40\% of final energy consumption and 36\% of greenhouse gas emissions within the European Union. In response, the EU has established ambitious targets under the Horizon 2050 framework to double energy renovation rates over the next decade, highlighting the need for innovative solutions to drive these initiatives forward. The HiDALGO2 project, with its focus on high-performance computing and advanced simulations, is at the forefront of tackling this challenge, particularly through its Urban Building pilot application.
 
-\section{Objectives of the HiDALGO2 Urban Building Pilot}
 The Urban Building pilot in HiDALGO2 aims to leverage high-performance computing to enhance urban simulations for better energy management and air quality assessment. This section outlines the specific objectives and expected impacts of the project.
 
-\subsection{Predictive Simulations}
 Advanced simulation tools are employed to predict energy consumption, thermal comfort, and indoor air quality across both the building and urban scales. These simulations support detailed analysis at the individual building level and extend to broader urban environments, influencing urban planning and policy-making.
 
-\subsection{Integration with Environmental Models}
 Integrating building simulations with urban air pollution models enables the project to assess the environmental impact of building stocks comprehensively. This integration improves the predictive accuracy of the simulations by incorporating real-time data such as wind speed and solar radiation, enhancing the models' responsiveness to environmental conditions.
 
-\subsection{Impact and Implementation}
 Implementing these objectives will facilitate more informed urban planning decisions, support policy development for energy efficiency, and contribute to reducing urban greenhouse gas emissions. The project also focuses on enhancing the interaction between different environmental models to provide a holistic view of urban ecosystems.
 
 \section{Overview of Urban Building Modeling and Simulation}
+
+We now provide an overview of the geometrical and physical modeling and simulation components of the Urban building application.
 
 \subsection{Geometry Reconstruction of the Urban Model}
 
@@ -48,7 +46,7 @@ The geometric reconstruction of urban environments within the HiDALGO2 project i
 
 The primary challenge lies in accurately representing the complex urban landscape to support various simulations. A tiled web map approach is adopted, which allows for distributed data management and adapts the Level of Definition (LOD) based on specific needs. However, this approach requires the careful integration of tiles to ensure seamless representation.
 
-\subsubsection{Levels of Detail for Buildings}
+We describe our definition of Levels of Detail for Buildings
 \begin{itemize}
     \item \textbf{LOD-0:} The simplest form, representing buildings as oriented bounding boxes. This level is typically used for large-scale preliminary analyses and quick visual assessments.
     \item \textbf{LOD-1:} Buildings are represented as polygonal extrusions, with added roof structures to improve the visual accuracy and utility in simulations that do not require detailed internal features.
@@ -56,99 +54,115 @@ The primary challenge lies in accurately representing the complex urban landscap
 \end{itemize}
 
 
-
+In the figure~\ref{fig:buildings}, we illustrate the different levels of details.
 
 \begin{figure}[htbp]
 \centering
 \begin{subfigure}{.4\textwidth}
   \centering
-  \includegraphics[width=\linewidth]{buildings-lod0.png}
+  \includegraphics[width=\linewidth]{images/buildings-lod0.png}
   \caption{LOD-0}
   \label{fig:sub1}
 \end{subfigure}%
 \begin{subfigure}{.4\textwidth}
   \centering
-  \includegraphics[width=\linewidth]{buildings-lod1.png}
+  \includegraphics[width=\linewidth]{images/buildings-lod1.png}
   \caption{LOD-1}
   \label{fig:sub2}
 \end{subfigure}
 \begin{subfigure}{.4\textwidth}
   \centering
-  \includegraphics[width=\linewidth]{buildings-lod2.png}
+  \includegraphics[width=\linewidth]{images/buildings-lod2.png}
   \caption{LOD-2}
   \label{fig:sub3}
 \end{subfigure}%
 \begin{subfigure}{.4\textwidth}
   \centering
-  \includegraphics[width=\linewidth]{buildings-lod2-zoom.png}
-  \caption{Caption for Image 4}
+  \includegraphics[width=\linewidth]{images/buildings-lod2-zoom.png}
+  \caption{LOD-2 with a zoom}
   \label{fig:sub4}
 \end{subfigure}
-\caption{LOD-@ with a zoom}
-\label{fig:test}
+\caption{}
+\label{fig:buildings}
 \end{figure}
 
-\subsection{Mesh Generation for Urban Environments}
-Building meshes are generated from metadata fetched from web services like OpenStreetMap, which provides multi-polygons with holes, representing the complex urban fabric.
 
+Building meshes are generated from metadata fetched from web services like OpenStreetMap, which provides multi-polygons with holes, representing the complex urban fabric. For \textbf{LOD-0 and LOD-1}, buildings are modeled from 2D footprints extruded to form three-dimensional volumes. These volumes are then combined or subtracted to represent the district or the entire city, applying union operations on buildings that touch or intersect. In \textbf{LOD-2}, the focus shifts to creating conformal and watertight meshes that are suitable for detailed simulation tasks. These meshes are generated from Building Information Modeling (BIM) data in IFC format, enabling a detailed representation of each building component.
 
-\subsubsection{Building Meshes}
-\begin{itemize}
-    \item \textbf{LOD-0 and LOD-1:} Buildings are modeled from 2D footprints extruded to form three-dimensional volumes. These volumes are then combined or subtracted to represent the district or the entire city, applying union operations on buildings touching or intersecting.
-    \item \textbf{LOD-2:} The focus is on conformal and watertight meshes suitable for detailed simulation tasks. These meshes are generated from Building Information Modeling (BIM) data in IFC format, allowing for a detailed representation of each building component.
-\end{itemize}
+In the figure~\ref{fig:city-strasbourg}, we display an illustration of the center of the city of Strasbourg with LOD-0~\ref{fig:city-strasbourg-lod0} and LOD-1\ref{fig:city-strasbourg-lod1} representations.
 
 \subsubsection{Terrain Modeling}
-The terrain is modeled using elevation data extracted from raster images, with the following process:
-\begin{enumerate}
-    \item Start by creating a uniform mesh based on the raster image size.
-    \item Evaluate the elevation at each node.
-    \item Compute isolines for elevation and perform mesh adaptation to reduce the mesh density where possible.
-    \item Glue each tile to ensure the continuity of the terrain mesh.
-\end{enumerate}
+The terrain modeling process utilizes elevation data extracted from raster images. The initial step involves creating a uniform mesh based on the size of the raster image. Following this, the elevation at each node is evaluated. Subsequently, isolines for elevation are computed, and mesh adaptation techniques are applied to reduce mesh density where feasible. Finally, each tile is glued together to ensure the continuity of the terrain mesh.
 
 \subsubsection{Integration of Terrain and Building Meshes}
-This process involves creating a conforming mesh that includes both the terrain and the buildings, ensuring that buildings on slopes are accurately modeled by adapting their height and embedding them into the terrain mesh.
+This process involves creating a conforming mesh that includes both the terrain and the buildings, ensuring that buildings on slopes are accurately modeled by adapting their height and embedding them into the terrain mesh. The figure~\ref{fig:city-grenoble-terrain} illustrates this aspect.
 
 \subsubsection{Visual Representation}
 Advanced rendering techniques are employed to visualize the multi-fidelity urban models, supporting both detailed analysis and general urban planning discussions. These visualizations are crucial for assessing the impact of urban changes and for stakeholder engagement.
 
 This approach enhances the accuracy, utility, and scalability of urban models, making them vital for comprehensive urban analysis and planning in the HiDALGO2 project.
 
+\begin{figure}[htbp]
+\centering
+\begin{subfigure}{.4\textwidth}
+  \centering
+  \includegraphics[width=\linewidth]{images/city-strasbourg-lod-0.png}
+  \caption{LOD-0}
+  \label{fig:city-strasbourg-lod0}
+\end{subfigure}%
+\begin{subfigure}{.4\textwidth}
+  \centering
+  \includegraphics[width=\linewidth]{images/city-strasbourg-lod-1.png}
+  \caption{LOD-1}
+  \label{fig:city-strasbourg-lod1}
+\end{subfigure}
+\begin{subfigure}{.4\textwidth}
+  \centering
+  \includegraphics[width=\linewidth]{images/city-grenoble-terrain.png}
+  \caption{LOD-1 terrain}
+  \label{fig:city-grenoble-terrain}
+\end{subfigure}
+\caption{}
+\label{fig:city-strasbourg}
+\end{figure}
+
 \subsubsection{Computational Tools for Building Meshes}
 
-In the urban modeling process, particularly in the generation of building meshes, the Computational Geometry Algorithms Library (CGAL) plays a pivotal role. CGAL is renowned for its robust and efficient algorithms which are crucial for handling complex geometric data and generating high-quality meshes from them.
+In the urban modeling process, particularly in the generation of building meshes, the Computational Geometry Algorithms Library (CGAL) plays a pivotal role. CGAL is renowned for its robust and efficient algorithms, which are crucial for handling complex geometric data and generating high-quality meshes from them.
 
 \paragraph{Current Mesh Generation Strategy}
-The current strategy for mesh generation utilizes multi-threading (MT) to handle various stages of the mesh construction process:
-\begin{enumerate}
-    \item \textbf{Initial Setup:} Determining the tiles to be used based on the specified location, done sequentially.
-    \item \textbf{Data Acquisition:} Parallel downloading of GIS data including buildings and elevation information.
-    \item \textbf{Data Preparation:} Repairing polygons to ensure they are suitable for mesh generation, a process executed in parallel using MT.
-    \item \textbf{Mesh Generation:} The terrain mesh is generated in parallel, employing CGAL's algorithms to ensure precision and efficiency.
-    \item \textbf{Mesh Union:} Performing union operations at tile junctions to ensure continuity, which is currently a sequential step.
-    \item \textbf{Final Mesh Generation:} Building meshes are generated using a parallel MT approach, leveraging CGAL for its advanced mesh generation capabilities.
-\end{enumerate}
+The current strategy for mesh generation employs multi-threading (MT) to handle various stages of the mesh construction process. Initially, the tiles to be used are determined based on the specified location, a task performed sequentially. Following this, GIS data, including buildings and elevation information, is downloaded in parallel. Next, polygons are repaired to ensure they are suitable for mesh generation, with this process executed in parallel using MT. The terrain mesh is then generated in parallel, employing CGAL's algorithms to ensure precision and efficiency. Union operations at tile junctions are performed to ensure continuity, a step that is currently sequential. Finally, building meshes are generated using a parallel MT approach, leveraging CGAL for its advanced mesh generation capabilities.
 
 \paragraph{Advancing Towards Full Parallelism}
-The next steps in enhancing the mesh generation process involve moving towards a fully parallel approach using both Multi-threading (MT) and Message Passing Interface (MPI):
-\begin{itemize}
-    \item \textbf{Large-scale Objectives:} The aim is to scale the process up to handle entire cities or larger urban areas.
-    \item \textbf{Distributed Computing:} Utilizing MPI to manage distributed computing resources effectively.
-    \item \textbf{Tile Partitioning:} Creating partitions of tiles with overlapping areas to ensure complete and accurate building descriptions without the need for extensive MPI communication.
-    \item \textbf{Parallel Mesh Generation:} Each process uses an MT strategy to generate meshes independently, with overlapping zones allowing for the creation of complete building structures.
-\end{itemize}
+The next steps in enhancing the mesh generation process involve moving towards a fully parallel approach using both Multi-threading (MT) and Message Passing Interface (MPI). The goal is to scale the process up to handle entire cities or larger urban areas. This scale-up involves utilizing MPI to manage distributed computing resources effectively. To achieve this, partitions of tiles with overlapping areas are created to ensure complete and accurate building descriptions without the need for extensive MPI communication. Furthermore, each process uses an MT strategy to generate meshes independently, with overlapping zones allowing for the creation of complete building structures.
 
 \subsubsection{Partitioning Strategies Depending on Simulation Use Cases}
-Different partitioning strategies are employed depending on the specific requirements of the simulation use cases:
-\begin{itemize}
-    \item \textbf{Test Case 0:} For simple scenarios where buildings do not interact with their environment, a basic listing and weighting strategy is sufficient.
-    \item \textbf{Test Case 1:} When buildings interact with environmental elements, a more complex partitioning strategy that considers both the buildings and their immediate non-building surroundings is necessary.
-    \item \textbf{Test Case 2:} For full interaction models, the partitioning strategy starts with the buildings and extends to the entire urban mesh, ensuring that all elements are considered to minimize communication overhead.
-    \item \textbf{Test Case 3:} Looking towards scenarios with extreme partitioning needs, a multigrid approach is considered, defining coarse and fine meshes to efficiently manage computational resources.
-\end{itemize}
+Different partitioning strategies are employed depending on the specific requirements of the simulation use cases. For simple scenarios where buildings do not interact with their environment, a basic listing and weighting strategy is sufficient, known as Test Case 0. In Test Case 1, where buildings interact with environmental elements, a more complex partitioning strategy is necessary that considers both the buildings and their immediate non-building surroundings. For full interaction models, as in Test Case 2, the partitioning strategy starts with the buildings and extends to the entire urban mesh, ensuring that all elements are considered to minimize communication overhead. Looking towards scenarios with extreme partitioning needs, Test Case 3 employs a multigrid approach, defining coarse and fine meshes to efficiently manage computational resources. This multi-fidelity approach not only enhances the accuracy and applicability of urban models in simulations but also ensures scalability across different computational platforms, making it a cornerstone of urban analysis in the HiDALGO2 project.
 
-This multi-fidelity approach not only enhances the accuracy and applicability of urban models in simulations but also ensures scalability across different computational platforms, making it a cornerstone of urban analysis in the HiDALGO2 project.
+The figure~\ref{fig:partitioning} illustrate the different strategies discussed previously and present a reconstruction of New York with 10km square reconstruction with hundreds of thousands of buildings which requires the large scale approach discussed but not yet implemented nor tested.
+\begin{figure}[htbp]
+\centering
+\begin{subfigure}{.4\textwidth}
+  \centering
+  \includegraphics[width=\linewidth]{images/city-strasbourg-lod0-parts.png}
+  \caption{LOD-0}
+  \label{fig:city-strasbourg-lod0-parts}
+\end{subfigure}%
+\begin{subfigure}{.4\textwidth}
+  \centering
+  \includegraphics[width=\linewidth]{images/city-strasbourg-lod1-parts.png}
+  \caption{LOD-1}
+  \label{fig:city-strasbourg-lod1-parts}
+\end{subfigure}
+\begin{subfigure}{.4\textwidth}
+  \centering
+  \includegraphics[width=\linewidth]{images/city-newyork-largescale.png}
+  \caption{LOD-1 Large scale}
+  \label{fig:city-ny-largescale}
+\end{subfigure}
+\caption{}
+\label{fig:partitioning}
+\end{figure}
 
 \subsubsection{Conclusion on mesh construction}
 Our strategy not only aims to improve the efficiency and scalability of the mesh generation process but also enhances the fidelity and accuracy of the urban models used in simulations.
@@ -193,6 +207,38 @@ Both shading masks and view factors are computed using Monte Carlo and ray traci
 \paragraph{Implementation in Feel++}
 Feel++ facilitates these computations through its robust numerical methods optimized for high performance and parallel execution. For each face of a building, Feel++ computes solar masks using a Monte Carlo approach for various sun positions, ensuring efficient and scalable processing across multiple CPU cores. This enables the integration of dynamic solar shading effects into the simulation of building energy performance, providing a more accurate representation of real-world conditions.
 
+\begin{figure}[htbp]
+\centering
+\begin{subfigure}{.4\textwidth}
+  \centering
+  \includegraphics[width=\linewidth]{images/solar-masks-east-facing.png}
+  \caption{LOD-0}
+  \label{fig:sm-building-east}
+\end{subfigure}%
+\begin{subfigure}{.4\textwidth}
+  \centering
+  \includegraphics[width=\linewidth]{images/solar-masks-whole-building.png}
+  \caption{LOD-1}
+  \label{fig:sm-whole-building}
+\end{subfigure}
+\begin{subfigure}{.4\textwidth}
+  \centering
+  \includegraphics[width=\linewidth]{images/solar-masks-strasbourg.png}
+  \caption{LOD-1 Large scale}
+  \label{fig:sm-strasbourg}
+\end{subfigure}
+\begin{subfigure}{.4\textwidth}
+  \centering
+  \includegraphics[width=\linewidth]{images/view-factors-benchmark.png}
+  \caption{Heat transfer benchmark in 2D including view factors}
+  \label{fig:view-factor}
+\end{subfigure}
+\caption{Solar masks and view factors computations}
+\label{fig:solar-masks-vf}
+\end{figure}
+
+In the figure~\ref{fig:solar-masks-vf}, we illustrate \textit{(i)} the solar masks of building face oriented eastwise for a discretization of the sun position in the panel~\ref{fig:sm-building-east}, \textit{(ii)} the solar masks for an entire building for discretization of the sun position in the panel~\ref{fig:sm-whole-building}, \textit{(iii)} a visualization of the solar mask early morning of the city center of Strasbourg in panel~\ref{fig:sm-strasbourg} and \textit{(iv)} an image of a standard benchmark for the computation of view-factors and solving the heat transfer problems between three building blocks in 2D subsequently in panel~\ref{fig:view-factor}.
+
 \subsubsection{Heat Transfer Modeling with Feel++ and Modelica}
 In the Urban Building Energy Model (UBEM), heat transfer analysis is a crucial component for predicting energy consumption, internal air temperature variations, and overall building energy performance. This analysis is facilitated by a combination of Feel++ and Modelica, which together enable detailed simulations of heat dynamics within urban buildings.
 
@@ -224,7 +270,7 @@ CD practices are tailored to manage deployment complexities across different HPC
 
 \begin{figure}
     \centering
-    \includegraphics[width=.9\textwidth]{kub-workflow.pdf}
+    \includegraphics[width=.9\textwidth]{images/kub-workflow.pdf}
     \caption{Current Urban Building Workflow}
     \label{fig:ub_workflow}
 \end{figure}
