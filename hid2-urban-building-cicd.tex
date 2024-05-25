@@ -1,10 +1,15 @@
 \documentclass[runningheads]{llncs}
 \usepackage{fullpage}
 \usepackage{graphicx} % for including images
-
+\usepackage[T1]{fontenc}
 \begin{document}
 \title{Enhancing Urban Building Simulations in HiDALGO2 through CI/CD Innovations}
-\author{Vincent Chabannes \inst{1}\orcidID{0000-1111-2222-3333} and Christophe Prud'homme\inst{1}\orcidID{0000-0003-2287-2961}}
+\author{Vincent Chabannes \inst{1}\orcidID{0000-1111-2222-3333} \and
+Javier Cladellas \inst{1}\orcidID{} \and 
+Abdoulaye Diallo \inst{1}\orcidID{} \and
+Maryam Maslek \inst{1}\orcidID{} \and
+Philippe Pinçon \inst{1}\orcidID{} \and
+Christophe Prud'homme\inst{1}\orcidID{0000-0003-2287-2961}}
 \institute{Cemosis, IRMA UMR 7501, University of Strasbourg, CNRS\\ 
 \email{\{vincent.chabannes,christophe.prudhomme\}@cemosis.fr}}
 \authorrunning{V. Chabannes and C. Prud'homme}
@@ -13,7 +18,9 @@
 \maketitle
 
 \begin{abstract}
-The building sector in the European Union significantly impacts energy consumption and greenhouse gas emissions. The EU's Horizon 2050 initiative sets ambitious goals to reduce these impacts through enhanced building renovation rates. The HiDALGO2 project supports this initiative by developing high-performance computing solutions, specifically through the Urban Building pilot application which utilizes advanced CI/CD methodologies to streamline simulation and deployment across various computational platforms.
+The building sector in the European Union significantly impacts energy consumption and greenhouse gas emissions. The EU's Horizon 2050 initiative sets ambitious goals to reduce these impacts through enhanced building renovation rates. The HiDALGO2 project supports this initiative by developing high-performance computing solutions, specifically through the Urban Building pilot application, which utilizes advanced CI/CD methodologies to streamline simulation and deployment across various computational platforms.
+\keywords{HPC, Urban building, City Energy Simulation.}
+
 \end{abstract}
 
 \section{Introduction}
@@ -42,6 +49,21 @@ CD practices are tailored to manage deployment complexities across different HPC
 
 \section{Conclusion}
 CI/CD practices in HiDALGO2 are vital for advancing urban building simulations, supporting the EU's energy efficiency goals, and contributing to the reduction of greenhouse gas emissions in the urban sector.
+
+\begin{credits}
+\subsubsection{\ackname} d
+
+% \subsubsection{\discintname}
+% It is now necessary to declare any competing interests or to specifically
+% state that the authors have no competing interests. Please place the
+% statement with a bold run-in heading in small font size beneath the
+% (optional) acknowledgments\footnote{If EquinOCS, our proceedings submission
+% system, is used, then the disclaimer can be provided directly in the system.},
+% for example: The authors have no competing interests to declare that are
+% relevant to the content of this article. Or: Author A has received research
+% grants from Company W. Author B has received a speaker honorarium from
+% Company X and owns stock in Company Y. Author C is a member of committee Z.
+\end{credits}
 
 \bibliographystyle{splncs04}
 \bibliography{mybib}
