@@ -95,42 +95,44 @@ We describe our definition of Levels of Detail for Buildings
 \end{itemize}
 
 
-In the figure~\ref{fig:buildings}, we illustrate the different levels of details.
+In the figure~\ref{fig:buildings}, we illustrate the different levels of details. Panel~\ref{fig:building-lod0} displays the LOD-0 of a building with its bounding box.
+Panel~\ref{fig:building-lod1} displays the LOD-1 of a building using its footprint elevated to its height. 
+Panel~\ref{fig:building-lod2} and~\ref{fig:building-lod2-zoom} display the LOD-2 representation using BIM.
 
 \begin{figure}[htbp]
 \centering
 \begin{subfigure}{.4\textwidth}
   \centering
   \includegraphics[width=\linewidth]{images/buildings-lod0.png}
-  \caption{LOD-0}
-  \label{fig:sub1}
+  \caption{LOD-0: a building is represented by its bounding box}
+  \label{fig:building-lod0}
 \end{subfigure}%
 \begin{subfigure}{.4\textwidth}
   \centering
   \includegraphics[width=\linewidth]{images/buildings-lod1.png}
-  \caption{LOD-1}
-  \label{fig:sub2}
+  \caption{LOD-1: a building is represented by its ground footprint elevated to its height}
+  \label{fig:building-lod1}
 \end{subfigure}
 \begin{subfigure}{.4\textwidth}
   \centering
   \includegraphics[width=\linewidth]{images/buildings-lod2.png}
-  \caption{LOD-2}
-  \label{fig:sub3}
+  \caption{LOD-2: a building in full detail using BIM. Note that LOD-2 and LOD-1 are mixed.}
+  \label{fig:building-lod2}
 \end{subfigure}%
 \begin{subfigure}{.4\textwidth}
   \centering
   \includegraphics[width=\linewidth]{images/buildings-lod2-zoom.png}
-  \caption{LOD-2 with a zoom}
-  \label{fig:sub4}
+  \caption{LOD-2: A zoom on the LOD-@ building.}
+  \label{fig:building-lod2-zoom}
 \end{subfigure}
-\caption{}
+\caption{Different representations of a building using our LOD definition}
 \label{fig:buildings}
 \end{figure}
 
 
 Building meshes are generated from metadata fetched from web services like OpenStreetMap, which provides multi-polygons with holes, representing the complex urban fabric. For \textbf{LOD-0 and LOD-1}, buildings are modeled from 2D footprints extruded to form three-dimensional volumes. These volumes are then combined or subtracted to represent the district or the entire city, applying union operations on buildings that touch or intersect. In \textbf{LOD-2}, the focus shifts to creating conformal and watertight meshes that are suitable for detailed simulation tasks. These meshes are generated from Building Information Modeling (BIM) data in IFC format, enabling a detailed representation of each building component.
 
-In the figure~\ref{fig:city-strasbourg}, we display an illustration of the center of the city of Strasbourg with LOD-0~\ref{fig:city-strasbourg-lod0} and LOD-1\ref{fig:city-strasbourg-lod1} representations.
+In the figure~\ref{fig:city-strasbourg}, we display an illustration of the center of the city of Strasbourg with LOD-0, see panel~\ref{fig:city-strasbourg-lod0}, and LOD-1, see panel~\ref{fig:city-strasbourg-lod1}, representations.
 
 \subsubsection{Terrain Modeling}
 The terrain modeling process utilizes elevation data extracted from raster images. The initial step involves creating a uniform mesh based on the size of the raster image. Following this, the elevation at each node is evaluated. Subsequently, isolines for elevation are computed, and mesh adaptation techniques are applied to reduce mesh density where feasible. Finally, each tile is glued together to ensure the continuity of the terrain mesh.
@@ -316,7 +318,7 @@ This CI/CD workflow, see Figure~\ref{fig:feelpp-devops}, is crucial for efficien
 \subsection{HPC Operations (HPC-Ops)}
 For high-performance computing applications, the Urban Building pilot incorporates specialized HPC-Ops practices that ensure the software performs consistently across various HPC systems. This advanced CI/CD strategy uses Apptainer (formerly Singularity) for secure and reproducible deployments across HPC environments without root privileges.
 
-The Figure~\ref{fig:feelpp-hpcops} illustrates the HPC CI/CD or HPC-ops workflow
+Figure~\ref{fig:feelpp-hpcops} illustrates the HPC CI/CD or HPC-ops workflow for Feel++. The Urban Building 
 \begin{figure}
     \centering
     \includegraphics[width=\textwidth]{images/feelpp-hpcops.png}
@@ -334,7 +336,19 @@ Performance results from these operations are automatically captured and uploade
 
 This comprehensive framework underlines the commitment of the HiDALGO2 project to leveraging cutting-edge computational technologies to enhance urban simulation studies, ensuring high performance and accuracy of the Urban Building models. It sets a benchmark for integrating modern software frameworks with advanced HPC infrastructures to significantly advance computational research and applications.
 
+\begin{figure}
+    \centering
+    \includegraphics[width=\textwidth]{images/ub-devops.pdf}
+    \caption{Urban Building standard Devops}
+    \label{fig:ub-devops}
+\end{figure}
 
+\begin{figure}
+    \centering
+    \includegraphics[width=\textwidth]{images/ub-hpcops.pdf}
+    \caption{Urban Building HPC Ops workflow}
+    \label{fig:ub-hpcops}
+\end{figure}
 \section{Conclusion}
 The CI/CD practices in Feel++ not only enhance the development lifecycle of the framework itself but also ensure that all dependent projects maintain high standards of reliability, security, and performance. The integration of Docker and Apptainer into the workflow enables wide-ranging deployment scenarios from personal computing environments to high-performance computing clusters.
 
