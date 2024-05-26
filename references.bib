@@ -1,0 +1,2216 @@
+
+@misc{christophe_prudhomme_feelppfeelpp_2024,
+	title = {feelpp/feelpp: {Feel}++ {Release} {V111} preview.9},
+	copyright = {Creative Commons Attribution 4.0 International, GNU General Public License v3.0 or later, GNU Lesser General Public License v3.0 or later},
+	shorttitle = {feelpp/feelpp},
+	url = {https://zenodo.org/doi/10.5281/zenodo.10837178},
+	abstract = {🎉  We're happy to share our developments as we approach the V111 release of Feel++. Following a refreshed naming strategy, we've moved to the -preview.x suffix from the conventional -alpha.x, -beta, or -rc labels. This change signifies our dedication to enhancing transparency and setting clear expectations for our pre-release versions.
+
+Each pre-release version of Feel++ undergoes a rigorous process, encompassing detailed reviews, extensive tests across varied scenarios, and careful packaging. Our commitment to delivering a high-quality, reliable experience is reflected in our comprehensive platform support strategy. Alongside offering support for the latest two Long-Term Support (LTS) versions of Ubuntu and the newest LTS version of Debian, we're excited to announce that Feel++ is now accessible to Windows users through the Windows Subsystem for Linux (WSL) and to Mac users via MacPorts, Homebrew, and Docker. This expansion of platform support is a testament to our commitment to making Feel++ as accessible and versatile as possible for our diverse user base.
+
+As we continue to refine and enhance Feel++, the V111 release promises to bring forward significant innovations and improvements. Stay tuned for further updates of Feel++.
+
+Packages
+
+
+
+📦  Ubuntu packages
+
+📦  Debian packages
+
+📦  Docker images
+
+
+What's Changed
+
+Exciting New Features 🎉
+
+
+
+resolves 1952: support nirb in parallel by @alielarif in https://github.com/feelpp/feelpp/pull/1980
+
+resolves 1949: support greedy procedure for nirb by @thomas-saigre in https://github.com/feelpp/feelpp/pull/1997
+
+resolves 2023: select elements from an expression by @prudhomm in https://github.com/feelpp/feelpp/pull/2024
+
+resolves \#2028 : work on add heatfluid toolbox python wrapper  by @prudhomm in https://github.com/feelpp/feelpp/pull/2029
+
+Collision forces and associated testcases by @prudhomm in https://github.com/feelpp/feelpp/pull/1838
+
+2026 reduced basis use hdf5 by default for saveload and allow basis loading in sequential by @lberti in https://github.com/feelpp/feelpp/pull/2030
+
+resolves 2014: add-multiblock-2d-and-3d-use-case-generator by @thomas-saigre in https://github.com/feelpp/feelpp/pull/2035
+
+Requirements before resolving 1892: compute view factor for rht by @lberti in https://github.com/feelpp/feelpp/pull/2039
+
+Resolves 1892: compute view factor for rht by @lberti in https://github.com/feelpp/feelpp/pull/2042
+
+Resolves 1892 compute view factor for rht by @lberti in https://github.com/feelpp/feelpp/pull/2047
+
+resolves 1912: implement nirb tools by @thomas-saigre in https://github.com/feelpp/feelpp/pull/1944
+
+resolves \#2044: setup jupyter notebook by @prudhomm in https://github.com/feelpp/feelpp/pull/2051
+
+Feature/toolboxes cfpdes interpolation by @vincentchabannes in https://github.com/feelpp/feelpp/pull/2027
+
+Resolves: add meshMove python interface by @lberti in https://github.com/feelpp/feelpp/pull/2053
+
+resolves 2078: port to c++20 on homebrew, petsc 3.19, nlopt and range-v3 by @prudhomm in https://github.com/feelpp/feelpp/pull/2089
+
+resolved 2009: add support for specx  by @prudhomm in https://github.com/feelpp/feelpp/pull/2092
+
+resolves 2103, 2099: update Model Meshes and fix expression symbol missing in Toolboxes by @vincentchabannes in https://github.com/feelpp/feelpp/pull/2100
+
+resolves 2095: enable mesh distance metric with respect to arbitrary markers  by @prudhomm in https://github.com/feelpp/feelpp/pull/2101
+
+resolves 2115: Add mesh, setMesh and updateParameterValues methods to the solid toolbox bindings by @Luplz in https://github.com/feelpp/feelpp/pull/2116
+
+resolves 2115: add mesh setmesh and updateparametervalues methods to the solid python toolbox by @prudhomm in https://github.com/feelpp/feelpp/pull/2119
+
+new mor application for heat transfert in eye fixes \#2068 by @prudhomm in https://github.com/feelpp/feelpp/pull/2074
+
+2098-compute-effectivity by @thomas-saigre in https://github.com/feelpp/feelpp/pull/2121
+
+add support for EigenRand \#2131 by @prudhomm in https://github.com/feelpp/feelpp/pull/2133
+
+resolves 2123:  enable dim different from realdim in BVH by @prudhomm in https://github.com/feelpp/feelpp/pull/2129
+
+resolves 2143: clean mor by @prudhomm in https://github.com/feelpp/feelpp/pull/2146
+
+resolves 2147: linking error in debug builds undefined reference to static const variables by @prudhomm in https://github.com/feelpp/feelpp/pull/2160
+
+Resolves 2094: implement radiative boundary conditions in a cavity using newton method by @lberti in https://github.com/feelpp/feelpp/pull/2174
+
+Eye2brain regularized output by @thomas-saigre in https://github.com/feelpp/feelpp/pull/2179
+
+resolves 2182: Enable specx in CMakeLists.txt by @prudhomm in https://github.com/feelpp/feelpp/pull/2183
+
+Feature/mesh many markers by @vincentchabannes in https://github.com/feelpp/feelpp/pull/2190
+
+resolves 2192: enable sws by default by @prudhomm in https://github.com/feelpp/feelpp/pull/2193
+
+support setting HDF5 collective metadata operations \#2199 by @prudhomm in https://github.com/feelpp/feelpp/pull/2200
+
+Resolve \#2197 : Support MPI parallelism with BVH ray intersection by @vincentchabannes in https://github.com/feelpp/feelpp/pull/2202
+
+Add PostProcessSave to mixedPoisson for hdg thermoelectric toolbox by @jermuzet in https://github.com/feelpp/feelpp/pull/2217
+
+resolves 2205: add support for ubuntu 2404 by @prudhomm in https://github.com/feelpp/feelpp/pull/2207
+
+add quadrature order in sensor gaussian class by @thomas-saigre in https://github.com/feelpp/feelpp/pull/2218
+
+
+Clean code 👌
+
+
+
+🧹 remove taskflow closes \#2008 by @prudhomm in https://github.com/feelpp/feelpp/pull/2015
+
+2049 memory allocation for linear and bilinear forms behave differently by @prudhomm in https://github.com/feelpp/feelpp/pull/2050
+
+resolves 2058:  minor interface updates and tests cleanup by @prudhomm in https://github.com/feelpp/feelpp/pull/2063
+
+resolves \#2065 : fixes prefix, keyword and subprefix and document them by @prudhomm in https://github.com/feelpp/feelpp/pull/2069
+
+2154 refactoring bvh cpp classes by @vincentchabannes in https://github.com/feelpp/feelpp/pull/2157
+
+replace boost::filesystem by std::filesystem by @metivett in https://github.com/feelpp/feelpp/pull/1801
+
+
+Bugs fixed 💚
+
+
+
+Resolves: Bad lexical cast when reading fieldsplit fields with more than one figure by @lberti in https://github.com/feelpp/feelpp/pull/2067
+
+Resolves incorrect values of dump function in feelpp\_mesh\_partitioner after partitioning by @lberti in https://github.com/feelpp/feelpp/pull/2085
+
+Resolves: Same mesh in several instances of BVH tree by @lberti in https://github.com/feelpp/feelpp/pull/2072
+
+Resolves: \#2083 colon separated integers for preconditioning by @lberti in https://github.com/feelpp/feelpp/pull/2084
+
+Resolves range problem for colon-separated list for preconditions by @lberti in https://github.com/feelpp/feelpp/pull/2097
+
+Fix advection diffusion MOR example \#2114 by @lberti in https://github.com/feelpp/feelpp/pull/2117
+
+Resolves: \#2127 fix parabolic CRB truth model by @lberti in https://github.com/feelpp/feelpp/pull/2128
+
+fix toc display for crb code by @thomas-saigre in https://github.com/feelpp/feelpp/pull/2173
+
+Resolves 2118: Fix some cases in mor examples by @lberti in https://github.com/feelpp/feelpp/pull/2209
+
+
+Other Changes
+
+
+
+Fix typos in toolboxes subdir by @luzpaz in https://github.com/feelpp/feelpp/pull/1965
+
+Bump JamesIves/github-pages-deploy-action from 4.3.3 to 4.4.1 by @dependabot in https://github.com/feelpp/feelpp/pull/1968
+
+Fix typos in feelpp/feel subdir by @luzpaz in https://github.com/feelpp/feelpp/pull/1927
+
+
+New Contributors
+
+
+
+@alielarif made their first contribution in https://github.com/feelpp/feelpp/pull/1980
+
+@Luplz made their first contribution in https://github.com/feelpp/feelpp/pull/2116
+
+@jermuzet made their first contribution in https://github.com/feelpp/feelpp/pull/2217
+
+
+Full Changelog: https://github.com/feelpp/feelpp/compare/v0.110.2...v0.111.0-preview.9},
+	urldate = {2024-05-26},
+	publisher = {[object Object]},
+	author = {Christophe Prud'homme and Vincent Chabannes and Thibaut Metivet and Thomas Saigre and Trophime and Luca Berti and Abdoulaye SAMAKE and Céline Van Landeghem},
+	month = mar,
+	year = {2024},
+	doi = {10.5281/ZENODO.10837178},
+}
+
+@incollection{devillers_cgal_2024,
+	edition = {5.6.1},
+	title = {{CGAL} {Ipelets}},
+	url = {https://doc.cgal.org/5.6.1/Manual/packages.html#PkgCGALIpelets},
+	booktitle = {{CGAL} {User} and {Reference} {Manual}},
+	publisher = {CGAL Editorial Board},
+	author = {Devillers, Olivier and Loriot, Sébastien and Pion, Sylvain},
+	year = {2024},
+}
+
+@incollection{fabri_cgal_2024,
+	edition = {5.6.1},
+	title = {{CGAL} and the {Qt} {Graphics} {View} {Framework}},
+	url = {https://doc.cgal.org/5.6.1/Manual/packages.html#PkgGraphicsView},
+	booktitle = {{CGAL} {User} and {Reference} {Manual}},
+	publisher = {CGAL Editorial Board},
+	author = {Fabri, Andreas and Rineau, Laurent},
+	year = {2024},
+}
+
+@incollection{fabri_io_2024,
+	edition = {5.6.1},
+	title = {I/{O} {Streams}},
+	url = {https://doc.cgal.org/5.6.1/Manual/packages.html#PkgStreamSupport},
+	booktitle = {{CGAL} {User} and {Reference} {Manual}},
+	publisher = {CGAL Editorial Board},
+	author = {Fabri, Andreas and Giezeman, Geert-Jan and Kettner, Lutz},
+	year = {2024},
+}
+
+@incollection{kettner_profiling_2024,
+	edition = {5.6.1},
+	title = {Profiling tools, {Hash} {Map}, {Union}-find, {Modifiers}},
+	url = {https://doc.cgal.org/5.6.1/Manual/packages.html#Miscellany},
+	booktitle = {{CGAL} {User} and {Reference} {Manual}},
+	publisher = {CGAL Editorial Board},
+	author = {Kettner, Lutz and Pion, Sylvain and Seel, Michael},
+	year = {2024},
+}
+
+@incollection{si_cone-based_2024,
+	edition = {5.6.1},
+	title = {Cone-{Based} {Spanners}},
+	url = {https://doc.cgal.org/5.6.1/Manual/packages.html#PkgConeSpanners2},
+	booktitle = {{CGAL} {User} and {Reference} {Manual}},
+	publisher = {CGAL Editorial Board},
+	author = {Si, Weisheng and Tse, Quincy and Paradis, Frédérik},
+	year = {2024},
+}
+
+@incollection{anisimov_weight_2024,
+	edition = {5.6.1},
+	title = {Weight {Interface}},
+	url = {https://doc.cgal.org/5.6.1/Manual/packages.html#PkgWeights},
+	booktitle = {{CGAL} {User} and {Reference} {Manual}},
+	publisher = {CGAL Editorial Board},
+	author = {Anisimov, Dmitry},
+	year = {2024},
+}
+
+@incollection{giraudot_cgal_2024,
+	edition = {5.6.1},
+	title = {{CGAL} and {Solvers}},
+	url = {https://doc.cgal.org/5.6.1/Manual/packages.html#PkgSolverInterface},
+	booktitle = {{CGAL} {User} and {Reference} {Manual}},
+	publisher = {CGAL Editorial Board},
+	author = {Giraudot, Simon and Alliez, Pierre and Cazals, Frédéric and Guennebaud, Gaël and Lévy, Bruno and Pouget, Marc and Saboret, Laurent and Nan, Liangliang},
+	year = {2024},
+}
+
+@incollection{flototto_2d_2024,
+	edition = {5.6.1},
+	title = {{2D} and {Surface} {Function} {Interpolation}},
+	url = {https://doc.cgal.org/5.6.1/Manual/packages.html#PkgInterpolation2},
+	booktitle = {{CGAL} {User} and {Reference} {Manual}},
+	publisher = {CGAL Editorial Board},
+	author = {Flötotto, Julia},
+	year = {2024},
+}
+
+@incollection{castro_geometric_2024,
+	edition = {5.6.1},
+	title = {Geometric {Object} {Generators}},
+	url = {https://doc.cgal.org/5.6.1/Manual/packages.html#PkgGenerators},
+	booktitle = {{CGAL} {User} and {Reference} {Manual}},
+	publisher = {CGAL Editorial Board},
+	author = {Castro, Pedro M. M. de and Devillers, Olivier and Hert, Susan and Hoffmann, Michael and Kettner, Lutz and Schönherr, Sven and Tifrea, Alexandru and Gimeno, Maxime},
+	year = {2024},
+}
+
+@incollection{devillers_handles_2024,
+	edition = {5.6.1},
+	title = {Handles and {Circulators}},
+	url = {https://doc.cgal.org/5.6.1/Manual/packages.html#PkgHandlesAndCirculators},
+	booktitle = {{CGAL} {User} and {Reference} {Manual}},
+	publisher = {CGAL Editorial Board},
+	author = {Devillers, Olivier and Kettner, Lutz and Pion, Sylvain and Seel, Michael and Yvinec, Mariette},
+	year = {2024},
+}
+
+@incollection{fabri_cgal_2024-1,
+	edition = {5.6.1},
+	title = {{CGAL} and {Boost} {Property} {Maps}},
+	url = {https://doc.cgal.org/5.6.1/Manual/packages.html#PkgPropertyMap},
+	booktitle = {{CGAL} {User} and {Reference} {Manual}},
+	publisher = {CGAL Editorial Board},
+	author = {Fabri, Andreas and Saboret, Laurent},
+	year = {2024},
+}
+
+@incollection{fabri_cgal_2024-2,
+	edition = {5.6.1},
+	title = {{CGAL} and the {Boost} {Graph} {Library}},
+	url = {https://doc.cgal.org/5.6.1/Manual/packages.html#PkgBGL},
+	booktitle = {{CGAL} {User} and {Reference} {Manual}},
+	publisher = {CGAL Editorial Board},
+	author = {Fabri, Andreas and Cacciola, Fernando and Moeller, Philipp and Wein, Ron},
+	year = {2024},
+}
+
+@incollection{hoffmann_stl_2024,
+	edition = {5.6.1},
+	title = {{STL} {Extensions} for {CGAL}},
+	url = {https://doc.cgal.org/5.6.1/Manual/packages.html#PkgSTLExtension},
+	booktitle = {{CGAL} {User} and {Reference} {Manual}},
+	publisher = {CGAL Editorial Board},
+	author = {Hoffmann, Michael and Kettner, Lutz and Pion, Sylvain and Wein, Ron},
+	year = {2024},
+}
+
+@incollection{anisimov_2d_2024,
+	edition = {5.6.1},
+	title = {{2D} {Generalized} {Barycentric} {Coordinates}},
+	url = {https://doc.cgal.org/5.6.1/Manual/packages.html#PkgBarycentricCoordinates2},
+	booktitle = {{CGAL} {User} and {Reference} {Manual}},
+	publisher = {CGAL Editorial Board},
+	author = {Anisimov, Dmitry and Bommes, David and Hormann, Kai and Alliez, Pierre},
+	year = {2024},
+}
+
+@incollection{fischer_optimal_2024,
+	edition = {5.6.1},
+	title = {Optimal {Distances}},
+	url = {https://doc.cgal.org/5.6.1/Manual/packages.html#PkgPolytopeDistanceD},
+	booktitle = {{CGAL} {User} and {Reference} {Manual}},
+	publisher = {CGAL Editorial Board},
+	author = {Fischer, Kaspar and Gärtner, Bernd and Herrmann, Thomas and Hoffmann, Michael and Schönherr, Sven},
+	year = {2024},
+}
+
+@incollection{hoffmann_inscribed_2024,
+	edition = {5.6.1},
+	title = {Inscribed {Areas}},
+	url = {https://doc.cgal.org/5.6.1/Manual/packages.html#PkgInscribedAreas},
+	booktitle = {{CGAL} {User} and {Reference} {Manual}},
+	publisher = {CGAL Editorial Board},
+	author = {Hoffmann, Michael and Packer, Eli},
+	year = {2024},
+}
+
+@incollection{campolattaro_quadtrees_2024,
+	edition = {5.6.1},
+	title = {Quadtrees, {Octrees}, and {Orthtrees}},
+	url = {https://doc.cgal.org/5.6.1/Manual/packages.html#PkgOrthtree},
+	booktitle = {{CGAL} {User} and {Reference} {Manual}},
+	publisher = {CGAL Editorial Board},
+	author = {Campolattaro, Jackson and Giraudot, Simon and Portaneri, Cédric and Zhao, Tong and Alliez, Pierre},
+	year = {2024},
+}
+
+@incollection{kettner_intersecting_2024,
+	edition = {5.6.1},
+	title = {Intersecting {Sequences} of {dD} {Iso}-oriented {Boxes}},
+	url = {https://doc.cgal.org/5.6.1/Manual/packages.html#PkgBoxIntersectionD},
+	booktitle = {{CGAL} {User} and {Reference} {Manual}},
+	publisher = {CGAL Editorial Board},
+	author = {Kettner, Lutz and Meyer, Andreas and Zomorodian, Afra},
+	year = {2024},
+}
+
+@incollection{katrioplas_optimal_2024,
+	edition = {5.6.1},
+	title = {Optimal {Bounding} {Box}},
+	url = {https://doc.cgal.org/5.6.1/Manual/packages.html#PkgOptimalBoundingBox},
+	booktitle = {{CGAL} {User} and {Reference} {Manual}},
+	publisher = {CGAL Editorial Board},
+	author = {Katrioplas, Konstantinos and Rouxel-Labbé, Mael},
+	year = {2024},
+}
+
+@incollection{alliez_principal_2024,
+	edition = {5.6.1},
+	title = {Principal {Component} {Analysis}},
+	url = {https://doc.cgal.org/5.6.1/Manual/packages.html#PkgPrincipalComponentAnalysisD},
+	booktitle = {{CGAL} {User} and {Reference} {Manual}},
+	publisher = {CGAL Editorial Board},
+	author = {Alliez, Pierre and Pion, Sylvain and Gupta, Ankit},
+	year = {2024},
+}
+
+@incollection{fischer_bounding_2024,
+	edition = {5.6.1},
+	title = {Bounding {Volumes}},
+	url = {https://doc.cgal.org/5.6.1/Manual/packages.html#PkgBoundingVolumes},
+	booktitle = {{CGAL} {User} and {Reference} {Manual}},
+	publisher = {CGAL Editorial Board},
+	author = {Fischer, Kaspar and Gärtner, Bernd and Herrmann, Thomas and Hoffmann, Michael and Schönherr, Sven},
+	year = {2024},
+}
+
+@incollection{delage_spatial_2024,
+	edition = {5.6.1},
+	title = {Spatial {Sorting}},
+	url = {https://doc.cgal.org/5.6.1/Manual/packages.html#PkgSpatialSorting},
+	booktitle = {{CGAL} {User} and {Reference} {Manual}},
+	publisher = {CGAL Editorial Board},
+	author = {Delage, Christophe and Devillers, Olivier},
+	year = {2024},
+}
+
+@incollection{alliez_3d_2024,
+	edition = {5.6.1},
+	title = {{3D} {Fast} {Intersection} and {Distance} {Computation}},
+	url = {https://doc.cgal.org/5.6.1/Manual/packages.html#PkgAABBTree},
+	booktitle = {{CGAL} {User} and {Reference} {Manual}},
+	publisher = {CGAL Editorial Board},
+	author = {Alliez, Pierre and Tayeb, Stéphane and Wormser, Camille},
+	year = {2024},
+}
+
+@incollection{neyer_dd_2024,
+	edition = {5.6.1},
+	title = {{dD} {Range} and {Segment} {Trees}},
+	url = {https://doc.cgal.org/5.6.1/Manual/packages.html#PkgSearchStructures},
+	booktitle = {{CGAL} {User} and {Reference} {Manual}},
+	publisher = {CGAL Editorial Board},
+	author = {Neyer, Gabriele},
+	year = {2024},
+}
+
+@incollection{tangelder_dd_2024,
+	edition = {5.6.1},
+	title = {{dD} {Spatial} {Searching}},
+	url = {https://doc.cgal.org/5.6.1/Manual/packages.html#PkgSpatialSearchingD},
+	booktitle = {{CGAL} {User} and {Reference} {Manual}},
+	publisher = {CGAL Editorial Board},
+	author = {Tangelder, Hans and Fabri, Andreas},
+	year = {2024},
+}
+
+@incollection{fabri_interval_2024,
+	edition = {5.6.1},
+	title = {Interval {Skip} {List}},
+	url = {https://doc.cgal.org/5.6.1/Manual/packages.html#PkgIntervalSkipList},
+	booktitle = {{CGAL} {User} and {Reference} {Manual}},
+	publisher = {CGAL Editorial Board},
+	author = {Fabri, Andreas},
+	year = {2024},
+}
+
+@incollection{basken_2d_2024,
+	edition = {5.6.1},
+	title = {{2D} {Range} and {Neighbor} {Search}},
+	url = {https://doc.cgal.org/5.6.1/Manual/packages.html#PkgPointSet2},
+	booktitle = {{CGAL} {User} and {Reference} {Manual}},
+	publisher = {CGAL Editorial Board},
+	author = {Bäsken, Matthias},
+	year = {2024},
+}
+
+@incollection{damiand_surface_2024,
+	edition = {5.6.1},
+	title = {Surface {Mesh} {Topology}},
+	url = {https://doc.cgal.org/5.6.1/Manual/packages.html#PkgSurfaceMeshTopology},
+	booktitle = {{CGAL} {User} and {Reference} {Manual}},
+	publisher = {CGAL Editorial Board},
+	author = {Damiand, Guillaume and Lazarus, Francis},
+	year = {2024},
+}
+
+@incollection{giraudot_classification_2024,
+	edition = {5.6.1},
+	title = {Classification},
+	url = {https://doc.cgal.org/5.6.1/Manual/packages.html#PkgClassification},
+	booktitle = {{CGAL} {User} and {Reference} {Manual}},
+	publisher = {CGAL Editorial Board},
+	author = {Giraudot, Simon and Lafarge, Florent},
+	year = {2024},
+}
+
+@incollection{crane_heat_2024,
+	edition = {5.6.1},
+	title = {The {Heat} {Method}},
+	url = {https://doc.cgal.org/5.6.1/Manual/packages.html#PkgHeatMethod},
+	booktitle = {{CGAL} {User} and {Reference} {Manual}},
+	publisher = {CGAL Editorial Board},
+	author = {Crane, Keenan and Vaz, Christina and Fabri, Andreas},
+	year = {2024},
+}
+
+@incollection{mebarki_2d_2024,
+	edition = {5.6.1},
+	title = {{2D} {Placement} of {Streamlines}},
+	url = {https://doc.cgal.org/5.6.1/Manual/packages.html#PkgStreamLines2},
+	booktitle = {{CGAL} {User} and {Reference} {Manual}},
+	publisher = {CGAL Editorial Board},
+	author = {Mebarki, Abdelkrim},
+	year = {2024},
+}
+
+@incollection{anisimov_shape_2024,
+	edition = {5.6.1},
+	title = {Shape {Regularization}},
+	url = {https://doc.cgal.org/5.6.1/Manual/packages.html#PkgShapeRegularization},
+	booktitle = {{CGAL} {User} and {Reference} {Manual}},
+	publisher = {CGAL Editorial Board},
+	author = {Anisimov, Dmitry and Sytov, Gennadii and Giraudot, Simon and Bauchet, Jean-Philippe and Lafarge, Florent},
+	year = {2024},
+}
+
+@incollection{oesau_shape_2024,
+	edition = {5.6.1},
+	title = {Shape {Detection}},
+	url = {https://doc.cgal.org/5.6.1/Manual/packages.html#PkgShapeDetection},
+	booktitle = {{CGAL} {User} and {Reference} {Manual}},
+	publisher = {CGAL Editorial Board},
+	author = {Oesau, Sven and Verdie, Yannick and Jamin, Clément and Alliez, Pierre and Lafarge, Florent and Giraudot, Simon and Hoang, Thien and Anisimov, Dmitry},
+	year = {2024},
+}
+
+@incollection{alliez_point_2024,
+	edition = {5.6.1},
+	title = {Point {Set} {Processing}},
+	url = {https://doc.cgal.org/5.6.1/Manual/packages.html#PkgPointSetProcessing3},
+	booktitle = {{CGAL} {User} and {Reference} {Manual}},
+	publisher = {CGAL Editorial Board},
+	author = {Alliez, Pierre and Giraudot, Simon and Jamin, Clément and Lafarge, Florent and Mérigot, Quentin and Meyron, Jocelyn and Saboret, Laurent and Salman, Nader and Wu, Shihao and Yildiran, Necip Fazil},
+	year = {2024},
+}
+
+@incollection{giraudot_3d_2024,
+	edition = {5.6.1},
+	title = {{3D} {Point} {Set}},
+	url = {https://doc.cgal.org/5.6.1/Manual/packages.html#PkgPointSet3},
+	booktitle = {{CGAL} {User} and {Reference} {Manual}},
+	publisher = {CGAL Editorial Board},
+	author = {Giraudot, Simon},
+	year = {2024},
+}
+
+@incollection{alliez_triangulated_2024,
+	edition = {5.6.1},
+	title = {Triangulated {Surface} {Mesh} {Approximation}},
+	url = {https://doc.cgal.org/5.6.1/Manual/packages.html#PkgTSMA},
+	booktitle = {{CGAL} {User} and {Reference} {Manual}},
+	publisher = {CGAL Editorial Board},
+	author = {Alliez, Pierre and Cohen-Steiner, David and Zhu, Lingjie},
+	year = {2024},
+}
+
+@incollection{gao_triangulated_2024,
+	edition = {5.6.1},
+	title = {Triangulated {Surface} {Mesh} {Skeletonization}},
+	url = {https://doc.cgal.org/5.6.1/Manual/packages.html#PkgSurfaceMeshSkeletonization},
+	booktitle = {{CGAL} {User} and {Reference} {Manual}},
+	publisher = {CGAL Editorial Board},
+	author = {Gao, Xiang and Loriot, Sébastien and Tagliasacchi, Andrea},
+	year = {2024},
+}
+
+@incollection{saboret_triangulated_2024,
+	edition = {5.6.1},
+	title = {Triangulated {Surface} {Mesh} {Parameterization}},
+	url = {https://doc.cgal.org/5.6.1/Manual/packages.html#PkgSurfaceMeshParameterization},
+	booktitle = {{CGAL} {User} and {Reference} {Manual}},
+	publisher = {CGAL Editorial Board},
+	author = {Saboret, Laurent and Alliez, Pierre and Lévy, Bruno and Rouxel-Labbé, Mael and Fabri, Andreas and Jain, Hardik},
+	year = {2024},
+}
+
+@incollection{pouget_estimation_2024,
+	edition = {5.6.1},
+	title = {Estimation of {Local} {Differential} {Properties} of {Point}-{Sampled} {Surfaces}},
+	url = {https://doc.cgal.org/5.6.1/Manual/packages.html#PkgJetFitting3},
+	booktitle = {{CGAL} {User} and {Reference} {Manual}},
+	publisher = {CGAL Editorial Board},
+	author = {Pouget, Marc and Cazals, Frédéric},
+	year = {2024},
+}
+
+@incollection{pouget_approximation_2024,
+	edition = {5.6.1},
+	title = {Approximation of {Ridges} and {Umbilics} on {Triangulated} {Surface} {Meshes}},
+	url = {https://doc.cgal.org/5.6.1/Manual/packages.html#PkgRidges3},
+	booktitle = {{CGAL} {User} and {Reference} {Manual}},
+	publisher = {CGAL Editorial Board},
+	author = {Pouget, Marc and Cazals, Frédéric},
+	year = {2024},
+}
+
+@incollection{kiazyk_triangulated_2024,
+	edition = {5.6.1},
+	title = {Triangulated {Surface} {Mesh} {Shortest} {Paths}},
+	url = {https://doc.cgal.org/5.6.1/Manual/packages.html#PkgSurfaceMeshShortestPath},
+	booktitle = {{CGAL} {User} and {Reference} {Manual}},
+	publisher = {CGAL Editorial Board},
+	author = {Kiazyk, Stephen and Loriot, Sébastien and Verdière, Éric Colin de},
+	year = {2024},
+}
+
+@incollection{yaz_triangulated_2024,
+	edition = {5.6.1},
+	title = {Triangulated {Surface} {Mesh} {Segmentation}},
+	url = {https://doc.cgal.org/5.6.1/Manual/packages.html#PkgSurfaceMeshSegmentation},
+	booktitle = {{CGAL} {User} and {Reference} {Manual}},
+	publisher = {CGAL Editorial Board},
+	author = {Yaz, Ilker O. and Loriot, Sébastien},
+	year = {2024},
+}
+
+@incollection{loriot_triangulated_2024,
+	edition = {5.6.1},
+	title = {Triangulated {Surface} {Mesh} {Deformation}},
+	url = {https://doc.cgal.org/5.6.1/Manual/packages.html#PkgSurfaceMeshDeformation},
+	booktitle = {{CGAL} {User} and {Reference} {Manual}},
+	publisher = {CGAL Editorial Board},
+	author = {Loriot, Sébastien and Sorkine-Hornung, Olga and Xu, Yin and Yaz, Ilker O.},
+	year = {2024},
+}
+
+@incollection{cacciola_triangulated_2024,
+	edition = {5.6.1},
+	title = {Triangulated {Surface} {Mesh} {Simplification}},
+	url = {https://doc.cgal.org/5.6.1/Manual/packages.html#PkgSurfaceMeshSimplification},
+	booktitle = {{CGAL} {User} and {Reference} {Manual}},
+	publisher = {CGAL Editorial Board},
+	author = {Cacciola, Fernando and Rouxel-Labbé, Mael and Şenbaşlar, Baskın and Komaromy, Julian},
+	year = {2024},
+}
+
+@incollection{loriot_polygon_2024,
+	edition = {5.6.1},
+	title = {Polygon {Mesh} {Processing}},
+	url = {https://doc.cgal.org/5.6.1/Manual/packages.html#PkgPolygonMeshProcessing},
+	booktitle = {{CGAL} {User} and {Reference} {Manual}},
+	publisher = {CGAL Editorial Board},
+	author = {Loriot, Sébastien and Rouxel-Labbé, Mael and Tournois, Jane and Yaz, Ilker O.},
+	year = {2024},
+}
+
+@incollection{alliez_optimal_2024,
+	edition = {5.6.1},
+	title = {Optimal {Transportation} {Curve} {Reconstruction}},
+	url = {https://doc.cgal.org/5.6.1/Manual/packages.html#PkgOptimalTransportationReconstruction2},
+	booktitle = {{CGAL} {User} and {Reference} {Manual}},
+	publisher = {CGAL Editorial Board},
+	author = {Alliez, Pierre and Cohen-Steiner, David and Goes, Fernando de and Jamin, Clément and Vigan, Ivo},
+	year = {2024},
+}
+
+@incollection{da_advancing_2024,
+	edition = {5.6.1},
+	title = {Advancing {Front} {Surface} {Reconstruction}},
+	url = {https://doc.cgal.org/5.6.1/Manual/packages.html#PkgAdvancingFrontSurfaceReconstruction},
+	booktitle = {{CGAL} {User} and {Reference} {Manual}},
+	publisher = {CGAL Editorial Board},
+	author = {Da, Tran Kai Frank and Cohen-Steiner, David},
+	year = {2024},
+}
+
+@incollection{alliez_3d_2024-1,
+	edition = {5.6.1},
+	title = {{3D} {Alpha} {Wrapping}},
+	url = {https://doc.cgal.org/5.6.1/Manual/packages.html#PkgAlphaWrap3},
+	booktitle = {{CGAL} {User} and {Reference} {Manual}},
+	publisher = {CGAL Editorial Board},
+	author = {Alliez, Pierre and Cohen-Steiner, David and Hemmer, Michael and Portaneri, Cédric and Rouxel-Labbé, Mael},
+	year = {2024},
+}
+
+@incollection{bogdanov_3d_2024,
+	edition = {5.6.1},
+	title = {{3D} {Periodic} {Mesh} {Generation}},
+	url = {https://doc.cgal.org/5.6.1/Manual/packages.html#PkgPeriodic3Mesh3},
+	booktitle = {{CGAL} {User} and {Reference} {Manual}},
+	publisher = {CGAL Editorial Board},
+	author = {Bogdanov, Mikhail and Pellé, Aymeric and Rouxel-Labbé, Mael and Teillaud, Monique},
+	year = {2024},
+}
+
+@incollection{tournois_tetrahedral_2024,
+	edition = {5.6.1},
+	title = {Tetrahedral {Remeshing}},
+	url = {https://doc.cgal.org/5.6.1/Manual/packages.html#PkgTetrahedralRemeshing},
+	booktitle = {{CGAL} {User} and {Reference} {Manual}},
+	publisher = {CGAL Editorial Board},
+	author = {Tournois, Jane and Faraj, Noura and Thiery, Jean-Marc and Boubekeur, Tamy},
+	year = {2024},
+}
+
+@incollection{shiue_3d_2024,
+	edition = {5.6.1},
+	title = {{3D} {Surface} {Subdivision} {Methods}},
+	url = {https://doc.cgal.org/5.6.1/Manual/packages.html#PkgSurfaceSubdivisionMethod3},
+	booktitle = {{CGAL} {User} and {Reference} {Manual}},
+	publisher = {CGAL Editorial Board},
+	author = {Shiue, Le-Jeng Andy},
+	year = {2024},
+}
+
+@incollection{nan_polygonal_2024,
+	edition = {5.6.1},
+	title = {Polygonal {Surface} {Reconstruction}},
+	url = {https://doc.cgal.org/5.6.1/Manual/packages.html#PkgPolygonalSurfaceReconstruction},
+	booktitle = {{CGAL} {User} and {Reference} {Manual}},
+	publisher = {CGAL Editorial Board},
+	author = {Nan, Liangliang},
+	year = {2024},
+}
+
+@incollection{lankveld_scale-space_2024,
+	edition = {5.6.1},
+	title = {Scale-{Space} {Surface} {Reconstruction}},
+	url = {https://doc.cgal.org/5.6.1/Manual/packages.html#PkgScaleSpaceReconstruction3},
+	booktitle = {{CGAL} {User} and {Reference} {Manual}},
+	publisher = {CGAL Editorial Board},
+	author = {Lankveld, Thijs van},
+	year = {2024},
+}
+
+@incollection{alliez_poisson_2024,
+	edition = {5.6.1},
+	title = {Poisson {Surface} {Reconstruction}},
+	url = {https://doc.cgal.org/5.6.1/Manual/packages.html#PkgPoissonSurfaceReconstruction3},
+	booktitle = {{CGAL} {User} and {Reference} {Manual}},
+	publisher = {CGAL Editorial Board},
+	author = {Alliez, Pierre and Saboret, Laurent and Guennebaud, Gaël},
+	year = {2024},
+}
+
+@incollection{alliez_3d_2024-2,
+	edition = {5.6.1},
+	title = {{3D} {Simplicial} {Mesh} {Data} {Structure}},
+	url = {https://doc.cgal.org/5.6.1/Manual/packages.html#PkgSMDS3},
+	booktitle = {{CGAL} {User} and {Reference} {Manual}},
+	publisher = {CGAL Editorial Board},
+	author = {Alliez, Pierre and Jamin, Clément and Rineau, Laurent and Tayeb, Stéphane and Tournois, Jane and Yvinec, Mariette},
+	year = {2024},
+}
+
+@incollection{da_3d_2024,
+	edition = {5.6.1},
+	title = {{3D} {Alpha} {Shapes}},
+	url = {https://doc.cgal.org/5.6.1/Manual/packages.html#PkgAlphaShapes3},
+	booktitle = {{CGAL} {User} and {Reference} {Manual}},
+	publisher = {CGAL Editorial Board},
+	author = {Da, Tran Kai Frank and Loriot, Sébastien and Yvinec, Mariette},
+	year = {2024},
+}
+
+@incollection{alliez_3d_2024-3,
+	edition = {5.6.1},
+	title = {{3D} {Mesh} {Generation}},
+	url = {https://doc.cgal.org/5.6.1/Manual/packages.html#PkgMesh3},
+	booktitle = {{CGAL} {User} and {Reference} {Manual}},
+	publisher = {CGAL Editorial Board},
+	author = {Alliez, Pierre and Jamin, Clément and Rineau, Laurent and Tayeb, Stéphane and Tournois, Jane and Yvinec, Mariette},
+	year = {2024},
+}
+
+@incollection{kruithof_3d_2024,
+	edition = {5.6.1},
+	title = {{3D} {Skin} {Surface} {Meshing}},
+	url = {https://doc.cgal.org/5.6.1/Manual/packages.html#PkgSkinSurface3},
+	booktitle = {{CGAL} {User} and {Reference} {Manual}},
+	publisher = {CGAL Editorial Board},
+	author = {Kruithof, Nico},
+	year = {2024},
+}
+
+@incollection{rineau_3d_2024,
+	edition = {5.6.1},
+	title = {{3D} {Surface} {Mesh} {Generation}},
+	url = {https://doc.cgal.org/5.6.1/Manual/packages.html#PkgSurfaceMesher3},
+	booktitle = {{CGAL} {User} and {Reference} {Manual}},
+	publisher = {CGAL Editorial Board},
+	author = {Rineau, Laurent and Yvinec, Mariette},
+	year = {2024},
+}
+
+@incollection{rineau_2d_2024,
+	edition = {5.6.1},
+	title = {{2D} {Conforming} {Triangulations} and {Meshes}},
+	url = {https://doc.cgal.org/5.6.1/Manual/packages.html#PkgMesh2},
+	booktitle = {{CGAL} {User} and {Reference} {Manual}},
+	publisher = {CGAL Editorial Board},
+	author = {Rineau, Laurent},
+	year = {2024},
+}
+
+@incollection{karavelas_2d_2024,
+	edition = {5.6.1},
+	title = {{2D} {Voronoi} {Diagram} {Adaptor}},
+	url = {https://doc.cgal.org/5.6.1/Manual/packages.html#PkgVoronoiDiagram2},
+	booktitle = {{CGAL} {User} and {Reference} {Manual}},
+	publisher = {CGAL Editorial Board},
+	author = {Karavelas, Menelaos},
+	year = {2024},
+}
+
+@incollection{karavelas_2d_2024-1,
+	edition = {5.6.1},
+	title = {{2D} {Apollonius} {Graphs} ({Delaunay} {Graphs} of {Disks})},
+	url = {https://doc.cgal.org/5.6.1/Manual/packages.html#PkgApolloniusGraph2},
+	booktitle = {{CGAL} {User} and {Reference} {Manual}},
+	publisher = {CGAL Editorial Board},
+	author = {Karavelas, Menelaos and Yvinec, Mariette},
+	year = {2024},
+}
+
+@incollection{cheilaris_l_2024,
+	edition = {5.6.1},
+	title = {L {Infinity} {Segment} {Delaunay} {Graphs}},
+	url = {https://doc.cgal.org/5.6.1/Manual/packages.html#PkgSegmentDelaunayGraphLinf2},
+	booktitle = {{CGAL} {User} and {Reference} {Manual}},
+	publisher = {CGAL Editorial Board},
+	author = {Cheilaris, Panagiotis and Dey, Sandeep Kumar and Papadopoulou, Evanthia},
+	year = {2024},
+}
+
+@incollection{karavelas_2d_2024-2,
+	edition = {5.6.1},
+	title = {{2D} {Segment} {Delaunay} {Graphs}},
+	url = {https://doc.cgal.org/5.6.1/Manual/packages.html#PkgSegmentDelaunayGraph2},
+	booktitle = {{CGAL} {User} and {Reference} {Manual}},
+	publisher = {CGAL Editorial Board},
+	author = {Karavelas, Menelaos},
+	year = {2024},
+}
+
+@incollection{da_2d_2024,
+	edition = {5.6.1},
+	title = {{2D} {Alpha} {Shapes}},
+	url = {https://doc.cgal.org/5.6.1/Manual/packages.html#PkgAlphaShapes2},
+	booktitle = {{CGAL} {User} and {Reference} {Manual}},
+	publisher = {CGAL Editorial Board},
+	author = {Da, Tran Kai Frank},
+	year = {2024},
+}
+
+@incollection{caroli_3d_2024,
+	edition = {5.6.1},
+	title = {{3D} {Periodic} {Triangulations}},
+	url = {https://doc.cgal.org/5.6.1/Manual/packages.html#PkgPeriodic3Triangulation3},
+	booktitle = {{CGAL} {User} and {Reference} {Manual}},
+	publisher = {CGAL Editorial Board},
+	author = {Caroli, Manuel and Pellé, Aymeric and Rouxel-Labbé, Mael and Teillaud, Monique},
+	year = {2024},
+}
+
+@incollection{jamin_3d_2024,
+	edition = {5.6.1},
+	title = {{3D} {Triangulations}},
+	url = {https://doc.cgal.org/5.6.1/Manual/packages.html#PkgTriangulation3},
+	booktitle = {{CGAL} {User} and {Reference} {Manual}},
+	publisher = {CGAL Editorial Board},
+	author = {Jamin, Clément and Pion, Sylvain and Teillaud, Monique},
+	year = {2024},
+}
+
+@incollection{rouxel-labbe_2d_2024,
+	edition = {5.6.1},
+	title = {{2D} {Triangulations} on the {Sphere}},
+	url = {https://doc.cgal.org/5.6.1/Manual/packages.html#PkgTriangulationOnSphere2},
+	booktitle = {{CGAL} {User} and {Reference} {Manual}},
+	publisher = {CGAL Editorial Board},
+	author = {Rouxel-Labbé, Mael and Teillaud, Monique and Werner, Claudia},
+	year = {2024},
+}
+
+@incollection{devillers_dd_2024,
+	edition = {5.6.1},
+	title = {{dD} {Triangulations}},
+	url = {https://doc.cgal.org/5.6.1/Manual/packages.html#PkgTriangulations},
+	booktitle = {{CGAL} {User} and {Reference} {Manual}},
+	publisher = {CGAL Editorial Board},
+	author = {Devillers, Olivier and Hornus, Samuel and Jamin, Clément},
+	year = {2024},
+}
+
+@incollection{jamin_3d_2024-1,
+	edition = {5.6.1},
+	title = {{3D} {Triangulation} {Data} {Structure}},
+	url = {https://doc.cgal.org/5.6.1/Manual/packages.html#PkgTDS3},
+	booktitle = {{CGAL} {User} and {Reference} {Manual}},
+	publisher = {CGAL Editorial Board},
+	author = {Jamin, Clément and Pion, Sylvain and Teillaud, Monique},
+	year = {2024},
+}
+
+@incollection{iordanov_2d_2024,
+	edition = {5.6.1},
+	title = {{2D} {Periodic} {Hyperbolic} {Triangulations}},
+	url = {https://doc.cgal.org/5.6.1/Manual/packages.html#PkgPeriodic4HyperbolicTriangulation2},
+	booktitle = {{CGAL} {User} and {Reference} {Manual}},
+	publisher = {CGAL Editorial Board},
+	author = {Iordanov, Iordan and Teillaud, Monique},
+	year = {2024},
+}
+
+@incollection{bogdanov_2d_2024,
+	edition = {5.6.1},
+	title = {{2D} {Hyperbolic} {Delaunay} {Triangulations}},
+	url = {https://doc.cgal.org/5.6.1/Manual/packages.html#PkgHyperbolicTriangulation2},
+	booktitle = {{CGAL} {User} and {Reference} {Manual}},
+	publisher = {CGAL Editorial Board},
+	author = {Bogdanov, Mikhail and Iordanov, Iordan and Teillaud, Monique},
+	year = {2024},
+}
+
+@incollection{kruithof_2d_2024,
+	edition = {5.6.1},
+	title = {{2D} {Periodic} {Triangulations}},
+	url = {https://doc.cgal.org/5.6.1/Manual/packages.html#PkgPeriodic2Triangulation2},
+	booktitle = {{CGAL} {User} and {Reference} {Manual}},
+	publisher = {CGAL Editorial Board},
+	author = {Kruithof, Nico},
+	year = {2024},
+}
+
+@incollection{pion_2d_2024,
+	edition = {5.6.1},
+	title = {{2D} {Triangulation} {Data} {Structure}},
+	url = {https://doc.cgal.org/5.6.1/Manual/packages.html#PkgTDS2},
+	booktitle = {{CGAL} {User} and {Reference} {Manual}},
+	publisher = {CGAL Editorial Board},
+	author = {Pion, Sylvain and Yvinec, Mariette},
+	year = {2024},
+}
+
+@incollection{wein_2d_2024,
+	edition = {5.6.1},
+	title = {{2D} {Envelopes}},
+	url = {https://doc.cgal.org/5.6.1/Manual/packages.html#PkgEnvelope2},
+	booktitle = {{CGAL} {User} and {Reference} {Manual}},
+	publisher = {CGAL Editorial Board},
+	author = {Wein, Ron},
+	year = {2024},
+}
+
+@incollection{wein_2d_2024-1,
+	edition = {5.6.1},
+	title = {{2D} {Arrangements}},
+	url = {https://doc.cgal.org/5.6.1/Manual/packages.html#PkgArrangementOnSurface2},
+	booktitle = {{CGAL} {User} and {Reference} {Manual}},
+	publisher = {CGAL Editorial Board},
+	author = {Wein, Ron and Berberich, Eric and Fogel, Efi and Halperin, Dan and Hemmer, Michael and Salzman, Oren and Zukerman, Baruch},
+	year = {2024},
+}
+
+@incollection{hachenberger_3d_2024,
+	edition = {5.6.1},
+	title = {{3D} {Minkowski} {Sum} of {Polyhedra}},
+	url = {https://doc.cgal.org/5.6.1/Manual/packages.html#PkgMinkowskiSum3},
+	booktitle = {{CGAL} {User} and {Reference} {Manual}},
+	publisher = {CGAL Editorial Board},
+	author = {Hachenberger, Peter},
+	year = {2024},
+}
+
+@incollection{yvinec_2d_2024,
+	edition = {5.6.1},
+	title = {{2D} {Triangulations}},
+	url = {https://doc.cgal.org/5.6.1/Manual/packages.html#PkgTriangulation2},
+	booktitle = {{CGAL} {User} and {Reference} {Manual}},
+	publisher = {CGAL Editorial Board},
+	author = {Yvinec, Mariette},
+	year = {2024},
+}
+
+@incollection{halperin_3d_2024,
+	edition = {5.6.1},
+	title = {{3D} {Envelopes}},
+	url = {https://doc.cgal.org/5.6.1/Manual/packages.html#PkgEnvelope3},
+	booktitle = {{CGAL} {User} and {Reference} {Manual}},
+	publisher = {CGAL Editorial Board},
+	author = {Halperin, Dan and Meyerovitch, Michal and Wein, Ron and Zukerman, Baruch},
+	year = {2024},
+}
+
+@incollection{packer_2d_2024,
+	edition = {5.6.1},
+	title = {{2D} {Snap} {Rounding}},
+	url = {https://doc.cgal.org/5.6.1/Manual/packages.html#PkgSnapRounding2},
+	booktitle = {{CGAL} {User} and {Reference} {Manual}},
+	publisher = {CGAL Editorial Board},
+	author = {Packer, Eli},
+	year = {2024},
+}
+
+@incollection{zukerman_2d_2024,
+	edition = {5.6.1},
+	title = {{2D} {Intersection} of {Curves}},
+	url = {https://doc.cgal.org/5.6.1/Manual/packages.html#PkgSurfaceSweep2},
+	booktitle = {{CGAL} {User} and {Reference} {Manual}},
+	publisher = {CGAL Editorial Board},
+	author = {Zukerman, Baruch and Wein, Ron and Fogel, Efi},
+	year = {2024},
+}
+
+@incollection{hachenberger_convex_2024,
+	edition = {5.6.1},
+	title = {Convex {Decomposition} of {Polyhedra}},
+	url = {https://doc.cgal.org/5.6.1/Manual/packages.html#PkgConvexDecomposition3},
+	booktitle = {{CGAL} {User} and {Reference} {Manual}},
+	publisher = {CGAL Editorial Board},
+	author = {Hachenberger, Peter},
+	year = {2024},
+}
+
+@incollection{hachenberger_3d_2024-1,
+	edition = {5.6.1},
+	title = {{3D} {Boolean} {Operations} on {Nef} {Polyhedra}},
+	url = {https://doc.cgal.org/5.6.1/Manual/packages.html#PkgNef3},
+	booktitle = {{CGAL} {User} and {Reference} {Manual}},
+	publisher = {CGAL Editorial Board},
+	author = {Hachenberger, Peter and Kettner, Lutz},
+	year = {2024},
+}
+
+@incollection{damiand_linear_2024,
+	edition = {5.6.1},
+	title = {Linear {Cell} {Complex}},
+	url = {https://doc.cgal.org/5.6.1/Manual/packages.html#PkgLinearCellComplex},
+	booktitle = {{CGAL} {User} and {Reference} {Manual}},
+	publisher = {CGAL Editorial Board},
+	author = {Damiand, Guillaume},
+	year = {2024},
+}
+
+@incollection{kettner_halfedge_2024,
+	edition = {5.6.1},
+	title = {Halfedge {Data} {Structures}},
+	url = {https://doc.cgal.org/5.6.1/Manual/packages.html#PkgHalfedgeDS},
+	booktitle = {{CGAL} {User} and {Reference} {Manual}},
+	publisher = {CGAL Editorial Board},
+	author = {Kettner, Lutz},
+	year = {2024},
+}
+
+@incollection{hemmer_2d_2024,
+	edition = {5.6.1},
+	title = {{2D} {Visibility} {Computation}},
+	url = {https://doc.cgal.org/5.6.1/Manual/packages.html#PkgVisibility2},
+	booktitle = {{CGAL} {User} and {Reference} {Manual}},
+	publisher = {CGAL Editorial Board},
+	author = {Hemmer, Michael and Huang, Kan and Bungiu, Francisc and Xu, Ning},
+	year = {2024},
+}
+
+@incollection{fabri_2d_2024,
+	edition = {5.6.1},
+	title = {{2D} {Polyline} {Simplification}},
+	url = {https://doc.cgal.org/5.6.1/Manual/packages.html#PkgPolylineSimplification2},
+	booktitle = {{CGAL} {User} and {Reference} {Manual}},
+	publisher = {CGAL Editorial Board},
+	author = {Fabri, Andreas},
+	year = {2024},
+}
+
+@incollection{wein_2d_2024-2,
+	edition = {5.6.1},
+	title = {{2D} {Minkowski} {Sums}},
+	url = {https://doc.cgal.org/5.6.1/Manual/packages.html#PkgMinkowskiSum2},
+	booktitle = {{CGAL} {User} and {Reference} {Manual}},
+	publisher = {CGAL Editorial Board},
+	author = {Wein, Ron and Baram, Alon and Flato, Eyal and Fogel, Efi and Hemmer, Michael and Morr, Sebastian},
+	year = {2024},
+}
+
+@incollection{damiand_generalized_2024,
+	edition = {5.6.1},
+	title = {Generalized {Maps}},
+	url = {https://doc.cgal.org/5.6.1/Manual/packages.html#PkgGeneralizedMaps},
+	booktitle = {{CGAL} {User} and {Reference} {Manual}},
+	publisher = {CGAL Editorial Board},
+	author = {Damiand, Guillaume},
+	year = {2024},
+}
+
+@incollection{damiand_combinatorial_2024,
+	edition = {5.6.1},
+	title = {Combinatorial {Maps}},
+	url = {https://doc.cgal.org/5.6.1/Manual/packages.html#PkgCombinatorialMaps},
+	booktitle = {{CGAL} {User} and {Reference} {Manual}},
+	publisher = {CGAL Editorial Board},
+	author = {Damiand, Guillaume},
+	year = {2024},
+}
+
+@incollection{botsch_surface_2024,
+	edition = {5.6.1},
+	title = {Surface {Mesh}},
+	url = {https://doc.cgal.org/5.6.1/Manual/packages.html#PkgSurfaceMesh},
+	booktitle = {{CGAL} {User} and {Reference} {Manual}},
+	publisher = {CGAL Editorial Board},
+	author = {Botsch, Mario and Sieger, Daniel and Moeller, Philipp and Fabri, Andreas},
+	year = {2024},
+}
+
+@incollection{kettner_3d_2024,
+	edition = {5.6.1},
+	title = {{3D} {Polyhedral} {Surface}},
+	url = {https://doc.cgal.org/5.6.1/Manual/packages.html#PkgPolyhedron},
+	booktitle = {{CGAL} {User} and {Reference} {Manual}},
+	publisher = {CGAL Editorial Board},
+	author = {Kettner, Lutz},
+	year = {2024},
+}
+
+@incollection{shamai_2d_2024,
+	edition = {5.6.1},
+	title = {{2D} {Movable} {Separability} of {Sets}},
+	url = {https://doc.cgal.org/5.6.1/Manual/packages.html#PkgSetMovableSeparability2},
+	booktitle = {{CGAL} {User} and {Reference} {Manual}},
+	publisher = {CGAL Editorial Board},
+	author = {Shamai, Shahar and Fogel, Efi},
+	year = {2024},
+}
+
+@incollection{cacciola_2d_2024,
+	edition = {5.6.1},
+	title = {{2D} {Straight} {Skeleton} and {Polygon} {Offsetting}},
+	url = {https://doc.cgal.org/5.6.1/Manual/packages.html#PkgStraightSkeleton2},
+	booktitle = {{CGAL} {User} and {Reference} {Manual}},
+	publisher = {CGAL Editorial Board},
+	author = {Cacciola, Fernando and Loriot, Sébastien and Rouxel-Labbé, Mael},
+	year = {2024},
+}
+
+@incollection{hert_2d_2024,
+	edition = {5.6.1},
+	title = {{2D} {Polygon} {Partitioning}},
+	url = {https://doc.cgal.org/5.6.1/Manual/packages.html#PkgPartition2},
+	booktitle = {{CGAL} {User} and {Reference} {Manual}},
+	publisher = {CGAL Editorial Board},
+	author = {Hert, Susan},
+	year = {2024},
+}
+
+@incollection{hachenberger_2d_2024,
+	edition = {5.6.1},
+	title = {{2D} {Boolean} {Operations} on {Nef} {Polygons} {Embedded} on the {Sphere}},
+	url = {https://doc.cgal.org/5.6.1/Manual/packages.html#PkgNefS2},
+	booktitle = {{CGAL} {User} and {Reference} {Manual}},
+	publisher = {CGAL Editorial Board},
+	author = {Hachenberger, Peter and Kettner, Lutz},
+	year = {2024},
+}
+
+@incollection{seel_2d_2024,
+	edition = {5.6.1},
+	title = {{2D} {Boolean} {Operations} on {Nef} {Polygons}},
+	url = {https://doc.cgal.org/5.6.1/Manual/packages.html#PkgNef2},
+	booktitle = {{CGAL} {User} and {Reference} {Manual}},
+	publisher = {CGAL Editorial Board},
+	author = {Seel, Michael},
+	year = {2024},
+}
+
+@incollection{fogel_2d_2024,
+	edition = {5.6.1},
+	title = {{2D} {Regularized} {Boolean} {Set}-{Operations}},
+	url = {https://doc.cgal.org/5.6.1/Manual/packages.html#PkgBooleanSetOperations2},
+	booktitle = {{CGAL} {User} and {Reference} {Manual}},
+	publisher = {CGAL Editorial Board},
+	author = {Fogel, Efi and Setter, Ophir and Wein, Ron and Zucker, Guy and Zukerman, Baruch and Halperin, Dan},
+	year = {2024},
+}
+
+@incollection{hert_3d_2024,
+	edition = {5.6.1},
+	title = {{3D} {Convex} {Hulls}},
+	url = {https://doc.cgal.org/5.6.1/Manual/packages.html#PkgConvexHull3},
+	booktitle = {{CGAL} {User} and {Reference} {Manual}},
+	publisher = {CGAL Editorial Board},
+	author = {Hert, Susan and Schirra, Stefan},
+	year = {2024},
+}
+
+@incollection{hert_2d_2024,
+	edition = {5.6.1},
+	title = {{2D} {Convex} {Hulls} and {Extreme} {Points}},
+	url = {https://doc.cgal.org/5.6.1/Manual/packages.html#PkgConvexHull2},
+	booktitle = {{CGAL} {User} and {Reference} {Manual}},
+	publisher = {CGAL Editorial Board},
+	author = {Hert, Susan and Schirra, Stefan},
+	year = {2024},
+}
+
+@incollection{castro_3d_2024,
+	edition = {5.6.1},
+	title = {{3D} {Spherical} {Geometry} {Kernel}},
+	url = {https://doc.cgal.org/5.6.1/Manual/packages.html#PkgCircularKernel3},
+	booktitle = {{CGAL} {User} and {Reference} {Manual}},
+	publisher = {CGAL Editorial Board},
+	author = {Castro, Pedro Machado Manhães de and Cazals, Frédéric and Loriot, Sébastien and Teillaud, Monique},
+	year = {2024},
+}
+
+@incollection{castro_2d_2024,
+	edition = {5.6.1},
+	title = {{2D} {Circular} {Geometry} {Kernel}},
+	url = {https://doc.cgal.org/5.6.1/Manual/packages.html#PkgCircularKernel2},
+	booktitle = {{CGAL} {User} and {Reference} {Manual}},
+	publisher = {CGAL Editorial Board},
+	author = {Castro, Pedro Machado Manhães de and Pion, Sylvain and Teillaud, Monique},
+	year = {2024},
+}
+
+@incollection{giezeman_2d_2024,
+	edition = {5.6.1},
+	title = {{2D} {Polygons}},
+	url = {https://doc.cgal.org/5.6.1/Manual/packages.html#PkgPolygon2},
+	booktitle = {{CGAL} {User} and {Reference} {Manual}},
+	publisher = {CGAL Editorial Board},
+	author = {Giezeman, Geert-Jan and Wesselink, Wieger},
+	year = {2024},
+}
+
+@incollection{hert_dd_2024,
+	edition = {5.6.1},
+	title = {{dD} {Convex} {Hulls} and {Delaunay} {Triangulations}},
+	url = {https://doc.cgal.org/5.6.1/Manual/packages.html#PkgConvexHullD},
+	booktitle = {{CGAL} {User} and {Reference} {Manual}},
+	publisher = {CGAL Editorial Board},
+	author = {Hert, Susan and Seel, Michael},
+	year = {2024},
+}
+
+@incollection{bronnimann_2d_2024,
+	edition = {5.6.1},
+	title = {{2D} and {3D} {Linear} {Geometry} {Kernel}},
+	url = {https://doc.cgal.org/5.6.1/Manual/packages.html#PkgKernel23},
+	booktitle = {{CGAL} {User} and {Reference} {Manual}},
+	publisher = {CGAL Editorial Board},
+	author = {Brönnimann, Hervé and Fabri, Andreas and Giezeman, Geert-Jan and Hert, Susan and Hoffmann, Michael and Kettner, Lutz and Pion, Sylvain and Schirra, Stefan},
+	year = {2024},
+}
+
+@incollection{fischer_linear_2024,
+	edition = {5.6.1},
+	title = {Linear and {Quadratic} {Programming} {Solver}},
+	url = {https://doc.cgal.org/5.6.1/Manual/packages.html#PkgQPSolver},
+	booktitle = {{CGAL} {User} and {Reference} {Manual}},
+	publisher = {CGAL Editorial Board},
+	author = {Fischer, Kaspar and Gärtner, Bernd and Schönherr, Sven and Wessendorp, Frans},
+	year = {2024},
+}
+
+@incollection{hoffmann_monotone_2024,
+	edition = {5.6.1},
+	title = {Monotone and {Sorted} {Matrix} {Search}},
+	url = {https://doc.cgal.org/5.6.1/Manual/packages.html#PkgMatrixSearch},
+	booktitle = {{CGAL} {User} and {Reference} {Manual}},
+	publisher = {CGAL Editorial Board},
+	author = {Hoffmann, Michael},
+	year = {2024},
+}
+
+@incollection{berberich_algebraic_2024,
+	edition = {5.6.1},
+	title = {Algebraic {Kernel}},
+	url = {https://doc.cgal.org/5.6.1/Manual/packages.html#PkgAlgebraicKernelD},
+	booktitle = {{CGAL} {User} and {Reference} {Manual}},
+	publisher = {CGAL Editorial Board},
+	author = {Berberich, Eric and Hemmer, Michael and Kerber, Michael and Lazard, Sylvain and Peñaranda, Luis and Teillaud, Monique},
+	year = {2024},
+}
+
+@incollection{hemmer_polynomial_2024,
+	edition = {5.6.1},
+	title = {Polynomial},
+	url = {https://doc.cgal.org/5.6.1/Manual/packages.html#PkgPolynomial},
+	booktitle = {{CGAL} {User} and {Reference} {Manual}},
+	publisher = {CGAL Editorial Board},
+	author = {Hemmer, Michael},
+	year = {2024},
+}
+
+@incollection{hemmer_modular_2024,
+	edition = {5.6.1},
+	title = {Modular {Arithmetic}},
+	url = {https://doc.cgal.org/5.6.1/Manual/packages.html#PkgModularArithmetic},
+	booktitle = {{CGAL} {User} and {Reference} {Manual}},
+	publisher = {CGAL Editorial Board},
+	author = {Hemmer, Michael and Pion, Sylvain},
+	year = {2024},
+}
+
+@incollection{hemmer_number_2024,
+	edition = {5.6.1},
+	title = {Number {Types}},
+	url = {https://doc.cgal.org/5.6.1/Manual/packages.html#PkgNumberTypes},
+	booktitle = {{CGAL} {User} and {Reference} {Manual}},
+	publisher = {CGAL Editorial Board},
+	author = {Hemmer, Michael and Hert, Susan and Pion, Sylvain and Schirra, Stefan},
+	year = {2024},
+}
+
+@book{the_cgal_project_cgal_2024,
+	edition = {5.6.1},
+	title = {{CGAL} {User} and {Reference} {Manual}},
+	url = {https://doc.cgal.org/5.6.1/Manual/packages.html},
+	publisher = {CGAL Editorial Board},
+	author = {{The CGAL Project}},
+	year = {2024},
+}
+
+@incollection{seel_dd_2024,
+	edition = {5.6.1},
+	title = {{dD} {Geometry} {Kernel}},
+	url = {https://doc.cgal.org/5.6.1/Manual/packages.html#PkgKernelD},
+	booktitle = {{CGAL} {User} and {Reference} {Manual}},
+	publisher = {CGAL Editorial Board},
+	author = {Seel, Michael},
+	year = {2024},
+}
+
+@incollection{hemmer_algebraic_2024,
+	edition = {5.6.1},
+	title = {Algebraic {Foundations}},
+	url = {https://doc.cgal.org/5.6.1/Manual/packages.html#PkgAlgebraicFoundations},
+	booktitle = {{CGAL} {User} and {Reference} {Manual}},
+	publisher = {CGAL Editorial Board},
+	author = {Hemmer, Michael},
+	year = {2024},
+}
+
+@article{pfaff_learning_2020,
+	title = {Learning {Mesh}-{Based} {Simulation} with {Graph} {Networks}},
+	copyright = {arXiv.org perpetual, non-exclusive license},
+	url = {https://arxiv.org/abs/2010.03409},
+	doi = {10.48550/ARXIV.2010.03409},
+	abstract = {Mesh-based simulations are central to modeling complex physical systems in many disciplines across science and engineering. Mesh representations support powerful numerical integration methods and their resolution can be adapted to strike favorable trade-offs between accuracy and efficiency. However, high-dimensional scientific simulations are very expensive to run, and solvers and parameters must often be tuned individually to each system studied. Here we introduce MeshGraphNets, a framework for learning mesh-based simulations using graph neural networks. Our model can be trained to pass messages on a mesh graph and to adapt the mesh discretization during forward simulation. Our results show it can accurately predict the dynamics of a wide range of physical systems, including aerodynamics, structural mechanics, and cloth. The model's adaptivity supports learning resolution-independent dynamics and can scale to more complex state spaces at test time. Our method is also highly efficient, running 1-2 orders of magnitude faster than the simulation on which it is trained. Our approach broadens the range of problems on which neural network simulators can operate and promises to improve the efficiency of complex, scientific modeling tasks.},
+	urldate = {2023-11-22},
+	author = {Pfaff, Tobias and Fortunato, Meire and Sanchez-Gonzalez, Alvaro and Battaglia, Peter W.},
+	year = {2020},
+	note = {Publisher: arXiv
+Version Number: 4},
+	keywords = {Computational Engineering, Finance, and Science (cs.CE), FOS: Computer and information sciences, Machine Learning (cs.LG)},
+}
+
+@article{chouly_explicit_2018,
+	title = {Explicit {Verlet} time-integration for a {Nitsche}-based approximation of elastodynamic contact problems},
+	volume = {5},
+	issn = {2213-7467},
+	url = {https://amses-journal.springeropen.com/articles/10.1186/s40323-018-0124-5},
+	doi = {10.1186/s40323-018-0124-5},
+	abstract = {The aim of the present paper is to study theoretically and numerically the Verlet scheme for the explicit time-integration of elastodynamic problems with a contact condition approximated by Nitsche’s method. This is a continuation of papers (Chouly et al. ESAIM Math Model Numer Anal 49(2), 481–502, 2015; Chouly et al. ESAIM Math Model Numer Anal 49(2), 503–528, 2015) where some implicit schemes (theta-scheme, Newmark and a new hybrid scheme) were proposed and proved to be well-posed and stable under appropriate conditions. A theoretical study of stability is carried out and then illustrated with both numerical experiments and numerical comparison to other existing discretizations of contact problems.},
+	language = {en},
+	number = {1},
+	urldate = {2023-09-22},
+	journal = {Advanced Modeling and Simulation in Engineering Sciences},
+	author = {Chouly, Franz and Renard, Yves},
+	month = dec,
+	year = {2018},
+	pages = {31},
+}
+
+@article{bordas_centro_nodate,
+	title = {Centro de {Investigacio}´n en {Ingenier}´ıa {Matema}´tica ({CI2MA})},
+	abstract = {Errors in biomechanical simulations arise from modelling and discretization. Discretization errors can be quantified with a posteriori error estimates. The relevance of such error estimates for practical biomechanics problems is rarely adressed. In this contribution, we propose an implementation of a posteriori error estimates targeting a user-defined quantity of interest, with the Dual Weighted Residual (DWR) technique tailored to biomechanics. We consider a general setting that encompasses three-dimensional geometries as well as model non-linearities, appearing in hyperelastic soft tissues. We take advantage of the capabilities of automatic differentiation embedded into modern finite element software, that allows to compute the error estimates generically for a large class of models and constitutive laws. First we validate our methodology using experimental measurements from silicone samples, and then illustrate its applicability for patient-specific computations of pressure ulcers on a human heel.},
+	language = {en},
+	author = {Bordas, Stephane P A and Bucki, Marek and Bui, Huu Phuoc and Chouly, Franz and Duprez, Michel and Lejeune, Arnaud and Rohan, Pierre-Yves},
+}
+
+@misc{noauthor_notes_nodate,
+	title = {Notes - [{NumPEx}-{ExaMA}] {Meeting} {Comité} {Pilotage}},
+	url = {https://docs.google.com/document/u/1/d/1ZFK0sO0LMLgf1gvH4P5ekqdwiWQ7UvyJt9RByloRdv0/edit?usp=embed_facebook},
+	abstract = {Compte Rendu   Attendees:   Analyse logicielle -  https://docs.google.com/spreadsheets/d/1804LxW6CV\_i-c7he\_ksLWgP7ewEMMn6V/edit?usp=sharing\&ouid=109146539207877795266\&rtpof=true\&sd=true  Le code est là : https://github.com/numpex/exama/tree/main/docs/software/analysis  Retour sur la journée d...},
+	language = {en},
+	urldate = {2023-06-08},
+	journal = {Google Docs},
+}
+
+@misc{noauthor_87958_feppon_2019_archivagepdf_nodate,
+	title = {87958\_FEPPON\_2019\_archivage.pdf {\textbar} feelpp {\textbar} {Zotero}},
+	url = {https://www.zotero.org/groups/4678293/feelpp/collections/58IEI2IE/items/SIIUH32P/collection},
+	urldate = {2023-03-16},
+}
+
+@incollection{bungartz_numerical_2011,
+	address = {Berlin, Heidelberg},
+	title = {Numerical {Simulation} and {Benchmarking} of a {Monolithic} {Multigrid} {Solver} for {Fluid}-{Structure} {Interaction} {Problems} with {Application} to {Hemodynamics}},
+	volume = {73},
+	isbn = {978-3-642-14205-5 978-3-642-14206-2},
+	url = {http://link.springer.com/10.1007/978-3-642-14206-2_8},
+	abstract = {An Arbitrary Lagrangian-Eulerian (ALE) formulation is applied in a fully coupled monolithic way, considering the ﬂuid-structure interaction (FSI) problem as one continuum. The mathematical description and the numerical schemes are designed in such a way that general constitutive relations (which are realistic for biomechanics applications) for the ﬂuid as well as for the structural part can be easily incorporated. We utilize the LBB-stable ﬁnite element pairs Q2P1 and P2+P1 for discretization in space to gain high accuracy and perform as time-stepping the 2nd order Crank-Nicholson, respectively, a new modiﬁed Fractional-Step-θ -scheme for both solid and ﬂuid parts. The resulting discretized nonlinear algebraic system is solved by a Newton method which approximates the Jacobian matrices by a divided differences approach, and the resulting linear systems are solved by direct or iterative solvers, preferably of Krylov-multigrid type.},
+	language = {en},
+	urldate = {2022-08-24},
+	booktitle = {Fluid {Structure} {Interaction} {II}},
+	publisher = {Springer Berlin Heidelberg},
+	author = {Turek, S. and Hron, J. and Mádlík, M. and Razzaq, M. and Wobker, H. and Acker, J. F.},
+	editor = {Bungartz, Hans-Joachim and Mehl, Miriam and Schäfer, Michael},
+	year = {2011},
+	doi = {10.1007/978-3-642-14206-2_8},
+	note = {Series Title: Lecture Notes in Computational Science and Engineering},
+	pages = {193--220},
+}
+
+@misc{noauthor_how_2022,
+	title = {How {To} {Configure} {Ingress} {TLS}/{SSL} {Certificates} {In} {Kubernetes}},
+	url = {https://devopscube.com/configure-ingress-tls-kubernetes/},
+	abstract = {In this blog, you will learn how to configure ingress TLS certificates for Kubernetes Ingress resources.},
+	language = {en-US},
+	urldate = {2022-07-23},
+	month = mar,
+	year = {2022},
+	note = {Section: KUBERNETES},
+}
+
+@article{cohen_optimal_nodate,
+	title = {Optimal sampling and reconstruction in high dimension},
+	language = {en},
+	journal = {inverse problems},
+	author = {Cohen, Albert},
+	pages = {88},
+}
+
+@article{kaercher_reduced_nodate,
+	title = {Reduced basis approximation and a posteriori error bounds for {4D}-{Var} data assimilation},
+	abstract = {We propose a certiﬁed reduced basis approach for the strong- and weak-constraint four-dimensional variational (4D-Var) data assimilation problem for a parametrized PDE model. While the standard strong-constraint 4DVar approach uses the given observational data to estimate only the unknown initial condition of the model, the weak-constraint 4D-Var formulation additionally provides an estimate for the model error and thus can deal with imperfect models. Since the model error is a distributed function in both space and time, the 4D-Var formulation leads to a large-scale optimization problem for every given parameter instance of the PDE model. To solve the problem eﬃciently, various reduced order approaches have therefore been proposed in the recent past. Here, we employ the reduced basis method to generate reduced order approximations for the state, adjoint, initial condition, and model error.},
+	language = {en},
+	author = {Kaercher, Mark and Boyaval, Sébastien and Grepl, Martin and Veroy, Karen},
+	pages = {33},
+}
+
+@article{gong_data_nodate,
+	title = {Data assimilation with reduced basis and noisy measurement: {Applications} to nuclear reactor cores},
+	language = {en},
+	author = {Gong, Helin},
+	pages = {183},
+}
+
+@misc{noauthor_2_nodate,
+	title = {2. [{DocT}] {A} brief introduction to {Data} {Assimilation} and {Optimization} — {ADAO} documentation},
+	url = {https://docs.salome-platform.org/latest/gui/ADAO/en/theory.html},
+	urldate = {2022-07-20},
+}
+
+@article{mallet_introduction_nodate,
+	title = {Introduction to data assimilation   {Kalman} filters and ensembles},
+	language = {en},
+	author = {Mallet, Vivien},
+	pages = {113},
+}
+
+@article{blayo_introduction_2013,
+	title = {Introduction a` l’assimilation de donn´ees variationnelle},
+	language = {en},
+	author = {Blayo, Eric and Nodet, Maelle},
+	year = {2013},
+	pages = {72},
+}
+
+@article{daniel_physics-informed_2022,
+	title = {Physics-informed cluster analysis and a priori efficiency criterion for the construction of local reduced-order bases},
+	volume = {458},
+	issn = {00219991},
+	url = {https://linkinghub.elsevier.com/retrieve/pii/S0021999122001826},
+	doi = {10.1016/j.jcp.2022.111120},
+	language = {en},
+	urldate = {2022-07-11},
+	journal = {Journal of Computational Physics},
+	author = {Daniel, Thomas and Casenave, Fabien and Akkari, Nissrine and Ketata, Ali and Ryckelynck, David},
+	month = jun,
+	year = {2022},
+	pages = {111120},
+}
+
+@article{daniel_physics-informed_2022-1,
+	title = {Physics-informed cluster analysis and a priori efficiency criterion for the construction of local reduced-order bases},
+	volume = {458},
+	issn = {00219991},
+	url = {http://arxiv.org/abs/2103.13683},
+	doi = {10.1016/j.jcp.2022.111120},
+	abstract = {Nonlinear model order reduction has opened the door to parameter optimization and uncertainty quantification in complex physics problems governed by nonlinear equations. In particular, the computational cost of solving these equations can be reduced by means of local reduced-order bases. This article examines the benefits of a physics-informed cluster analysis for the construction of cluster-specific reduced-order bases. We illustrate that the choice of the dissimilarity measure for clustering is fundamental and highly affects the performances of the local reduced-order bases. It is shown that clustering with an angle-based dissimilarity on simulation data efficiently decreases the intra-cluster Kolmogorov \$N\$-width. Additionally, an a priori efficiency criterion is introduced to assess the relevance of a ROM-net, a methodology for the reduction of nonlinear physics problems introduced in our previous work in [T. Daniel, F. Casenave, N. Akkari, D. Ryckelynck, Model order reduction assisted by deep neural networks (ROM-net), Advanced Modeling and Simulation in Engineering Sciences 7 (16), 2020]. This criterion also provides engineers with a very practical method for ROM-nets' hyperparameters calibration under constrained computational costs for the training phase. On five different physics problems, our physics-informed clustering strategy significantly outperforms classic strategies for the construction of local reduced-order bases in terms of projection errors.},
+	urldate = {2022-07-11},
+	journal = {Journal of Computational Physics},
+	author = {Daniel, Thomas and Casenave, Fabien and Akkari, Nissrine and Ketata, Ali and Ryckelynck, David},
+	month = jun,
+	year = {2022},
+	note = {arXiv:2103.13683 [cs, math]},
+	keywords = {Mathematics - Numerical Analysis},
+	pages = {111120},
+}
+
+@article{agrawal_iga_2019,
+	title = {{IGA}: {A} {Simplified} {Introduction} and {Implementation} {Details} for {Finite} {Element} {Users}},
+	volume = {100},
+	issn = {2250-0545, 2250-0553},
+	shorttitle = {{IGA}},
+	url = {http://link.springer.com/10.1007/s40032-018-0462-6},
+	doi = {10.1007/s40032-018-0462-6},
+	abstract = {Isogeometric analysis (IGA) is a recently introduced technique that employs the Computer Aided Design (CAD) concept of Non-uniform Rational B-splines (NURBS) tool to bridge the substantial bottleneck between the CAD and  nite element analysis (FEA)  elds. The simpli ed transition of exact CAD models into the analysis alleviates the issues originating from geometrical discontinuities and thus, signi cantly reduces the design-to-analysis time in comparison to traditional FEA technique. Since its origination, the research in the  eld of IGA is accelerating and has been applied to various problems. However, the employment of CAD tools in the area of FEA invokes the need of adapting the existing implementation procedure for the framework of IGA. Also, the usage of IGA requires the in-depth knowledge of both the CAD and FEA  elds. This can be overwhelming for a beginner in IGA. Hence, in this paper, a simpli ed introduction and implementation details for the incorporation of Non-uniform Rational B-splines (NURBS) based IGA technique within the existing FEA code is presented. It is shown that with little modi cations, the available standard code structure of FEA can be adapted for IGA. For the clear and concise explanation of these modi cations, step-by-step implementation of a benchmark plate with a circular hole under the action of in-plane tension is included.},
+	language = {en},
+	number = {3},
+	urldate = {2022-06-07},
+	journal = {Journal of The Institution of Engineers (India): Series C},
+	author = {Agrawal, Vishal and Gautam, Sachin S.},
+	month = jun,
+	year = {2019},
+	pages = {561--585},
+}
+
+@incollection{quarteroni_use_2014,
+	address = {Cham},
+	title = {On the {Use} of {Reduced} {Basis} {Methods} to {Accelerate} and {Stabilize} the {Parareal} {Method}},
+	isbn = {978-3-319-02089-1 978-3-319-02090-7},
+	url = {http://link.springer.com/10.1007/978-3-319-02090-7_7},
+	abstract = {We propose a modiﬁed parallel-in-time - parareal - multi-level time integration method that, in contrast to previously proposed methods, employs a coarse solver based on a reduced model, built from the information obtained from the ﬁne solver at each iteration. This approach is demonstrated to oﬀer two substantial advantages: it accelerates convergence of the original parareal method for similar problems and the reduced basis stabilizes the parareal method for purely advective problems where instabilities are known to arise. When combined with empirical interpolation methods (EIM), we develop this approach to solve both linear and nonlinear problems and highlight the minimal changes required to utilize this algorithm to accelerate existing implementations. We illustrate the advantages through algorithmic design, through analysis of stability, convergence, and computational complexity, and through several numerical examples.},
+	language = {en},
+	urldate = {2022-06-05},
+	booktitle = {Reduced {Order} {Methods} for {Modeling} and {Computational} {Reduction}},
+	publisher = {Springer International Publishing},
+	author = {Chen, Feng and Hesthaven, Jan S. and Zhu, Xueyu},
+	editor = {Quarteroni, Alfio and Rozza, Gianluigi},
+	year = {2014},
+	doi = {10.1007/978-3-319-02090-7_7},
+	pages = {187--214},
+}
+
+@incollection{quarteroni_use_2014-1,
+	address = {Cham},
+	title = {On the {Use} of {Reduced} {Basis} {Methods} to {Accelerate} and {Stabilize} the {Parareal} {Method}},
+	isbn = {978-3-319-02089-1 978-3-319-02090-7},
+	url = {http://link.springer.com/10.1007/978-3-319-02090-7_7},
+	abstract = {We propose a modiﬁed parallel-in-time - parareal - multi-level time integration method that, in contrast to previously proposed methods, employs a coarse solver based on a reduced model, built from the information obtained from the ﬁne solver at each iteration. This approach is demonstrated to oﬀer two substantial advantages: it accelerates convergence of the original parareal method for similar problems and the reduced basis stabilizes the parareal method for purely advective problems where instabilities are known to arise. When combined with empirical interpolation methods (EIM), we develop this approach to solve both linear and nonlinear problems and highlight the minimal changes required to utilize this algorithm to accelerate existing implementations. We illustrate the advantages through algorithmic design, through analysis of stability, convergence, and computational complexity, and through several numerical examples.},
+	language = {en},
+	urldate = {2022-06-05},
+	booktitle = {Reduced {Order} {Methods} for {Modeling} and {Computational} {Reduction}},
+	publisher = {Springer International Publishing},
+	author = {Chen, Feng and Hesthaven, Jan S. and Zhu, Xueyu},
+	editor = {Quarteroni, Alfio and Rozza, Gianluigi},
+	year = {2014},
+	doi = {10.1007/978-3-319-02090-7_7},
+	pages = {187--214},
+}
+
+@article{paipuri_coupling_2019,
+	title = {Coupling of {Continuous} and {Hybridizable} {Discontinuous} {Galerkin} {Methods}: {Application} to {Conjugate} {Heat} {Transfer} {Problem}},
+	volume = {78},
+	issn = {0885-7474, 1573-7691},
+	shorttitle = {Coupling of {Continuous} and {Hybridizable} {Discontinuous} {Galerkin} {Methods}},
+	url = {http://link.springer.com/10.1007/s10915-018-0769-8},
+	doi = {10.1007/s10915-018-0769-8},
+	abstract = {A coupling strategy between hybridizable discontinuous Galerkin (HDG) and continuous Galerkin (CG) methods is proposed in the framework of second-order elliptic operators. The coupled formulation is implemented and its convergence properties are established numerically by using manufactured solutions. Afterwards, the solution of the coupled Navier–Stokes/convection–diffusion problem, using Boussinesq approximation, is formulated within the HDG framework and analysed using numerical experiments. Results of Rayleigh–Bénard convection ﬂow are also presented and validated with literature data. Finally, the proposed coupled formulation between HDG and CG for heat equation is combined with the coupled Navier–Stokes/convection diffusion equations to formulate a new CG–HDG model for solving conjugate heat transfer problems. Benchmark examples are solved using the proposed model and validated with literature values. The proposed CG–HDG model is also compared with a CG–CG model, where all the equations are discretized using the CG method, and it is concluded that CG–HDG model can have a superior computational efﬁciency when compared to CG–CG model.},
+	language = {en},
+	number = {1},
+	urldate = {2022-05-30},
+	journal = {Journal of Scientific Computing},
+	author = {Paipuri, Mahendra and Tiago, Carlos and Fernández-Méndez, Sonia},
+	month = jan,
+	year = {2019},
+	pages = {321--350},
+}
+
+@book{law_data_2015,
+	address = {Cham},
+	series = {Texts in {Applied} {Mathematics}},
+	title = {Data {Assimilation}: {A} {Mathematical} {Introduction}},
+	volume = {62},
+	isbn = {978-3-319-20324-9 978-3-319-20325-6},
+	shorttitle = {Data {Assimilation}},
+	url = {http://link.springer.com/10.1007/978-3-319-20325-6},
+	language = {en},
+	urldate = {2022-05-22},
+	publisher = {Springer International Publishing},
+	author = {Law, Kody and Stuart, Andrew and Zygalakis, Konstantinos},
+	year = {2015},
+	doi = {10.1007/978-3-319-20325-6},
+}
+
+@book{abarbanel_statistical_2022,
+	edition = {1},
+	title = {The {Statistical} {Physics} of {Data} {Assimilation} and {Machine} {Learning}},
+	isbn = {978-1-00-902484-6 978-1-316-51963-9},
+	url = {https://www.cambridge.org/core/product/identifier/9781009024846/type/book},
+	abstract = {Data assimilation is a hugely important mathematical technique, relevant in fields as diverse as geophysics, data science, and neuroscience. This modern book provides an authoritative treatment of the field as it relates to several scientific disciplines, with a particular emphasis on recent developments from machine learning and its role in the optimisation of data assimilation. Underlying theory from statistical physics, such as path integrals and Monte Carlo methods, are developed in the text as a basis for data assimilation, and the author then explores examples from current multidisciplinary research such as the modelling of shallow water systems, ocean dynamics, and neuronal dynamics in the avian brain. The theory of data assimilation and machine learning is introduced in an accessible and unified manner, and the book is suitable for undergraduate and graduate students from science and engineering without specialized experience of statistical physics.},
+	language = {en},
+	urldate = {2022-05-22},
+	publisher = {Cambridge University Press},
+	author = {Abarbanel, Henry D. I.},
+	month = jan,
+	year = {2022},
+	doi = {10.1017/9781009024846},
+}
+
+@book{martin_clean_2018,
+	address = {London, England},
+	series = {Robert {C}. {Martin} series},
+	title = {Clean architecture: a craftsman's guide to software structure and design},
+	isbn = {978-0-13-449416-6},
+	shorttitle = {Clean architecture},
+	abstract = {Building upon the success of best-sellers The Clean Coder and Clean Code, legendary software craftsman Robert C. "Uncle Bob" Martin shows how to bring greater professionalism and discipline to application architecture and design. As with his other books, Martin's Clean Architecture doesn't merely present multiple choices and options, and say "use your best judgment": it tells you what choices to make, and why those choices are critical to your success. Martin offers direct, no-nonsense answers to key architecture and design questions like: What are the best high level structures for different kinds of applications, including web, database, thick-client, console, and embedded apps? What are the core principles of software architecture? What is the role of the architect, and what is he/she really trying to achieve? What are the core principles of software design? How do designs and architectures go wrong, and what can you do about it? What are the disciplines and practices of professional architects and designers? Clean Architecture is essential reading for every software architect, systems analyst, system designer, and software manager -- and for any programmer who aspires to these roles or is impacted by their work},
+	language = {en},
+	publisher = {Prentice Hall},
+	author = {Martin, Robert C. and Martin, Robert C.},
+	year = {2018},
+	note = {OCLC: on1004983973},
+	keywords = {COMPUTERS / Computer Architecture, Computer programming, Computer software, Development, History, Software architecture},
+}
+
+@article{gamma_design_nodate,
+	title = {Design {Patterns} : {Elements} of {Reusable} {Object}-{Oriented} {Software}},
+	language = {en},
+	author = {Gamma, Erich and Helm, Richard and Johnson, Ralph and Vlissides, John},
+	pages = {431},
+}
+
+@book{martin_clean_2009,
+	address = {Upper Saddle River, NJ},
+	title = {Clean code: a handbook of agile software craftsmanship},
+	isbn = {978-0-13-235088-4},
+	shorttitle = {Clean code},
+	language = {en},
+	publisher = {Prentice Hall},
+	editor = {Martin, Robert C.},
+	year = {2009},
+	keywords = {Agile software development, Computer software, Reliability},
+}
+
+@article{capaldo_new_nodate,
+	title = {A new approximation framework for {PGD}-based nonlinear solvers},
+	language = {en},
+	author = {Capaldo, Matteo},
+	pages = {158},
+}
+
+@article{rubio_real-time_2019,
+	title = {Real-time {Bayesian} data assimilation with data selection, correction of model bias, and on-the-fly uncertainty propagation},
+	volume = {347},
+	issn = {16310721},
+	url = {https://linkinghub.elsevier.com/retrieve/pii/S1631072119301755},
+	doi = {10.1016/j.crme.2019.11.004},
+	language = {en},
+	number = {11},
+	urldate = {2022-05-19},
+	journal = {Comptes Rendus Mécanique},
+	author = {Rubio, Paul-Baptiste and Chamoin, Ludovic and Louf, François},
+	month = nov,
+	year = {2019},
+	pages = {762--779},
+}
+
+@article{chamoin_merging_2021,
+	title = {Merging advanced sensing techniques and simulation tools for future structural health monitoring technologies},
+	volume = {10},
+	issn = {2632-4067},
+	url = {https://www.europeandissemination.eu/article/merging-advanced-sensing-techniques-and-simulation-tools-for-future-structural-health-monitoring-technologies/16253},
+	doi = {10.54050/PRJ10124127},
+	abstract = {Merging advanced sensing techniques and simulation tools for future structural health monitoring technologies
+              Project DREAM-ON aims to design smart autonomous mechanics structures, able to perform online control of their health and take anticipated actions during service for increased reliability and performance. Its innovative concept is a synergistic, real- time, and robust dialogue between advanced sensing techniques and powerful simulation tools to make all knowledge on the physical system available and perform early damage detection, precise diagnosis, and safe decision making.},
+	language = {en},
+	number = {1},
+	urldate = {2022-05-19},
+	journal = {The Project Repository Journal},
+	author = {Chamoin, Ludovic},
+	month = sep,
+	year = {2021},
+	pages = {124--127},
+}
+
+@article{blayo_introduction_nodate,
+	title = {An introduction to data assimilation},
+	language = {en},
+	journal = {Data assimilation},
+	author = {Blayo, Eric},
+	pages = {79},
+}
+
+@article{biswas_backward-facing_2004,
+	title = {Backward-{Facing} {Step} {Flows} for {Various} {Expansion} {Ratios} at {Low} and {Moderate} {Reynolds} {Numbers}},
+	volume = {126},
+	issn = {0098-2202, 1528-901X},
+	url = {https://asmedigitalcollection.asme.org/fluidsengineering/article/126/3/362/451215/BackwardFacing-Step-Flows-for-Various-Expansion},
+	doi = {10.1115/1.1760532},
+	abstract = {This paper is concerned with the behavior of flows over a backward-facing step geometry for various expansion ratios H/h=1.9423, 2.5 and 3.0. A literature survey was carried out and it was found that the flow shows a strong two-dimensional behavior, on the plane of symmetry, for Reynolds numbers ReD=ρUbD/μ below approximately 400 (Ub=bulk velocity and D=hydraulic diameter). In this Reynolds number range, two-dimensional predictions were carried out to provide information on the general integral properties of backward-facing step flows, on mean velocity distributions and streamlines. Information on characteristic flow patterns is provided for a wide Reynolds number range, 10−4⩽ReD⩽800. In the limiting case of ReD→0, a sequence of Moffatt eddies of decreasing size and intensity is verified to exist in the concave corner also at ReD=1. The irreversible pressure losses are determined for various Reynolds numbers as a function of the expansion ratio. The two-dimensional simulations are known to underpredict the primary reattachment length for Reynolds numbers beyond which the actual flow is observed to be three-dimensional. The spatial evolution of jet-like flows in both the streamwise and the spanwise direction and transition to three-dimensionality were studied at a Reynolds number ReD=648. This three-dimensional analysis with the same geometry and flow conditions as reported by Armaly et al. (1983) reveals the formation of wall jets at the side wall within the separating shear layer. The wall jets formed by the spanwise component of the velocity move towards the symmetry plane of the channel. A self-similar wall-jet profile emerges at different spanwise locations starting with the vicinity of the side wall. These results complement information on backward-facing step flows that is available in the literature.},
+	language = {en},
+	number = {3},
+	urldate = {2022-05-13},
+	journal = {Journal of Fluids Engineering},
+	author = {Biswas, G. and Breuer, M. and Durst, F.},
+	month = may,
+	year = {2004},
+	keywords = {backwardstep},
+	pages = {362--374},
+}
+
+@article{charnyi_emac_nodate,
+	title = {The {EMAC} scheme for {Navier}-{Stokes} simulations, and application to flow past bluff bodies},
+	language = {en},
+	author = {Charnyi, Sergey},
+	pages = {119},
+}
+
+@article{layton_accuracy_2009,
+	title = {On the accuracy of the rotation form in simulations of the {Navier}–{Stokes} equations},
+	volume = {228},
+	issn = {00219991},
+	url = {https://linkinghub.elsevier.com/retrieve/pii/S0021999109000540},
+	doi = {10.1016/j.jcp.2009.01.027},
+	abstract = {The rotation form of the Navier-Stokes equations nonlinearity is commonly used in high Reynolds number ﬂow simulations. It was pointed out by a few authors (and not widely known apparently) that it can also lead to a less accurate approximate solution than the usual u · ∇u form. We give a diﬀerent explanation of this eﬀect related to (i) resolution of the Bernoulli pressure, and (ii) the scaling of the coupling between velocity and pressure error with respect to the Reynolds number. We show analytically that (i) the diﬀerence between the two nonlinearities is governed by the diﬀerence in the resolution of the Bernoulli and kinematic pressures, and (ii) a simple, linear grad-div stabilization ameliorates much of the bad scaling of the error with respect to Re. We also give experiments that show bad velocity approximation is tied to poor pressure resolution in either form.},
+	language = {en},
+	number = {9},
+	urldate = {2022-05-12},
+	journal = {Journal of Computational Physics},
+	author = {Layton, William and Manica, Carolina C. and Neda, Monika and Olshanskii, Maxim and Rebholz, Leo G.},
+	month = may,
+	year = {2009},
+	pages = {3433--3447},
+}
+
+@article{charnyi_conservation_2017,
+	title = {On conservation laws of {Navier}–{Stokes} {Galerkin} discretizations},
+	volume = {337},
+	issn = {00219991},
+	url = {https://linkinghub.elsevier.com/retrieve/pii/S002199911730133X},
+	doi = {10.1016/j.jcp.2017.02.039},
+	language = {en},
+	urldate = {2022-05-12},
+	journal = {Journal of Computational Physics},
+	author = {Charnyi, Sergey and Heister, Timo and Olshanskii, Maxim A. and Rebholz, Leo G.},
+	month = may,
+	year = {2017},
+	pages = {289--308},
+}
+
+@article{olshanskii_longer_2020,
+	title = {Longer time accuracy for incompressible {Navier}–{Stokes} simulations with the {EMAC} formulation},
+	volume = {372},
+	issn = {00457825},
+	url = {https://linkinghub.elsevier.com/retrieve/pii/S0045782520305545},
+	doi = {10.1016/j.cma.2020.113369},
+	abstract = {In this paper, we consider the recently introduced EMAC formulation for the incompressible Navier–Stokes (NS) equations, which is the only known NS formulation that conserves energy, momentum and angular momentum when the divergence constraint is only weakly enforced. Since its introduction, the EMAC formulation has been successfully used for a wide variety of fluid dynamics problems. We prove that discretizations using the EMAC formulation are potentially better than those built on the commonly used skew-symmetric formulation, by deriving a better longer time error estimate for EMAC: while the classical results for schemes using the skew-symmetric formulation have Gronwall constants dependent on exp(C · Re · T ) with Re the Reynolds number, it turns out that the EMAC error estimate is free from this explicit exponential dependence on the Reynolds number. Additionally, it is demonstrated how EMAC admits smaller lower bounds on its velocity error, since incorrect treatment of linear momentum, angular momentum and energy induces lower bounds for L2 velocity error, and EMAC treats these quantities more accurately. Results of numerical tests for channel flow past a cylinder and 2D Kelvin–Helmholtz instability are also given, both of which show that the advantages of EMAC over the skew-symmetric formulation increase as the Reynolds number gets larger and for longer simulation times.},
+	language = {en},
+	urldate = {2022-05-12},
+	journal = {Computer Methods in Applied Mechanics and Engineering},
+	author = {Olshanskii, Maxim A. and Rebholz, Leo G.},
+	month = dec,
+	year = {2020},
+	pages = {113369},
+}
+
+@article{garcia-archilla_convergence_2021,
+	title = {On the convergence order of the finite element error in the kinetic energy for high {Reynolds} number incompressible flows},
+	volume = {385},
+	issn = {00457825},
+	url = {https://linkinghub.elsevier.com/retrieve/pii/S0045782521003637},
+	doi = {10.1016/j.cma.2021.114032},
+	abstract = {The kinetic energy of a flow is proportional to the square of the L2(Ω ) norm of the velocity. Given a sufficient regular velocity field and a velocity finite element space with polynomials of degree r , then the best approximation error in L2(Ω ) is of order r + 1. In this survey, the available finite element error analysis for the velocity error in L∞(0, T ; L2(Ω )) is reviewed, where T is a final time. Since in practice the case of small viscosity coefficients or dominant convection is of particular interest, which may result in turbulent flows, robust error estimates are considered, i.e., estimates where the constant in the error bound does not depend on inverse powers of the viscosity coefficient. Methods for which robust estimates can be derived enable stable flow simulations for small viscosity coefficients on comparatively coarse grids, which is often the situation encountered in practice. To introduce stabilization techniques for the convection-dominated regime and tools used in the error analysis, evolutionary linear convection–diffusion equations are studied at the beginning. The main part of this survey considers robust finite element methods for the incompressible Navier–Stokes equations of order r − 1, r , and r + 1/2 for the velocity error in L∞(0, T ; L2(Ω )). All these methods are discussed in detail. In particular, a sketch of the proof for the error bound is given that explains the estimate of important terms which determine finally the order of convergence. Among them, there are methods for inf–sup stable pairs of finite element spaces as well as for pressure-stabilized discretizations. Numerical studies support the analytic results for several of these methods. In addition, methods are surveyed that behave in a robust way but for which only a non-robust error analysis is available. The conclusion of this survey is that the problem of whether or not there is a robust method with optimal convergence order for the kinetic energy is still open.},
+	language = {en},
+	urldate = {2022-05-12},
+	journal = {Computer Methods in Applied Mechanics and Engineering},
+	author = {García-Archilla, Bosco and John, Volker and Novo, Julia},
+	month = nov,
+	year = {2021},
+	pages = {114032},
+}
+
+@article{olshanskii_longer_2020-1,
+	title = {Longer time accuracy for incompressible {Navier}–{Stokes} simulations with the {EMAC} formulation},
+	volume = {372},
+	issn = {00457825},
+	url = {https://linkinghub.elsevier.com/retrieve/pii/S0045782520305545},
+	doi = {10.1016/j.cma.2020.113369},
+	abstract = {In this paper, we consider the recently introduced EMAC formulation for the incompressible Navier-Stokes (NS) equations, which is the only known NS formulation that conserves energy, momentum and angular momentum when the divergence constraint is only weakly enforced. Since its introduction, the EMAC formulation has been successfully used for a wide variety of ﬂuid dynamics problems. We prove that discretizations using the EMAC formulation are potentially better than those built on the commonly used skew-symmetric formulation, by deriving a better longer time error estimate for EMAC: while the classical results for schemes using the skew-symmetric formulation have Gronwall constants dependent on exp(C · Re · T ) with Re the Reynolds number, it turns out that the EMAC error estimate is free from this explicit exponential dependence on the Reynolds number. Additionally, it is demonstrated how EMAC admits smaller lower bounds on its velocity error, since incorrect treatment of linear momentum, angular momentum and energy induces lower bounds for L2 velocity error, and EMAC treats these quantities more accurately. Results of numerical tests for channel ﬂow past a cylinder and 2D Kelvin-Helmholtz instability are also given, both of which show that the advantages of EMAC over the skew-symmetric formulation increase as the Reynolds number gets larger and for longer simulation times.},
+	language = {en},
+	urldate = {2022-05-12},
+	journal = {Computer Methods in Applied Mechanics and Engineering},
+	author = {Olshanskii, Maxim A. and Rebholz, Leo G.},
+	month = dec,
+	year = {2020},
+	pages = {113369},
+}
+
+@article{regazzoni_universal_2022,
+	title = {Universal {Solution} {Manifold} {Networks} ({USM}-{Nets}): non-intrusive mesh-free surrogate models for problems in variable domains},
+	shorttitle = {Universal {Solution} {Manifold} {Networks} ({USM}-{Nets})},
+	url = {http://arxiv.org/abs/2204.07805},
+	abstract = {We introduce Universal Solution Manifold Network (USM-Net), a novel surrogate model, based on Artificial Neural Networks (ANNs), which applies to differential problems whose solution depends on physical and geometrical parameters. Our method employs a mesh-less architecture, thus overcoming the limitations associated with image segmentation and mesh generation required by traditional discretization methods. Indeed, we encode geometrical variability through scalar landmarks, such as coordinates of points of interest. In biomedical applications, these landmarks can be inexpensively processed from clinical images. Our approach is non-intrusive and modular, as we select a data-driven loss function. The latter can also be modified by considering additional constraints, thus leveraging available physical knowledge. Our approach can also accommodate a universal coordinate system, which supports the USM-Net in learning the correspondence between points belonging to different geometries, boosting prediction accuracy on unobserved geometries. Finally, we present two numerical test cases in computational fluid dynamics involving variable Reynolds numbers as well as computational domains of variable shape. The results show that our method allows for inexpensive but accurate approximations of velocity and pressure, avoiding computationally expensive image segmentation, mesh generation, or re-training for every new instance of physical parameters and shape of the domain.},
+	language = {en},
+	urldate = {2022-05-04},
+	journal = {arXiv:2204.07805 [cs, math, q-bio]},
+	author = {Regazzoni, Francesco and Pagani, Stefano and Quarteroni, Alfio},
+	month = apr,
+	year = {2022},
+	note = {arXiv: 2204.07805},
+	keywords = {Mathematics - Numerical Analysis, Quantitative Biology - Quantitative Methods},
+}
+
+@article{regazzoni_universal_2022-1,
+	title = {Universal {Solution} {Manifold} {Networks} ({USM}-{Nets}): non-intrusive mesh-free surrogate models for problems in variable domains},
+	copyright = {Creative Commons Attribution Non Commercial Share Alike 4.0 International},
+	shorttitle = {Universal {Solution} {Manifold} {Networks} ({USM}-{Nets})},
+	url = {https://arxiv.org/abs/2204.07805},
+	doi = {10.48550/ARXIV.2204.07805},
+	abstract = {We introduce Universal Solution Manifold Network (USM-Net), a novel surrogate model, based on Artificial Neural Networks (ANNs), which applies to differential problems whose solution depends on physical and geometrical parameters. Our method employs a mesh-less architecture, thus overcoming the limitations associated with image segmentation and mesh generation required by traditional discretization methods. Indeed, we encode geometrical variability through scalar landmarks, such as coordinates of points of interest. In biomedical applications, these landmarks can be inexpensively processed from clinical images. Our approach is non-intrusive and modular, as we select a data-driven loss function. The latter can also be modified by considering additional constraints, thus leveraging available physical knowledge. Our approach can also accommodate a universal coordinate system, which supports the USM-Net in learning the correspondence between points belonging to different geometries, boosting prediction accuracy on unobserved geometries. Finally, we present two numerical test cases in computational fluid dynamics involving variable Reynolds numbers as well as computational domains of variable shape. The results show that our method allows for inexpensive but accurate approximations of velocity and pressure, avoiding computationally expensive image segmentation, mesh generation, or re-training for every new instance of physical parameters and shape of the domain.},
+	urldate = {2022-05-04},
+	author = {Regazzoni, Francesco and Pagani, Stefano and Quarteroni, Alfio},
+	year = {2022},
+	note = {Publisher: arXiv
+Version Number: 1},
+	keywords = {FOS: Biological sciences, FOS: Mathematics, Numerical Analysis (math.NA), Quantitative Methods (q-bio.QM)},
+}
+
+@article{noauthor_numericalmethodsforcomputationalscienceandengineering_nodate,
+	title = {{NumericalMethodsforComputationalScienceandEngineering}},
+	language = {en},
+	pages = {266},
+}
+
+@article{jolicoeur_population_1989,
+	title = {Population growth and decline: a four-parameter generalization of the logistic curve},
+	volume = {141},
+	issn = {00225193},
+	shorttitle = {Population growth and decline},
+	url = {https://linkinghub.elsevier.com/retrieve/pii/S0022519389802371},
+	doi = {10.1016/S0022-5193(89)80237-1},
+	language = {en},
+	number = {4},
+	urldate = {2022-05-02},
+	journal = {Journal of Theoretical Biology},
+	author = {Jolicoeur, Pierre and Pontier, Jacques},
+	month = dec,
+	year = {1989},
+	pages = {563--571},
+}
+
+@article{jolicoeur_population_1989-1,
+	title = {Population growth and decline: a four-parameter generalization of the logistic curve},
+	volume = {141},
+	issn = {00225193},
+	shorttitle = {Population growth and decline},
+	url = {https://linkinghub.elsevier.com/retrieve/pii/S0022519389802371},
+	doi = {10.1016/S0022-5193(89)80237-1},
+	language = {en},
+	number = {4},
+	urldate = {2022-05-02},
+	journal = {Journal of Theoretical Biology},
+	author = {Jolicoeur, Pierre and Pontier, Jacques},
+	month = dec,
+	year = {1989},
+	pages = {563--571},
+}
+
+@article{cockburn_bridging_2016,
+	title = {Bridging the hybrid high-order and hybridizable discontinuous {Galerkin} methods},
+	volume = {50},
+	issn = {0764-583X, 1290-3841},
+	url = {http://www.esaim-m2an.org/10.1051/m2an/2015051},
+	doi = {10.1051/m2an/2015051},
+	abstract = {We build a bridge between the hybrid high-order (HHO) and the hybridizable discontinuous Galerkin (HDG) methods in the setting of a model diﬀusion problem. First, we brieﬂy recall the construction of HHO methods and derive some new variants. Then, by casting the HHO method in mixed form, we identify the numerical ﬂux so that the HHO method can be compared to HDG methods. In turn, the incorporation of the HHO method into the HDG framework brings up new, eﬃcient choices of the local spaces and a new, subtle construction of the numerical ﬂux ensuring optimal orders of convergence on meshes made of general shape-regular polyhedral elements. Numerical experiments comparing two of these methods are shown.},
+	language = {en},
+	number = {3},
+	urldate = {2022-05-02},
+	journal = {ESAIM: Mathematical Modelling and Numerical Analysis},
+	author = {Cockburn, Bernardo and Di Pietro, Daniele A. and Ern, Alexandre},
+	month = may,
+	year = {2016},
+	pages = {635--650},
+}
+
+@article{decaria_variable_nodate,
+	title = {Variable {Stepsize}, {Variable} {Order} {Methods} for {Partial} {Diﬀerential} {Equations}},
+	language = {en},
+	author = {DeCaria, V P},
+	pages = {110},
+}
+
+@article{cockburn_bridging_2016-1,
+	title = {Bridging the hybrid high-order and hybridizable discontinuous {Galerkin} methods},
+	volume = {50},
+	issn = {0764-583X, 1290-3841},
+	url = {http://www.esaim-m2an.org/10.1051/m2an/2015051},
+	doi = {10.1051/m2an/2015051},
+	abstract = {We build a bridge between the hybrid high-order (HHO) and the hybridizable discontinuous Galerkin (HDG) methods in the setting of a model diﬀusion problem. First, we brieﬂy recall the construction of HHO methods and derive some new variants. Then, by casting the HHO method in mixed form, we identify the numerical ﬂux so that the HHO method can be compared to HDG methods. In turn, the incorporation of the HHO method into the HDG framework brings up new, eﬃcient choices of the local spaces and a new, subtle construction of the numerical ﬂux ensuring optimal orders of convergence on meshes made of general shape-regular polyhedral elements. Numerical experiments comparing two of these methods are shown.},
+	language = {en},
+	number = {3},
+	urldate = {2022-05-01},
+	journal = {ESAIM: Mathematical Modelling and Numerical Analysis},
+	author = {Cockburn, Bernardo and Di Pietro, Daniele A. and Ern, Alexandre},
+	month = may,
+	year = {2016},
+	pages = {635--650},
+}
+
+@article{hay_hp-adaptive_2015,
+	title = {hp-{Adaptive} time integration based on the {BDF} for viscous flows},
+	volume = {291},
+	issn = {00219991},
+	url = {https://linkinghub.elsevier.com/retrieve/pii/S0021999115001692},
+	doi = {10.1016/j.jcp.2015.03.022},
+	language = {en},
+	urldate = {2022-05-01},
+	journal = {Journal of Computational Physics},
+	author = {Hay, A. and Etienne, S. and Pelletier, D. and Garon, A.},
+	month = jun,
+	year = {2015},
+	pages = {151--176},
+}
+
+@article{celaya_implementation_2014,
+	title = {Implementation of an {Adaptive} {BDF2} {Formula} and {Comparison} with the {MATLAB} {Ode15s}},
+	volume = {29},
+	issn = {18770509},
+	url = {https://linkinghub.elsevier.com/retrieve/pii/S1877050914002683},
+	doi = {10.1016/j.procs.2014.05.091},
+	abstract = {After applying the Finite Element Method (FEM) to the diﬀusion-type and wave-type Partial Diﬀerential Equations (PDEs), a ﬁrst order and a second order Ordinary Diﬀerential Equation (ODE) systems are obtained respectively. These ODE systems usually present high stiﬀness, so numerical methods with good stability properties are required in their resolution. MATLAB oﬀers a set of open source adaptive step functions for solving ODEs. One of these functions is the ode15s recommended to solve stiﬀ problems and which is based on the Backward Diﬀerentiation Formulae (BDF). We describe the error estimation and the step size control implemented in this function. The ode15s is a variable order algorithm, and even though it has an adaptive step size implementation, the advancing formula and the local error estimation that uses correspond to the constant step size formula. We have focused on the second order accurate and unconditionally stable BDF (BDF2) and we have implemented a real adaptive step size BDF2 algorithm using the same strategy as the BDF2 implemented in the ode15s, resulting the new algorithm more eﬃcient than the one implemented in MATLAB.},
+	language = {en},
+	urldate = {2022-04-30},
+	journal = {Procedia Computer Science},
+	author = {Celaya, E. Alberdi and Aguirrezabala, J. J. Anza and Chatzipantelidis, P.},
+	year = {2014},
+	pages = {1014--1026},
+}
+
+@article{decaria_new_2018,
+	title = {A new embedded variable stepsize, variable order family of low computational complexity},
+	url = {http://arxiv.org/abs/1810.06670},
+	abstract = {Variable Stepsize Variable Order (VSVO) methods are the methods of choice to eﬃciently solve a wide range of ODEs with minimal work and assured accuracy. However, VSVO methods have limited impact in timestepping methods in complex applications due to their computational complexity and the diﬃculty to implement them in legacy code. We introduce a family of implicit, embedded, VSVO methods that require only one BDF solve at each time step followed by adding linear combinations of the solution at previous time levels. In particular, we construct implicit and linearly implicit VSVO methods of orders two, three and four with the same computational complexity as variable stepsize BDF3. The choice of changing the order of the method is simple and does not require additional solves of linear or nonlinear systems.},
+	language = {en},
+	urldate = {2022-04-30},
+	journal = {arXiv:1810.06670 [math]},
+	author = {DeCaria, Victor and Guzel, Ahmet and Layton, William and Li, Yi},
+	month = oct,
+	year = {2018},
+	note = {arXiv: 1810.06670},
+	keywords = {65L06, 65L20, 65M60, Mathematics - Numerical Analysis},
+}
+
+@article{guzel_analysis_2017,
+	title = {Analysis of the effect of {Time} {Filters} on the implicit method: increased accuracy and improved stability},
+	shorttitle = {Analysis of the effect of {Time} {Filters} on the implicit method},
+	url = {http://arxiv.org/abs/1708.06306},
+	abstract = {This report considers linear multistep methods through time ﬁltering. The approach has several advantages. It is modular and requires the addition of only one line of additional code. Error estimation and variable timesteps is straightforward and the individual eﬀect of each step is conceptually clear. We present its development for the backward Euler method and a curvature reducing time ﬁlter leading to a 2-step, strongly A-stable, second order linear multistep method.},
+	language = {en},
+	urldate = {2022-04-30},
+	journal = {arXiv:1708.06306 [math]},
+	author = {Guzel, Ahmet and Layton, William},
+	month = aug,
+	year = {2017},
+	note = {arXiv: 1708.06306},
+	keywords = {Mathematics - Numerical Analysis},
+}
+
+@article{guzel_analysis_2017-1,
+	title = {Analysis of the effect of {Time} {Filters} on the implicit method: increased accuracy and improved stability},
+	shorttitle = {Analysis of the effect of {Time} {Filters} on the implicit method},
+	url = {http://arxiv.org/abs/1708.06306},
+	abstract = {This report considers linear multistep methods through time ﬁltering. The approach has several advantages. It is modular and requires the addition of only one line of additional code. Error estimation and variable timesteps is straightforward and the individual eﬀect of each step is conceptually clear. We present its development for the backward Euler method and a curvature reducing time ﬁlter leading to a 2-step, strongly A-stable, second order linear multistep method.},
+	language = {en},
+	urldate = {2022-04-30},
+	journal = {arXiv:1708.06306 [math]},
+	author = {Guzel, Ahmet and Layton, William},
+	month = aug,
+	year = {2017},
+	note = {arXiv: 1708.06306},
+	keywords = {Mathematics - Numerical Analysis},
+}
+
+@article{moriche_single_2021,
+	title = {A single oblate spheroid settling in unbounded ambient fluid: {A} benchmark for simulations in steady and unsteady wake regimes},
+	volume = {136},
+	issn = {0301-9322},
+	shorttitle = {A single oblate spheroid settling in unbounded ambient fluid},
+	url = {https://www.sciencedirect.com/science/article/pii/S0301932220306303},
+	doi = {10.1016/j.ijmultiphaseflow.2020.103519},
+	abstract = {We have performed spectral/spectral-element simulations of a single oblate spheroid with small geometrical aspect ratio settling in an unbounded ambient fluid, for a range of Galileo numbers covering the various regimes of motion (steady vertical, steady oblique, vertical periodic and chaotic). The high-fidelity data provided includes particle quantities (statistics in the chaotic case), as well as flow profiles and pressure maps. The reference data can be used as an additional benchmark for other numerical approaches, where a careful grid convergence study for a specific target parameter point is often useful. We further describe an extension of a specific immersed boundary method (Uhlmann, J. Comput. Phys, 209(2):448–476, 2005) to enable the tracking of non-spherical particles. Finally, the reference cases are computed with this immersed boundary method at various spatial and temporal resolutions, and grid convergence is discussed over the various regimes of spheroidal particle motion. The cross-validation results can serve as a guideline for the design of simulations with the aid of similar non-conforming methods, involving spheroidal particles with Galileo numbers of O(100).},
+	language = {en},
+	urldate = {2022-04-29},
+	journal = {International Journal of Multiphase Flow},
+	author = {Moriche, Manuel and Uhlmann, Markus and Dušek, Jan},
+	month = mar,
+	year = {2021},
+	keywords = {Benchmark, Immersed boundary method, Non-spherical particles, Settling, Spectral element method},
+	pages = {103519},
+}
+
+@article{moriche_single_2021-1,
+	title = {A single oblate spheroid settling in unbounded ambient fluid: {A} benchmark for simulations in steady and unsteady wake regimes},
+	volume = {136},
+	issn = {0301-9322},
+	url = {https://www.sciencedirect.com/science/article/pii/S0301932220306303},
+	doi = {https://doi.org/10.1016/j.ijmultiphaseflow.2020.103519},
+	abstract = {We have performed spectral/spectral-element simulations of a single oblate spheroid with small geometrical aspect ratio settling in an unbounded ambient fluid, for a range of Galileo numbers covering the various regimes of motion (steady vertical, steady oblique, vertical periodic and chaotic). The high-fidelity data provided includes particle quantities (statistics in the chaotic case), as well as flow profiles and pressure maps. The reference data can be used as an additional benchmark for other numerical approaches, where a careful grid convergence study for a specific target parameter point is often useful. We further describe an extension of a specific immersed boundary method (Uhlmann, J. Comput. Phys, 209(2):448–476, 2005) to enable the tracking of non-spherical particles. Finally, the reference cases are computed with this immersed boundary method at various spatial and temporal resolutions, and grid convergence is discussed over the various regimes of spheroidal particle motion. The cross-validation results can serve as a guideline for the design of simulations with the aid of similar non-conforming methods, involving spheroidal particles with Galileo numbers of O(100).},
+	journal = {International Journal of Multiphase Flow},
+	author = {Moriche, Manuel and Uhlmann, Markus and Dušek, Jan},
+	year = {2021},
+	keywords = {Benchmark, Immersed boundary method, Non-spherical particles, Settling, Spectral element method},
+	pages = {103519},
+}
+
+@incollection{braza_transitional_2016,
+	address = {Cham},
+	title = {Transitional {Dynamics} of {Freely} {Falling} {Discs}},
+	volume = {133},
+	isbn = {978-3-319-27384-6 978-3-319-27386-0},
+	url = {http://link.springer.com/10.1007/978-3-319-27386-0_7},
+	abstract = {The transitional regimes of freely falling discs are investigated by direct numerical simulation of the ﬂuid-solid interaction. The discs are assumed to be homogeneous and inﬁnitely thin. The regimes depend on two independent parameters, the Galileo number expressing the ratio between effects of gravity and viscosity and the non-dimensionalized mass characterizing the inertia of the disc. The paper completes a recently published comprehensive parametric study in this two-parameter space by providing details on several most relevant transitional states. The dynamics of the trajectories and the effect of variable body inertia are illustrated.},
+	language = {en},
+	urldate = {2022-04-29},
+	booktitle = {Advances in {Fluid}-{Structure} {Interaction}},
+	publisher = {Springer International Publishing},
+	author = {Dušek, Jan and Chrust, Marcin and Bouchet, Gilles},
+	editor = {Braza, Marianna and Bottaro, Alessandro and Thompson, Mark},
+	year = {2016},
+	doi = {10.1007/978-3-319-27386-0_7},
+	note = {Series Title: Notes on Numerical Fluid Mechanics and Multidisciplinary Design},
+	pages = {105--116},
+}
+
+@book{braza_fluid-structure-sound_2021,
+	address = {Singapore},
+	series = {Lecture {Notes} in {Mechanical} {Engineering}},
+	title = {Fluid-{Structure}-{Sound} {Interactions} and {Control}: {Proceedings} of the 5th {Symposium} on {Fluid}-{Structure}-{Sound} {Interactions} and {Control}},
+	isbn = {978-981-334-959-9 978-981-334-960-5},
+	shorttitle = {Fluid-{Structure}-{Sound} {Interactions} and {Control}},
+	url = {https://link.springer.com/10.1007/978-981-33-4960-5},
+	language = {en},
+	urldate = {2022-04-29},
+	publisher = {Springer Singapore},
+	editor = {Braza, Marianna and Hoarau, Yannick and Zhou, Yu and Lucey, Anthony D. and Huang, Lixi and Stavroulakis, Georgios E.},
+	year = {2021},
+	doi = {10.1007/978-981-33-4960-5},
+}
+
+@article{jain_collision_2019,
+	title = {A collision model for {DNS} with ellipsoidal particles in viscous fluid},
+	volume = {120},
+	issn = {03019322},
+	url = {https://linkinghub.elsevier.com/retrieve/pii/S0301932219303453},
+	doi = {10.1016/j.ijmultiphaseflow.2019.103087},
+	language = {en},
+	urldate = {2022-04-29},
+	journal = {International Journal of Multiphase Flow},
+	author = {Jain, Ramandeep and Tschisgale, Silvio and Fröhlich, Jochen},
+	month = nov,
+	year = {2019},
+	pages = {103087},
+}
+
+@incollection{kulacki_heat_2017,
+	address = {Cham},
+	title = {Heat and {Mass} {Transfer} {Processes} in the {Eye}},
+	isbn = {978-3-319-32003-8},
+	url = {http://link.springer.com/10.1007/978-3-319-32003-8_72-2},
+	abstract = {Heat and mass transport processes in humans occur at cellular, tissue, organ, and whole-body levels. The subﬁeld of heat and mass transfer in the human eye provides the context for understanding the functions of the eye and to develop protective, diagnostic, and therapeutic processes. The eye is sensitive to the environment because of the absence of blood ﬂow through parts such as cornea and lens, and the absence of thermal sensors and protective reﬂexes beyond blinking. Heat transfer processes in the eye comprise the continuous evaporation of the tear layer coating the corneal region of a normal eye, the thermal massage across the pupils called the transpupillary thermotherapy (TTT), and the several methods of internal tissue ablation involving lasers. Drug delivery inside the eye is an important man-made mass transfer process that includes the intravitreous and transscleral routes to medicate the retina. This chapter focuses on the exposition of heat transfer processes that drive laser surgical methods and the mass transfer processes that govern drug delivery methods to the retina. In a bridging section, discussion on the combined heat and mass transfer processes involved in the TTT-based convection-assisted drug diffusion to the retina through the vitreous humor is also provided.},
+	language = {en},
+	urldate = {2022-04-29},
+	booktitle = {Handbook of {Thermal} {Science} and {Engineering}},
+	publisher = {Springer International Publishing},
+	author = {Narasimhan, Arunn},
+	editor = {Kulacki, Francis A.},
+	year = {2017},
+	doi = {10.1007/978-3-319-32003-8_72-2},
+	pages = {1--35},
+}
+
+@article{bhandari_effect_2020,
+	title = {Effect of aging on heat transfer, fluid flow and drug transport in anterior human eye: {A} computational study},
+	volume = {328},
+	issn = {01683659},
+	shorttitle = {Effect of aging on heat transfer, fluid flow and drug transport in anterior human eye},
+	url = {https://linkinghub.elsevier.com/retrieve/pii/S0168365920304855},
+	doi = {10.1016/j.jconrel.2020.08.044},
+	abstract = {There are a lot of geometrical and morphological changes that happen in the human eye with age. Primary openangle glaucoma, which is caused by the increase in intraocular pressure inside the anterior chamber of the eye is also associated with the physiological aging of the eye. Therefore, it is crucial to understand the effects of aging on drug delivery in the human eye when applied topically. Consequently, a numerical model of topical drug delivery for an aging human eye has been developed using commercial software COMSOL Multiphysics in the current study. Three different age groups (young, middle and old) have been considered and the changes in geometrical and tissue properties of different domains of the eye with age have been included in the numerical model. The effect of aging on heat transfer, aqueous humor flow, intraocular pressure and drug concentration in different domains and orientations of the eye have been investigated. Additionally, an attempt has been made to predict the best class of anti-glaucomatic treatment in silico that should be preferred to treat primary open-angle glaucoma effectively. Results illustrate that there is a decrease in the average corneal temperature and an in­ crease in the temperature deviation across the cornea with age. Further, there is a decrease in the aqueous humor flow magnitude in the anterior chamber of the eye and an increase in intraocular pressure in the anterior chamber of older age groups, which leads to primary open-angle glaucoma. The reduced aqueous humor flow leads to increased drug concentration in the anterior chamber as well as iris and reduced drug concentration in the trabecular mesh of the older age groups, thereby affecting the treatment efficacy. Additionally, our simulated results demonstrate that anti-glaucomatic treatments should be more focused on treating the trabecular mesh rather than the ciliary body of the eye.},
+	language = {en},
+	urldate = {2022-04-29},
+	journal = {Journal of Controlled Release},
+	author = {Bhandari, Ajay and Bansal, Ankit and Sinha, Niraj},
+	month = dec,
+	year = {2020},
+	pages = {286--303},
+}
+
+@article{bhandari_ocular_2021,
+	title = {Ocular {Fluid} {Mechanics} and {Drug} {Delivery}: {A} {Review} of {Mathematical} and {Computational} {Models}},
+	volume = {38},
+	issn = {0724-8741, 1573-904X},
+	shorttitle = {Ocular {Fluid} {Mechanics} and {Drug} {Delivery}},
+	url = {https://link.springer.com/10.1007/s11095-021-03141-6},
+	doi = {10.1007/s11095-021-03141-6},
+	language = {en},
+	number = {12},
+	urldate = {2022-04-29},
+	journal = {Pharmaceutical Research},
+	author = {Bhandari, Ajay},
+	month = dec,
+	year = {2021},
+	pages = {2003--2033},
+}
+
+@incollection{kilgour_operator_2021,
+	address = {Cham},
+	title = {Operator {Splitting} for the {Simulation} of {Aqueous} {Humor} {Thermo}-{Fluid}-{Dynamics} in the {Anterior} {Chamber}},
+	volume = {343},
+	isbn = {978-3-030-63590-9 978-3-030-63591-6},
+	url = {https://link.springer.com/10.1007/978-3-030-63591-6_45},
+	abstract = {This work presents a numerical scheme based on operator splitting for the thermo-ﬂuid-dynamical simulation of aqueous humor ﬂow in the anterior chamber of the human eye. The stability properties of the scheme are investigated theoretically. Numerical results are presented for different postures and different external temperatures.},
+	language = {en},
+	urldate = {2022-04-29},
+	booktitle = {Recent {Developments} in {Mathematical}, {Statistical} and {Computational} {Sciences}},
+	publisher = {Springer International Publishing},
+	author = {Abdelhafid, Farah and Guidoboni, Giovanna and Okumura, Naoki and Koizumi, Noriko and Srinivas, Sangly P.},
+	editor = {Kilgour, D. Marc and Kunze, Herb and Makarov, Roman and Melnik, Roderick and Wang, Xu},
+	year = {2021},
+	doi = {10.1007/978-3-030-63591-6_45},
+	note = {Series Title: Springer Proceedings in Mathematics \& Statistics},
+	pages = {489--499},
+}
+
+@article{zhou_path_2017,
+	title = {Path instabilities of oblate spheroids},
+	volume = {833},
+	issn = {0022-1120, 1469-7645},
+	url = {https://www.cambridge.org/core/product/identifier/S0022112017007182/type/journal_article},
+	doi = {10.1017/jfm.2017.718},
+	abstract = {In the present paper, we investigate the path instabilities and the transition scenario for oblate homogeneous spheroids falling (or ascending) freely in a quiescent and unconfined Newtonian fluid under the action of gravity, buoyancy and hydrodynamic forces. The problem depends on three independent external parameters: the aspect ratio
+              
+                
+                  
+                  \${\textbackslash}unicode[STIX]\{x1D712\}=d/a\$
+                
+              
+              , where
+              
+                
+                  
+                  \$d\$
+                
+              
+              is the diameter and
+              
+                
+                  
+                  \$a\$
+                
+              
+              the length of the axisymmetry axis of the spheroid; the non-dimensionalized mass
+              
+                
+                  
+                  \$m{\textasciicircum}\{{\textbackslash}ast \}=m/({\textbackslash}unicode[STIX]\{x1D70C\}d{\textasciicircum}\{3\})\$
+                
+              
+              ,
+              
+                
+                  
+                  \$m\$
+                
+              
+              being the mass of the spheroid and
+              
+                
+                  
+                  \${\textbackslash}unicode[STIX]\{x1D70C\}\$
+                
+              
+              the fluid density; and the Galileo number, defined as
+              
+                
+                  
+                  \$G={\textbackslash}sqrt\{(m{\textasciicircum}\{{\textbackslash}ast \}-V{\textasciicircum}\{{\textbackslash}ast \})gd{\textasciicircum}\{3\}\}/{\textbackslash}unicode[STIX]\{x1D708\}\$
+                
+              
+              . In the definition of the Galileo number,
+              
+                
+                  
+                  \$V{\textasciicircum}\{{\textbackslash}ast \}=V/d{\textasciicircum}\{3\}\$
+                
+              
+              is the non-dimensionalized volume,
+              
+                
+                  
+                  \$g\$
+                
+              
+              the gravitational acceleration and
+              
+                
+                  
+                  \${\textbackslash}unicode[STIX]\{x1D708\}\$
+                
+              
+              is the kinematic viscosity. Asymptotic solutions (regimes) are investigated in seven
+              
+                
+                  
+                  \${\textbackslash}unicode[STIX]\{x1D712\}={\textbackslash}text\{const\}.\$
+                
+              
+              parameter planes going from
+              
+                
+                  
+                  \${\textbackslash}unicode[STIX]\{x1D712\}=10\$
+                
+              
+              (very flat spheroid) to
+              
+                
+                  
+                  \${\textbackslash}unicode[STIX]\{x1D712\}=1.1\$
+                
+              
+              (an almost spherical shape), for
+              
+                
+                  
+                  \$m{\textasciicircum}\{{\textbackslash}ast \}\$
+                
+              
+              going from 0 to 5 and Galileo numbers up to 300 (i.e. Reynolds numbers roughly up to 500). The obtained results provide a link between the known scenario of a homogeneous disk and that, well known, of a sphere. The scenario of the flat spheroid of aspect ratio 10 has many common features with that of an infinitely thin disk, but the finite thickness brings about significant quantitative differences. At the opposite side of the investigated aspect ratio interval, the dynamics of the spheroid of aspect ratio 1.1 is found very close to that of a perfect sphere except for small density ratios (smaller than approximately 0.5). Very light spheroids of aspect ratio 1.1 move along vertical zig-zagging trajectories. At intermediate aspect ratios, the strong subcritical effects and the characteristic zig-zagging and fluttering motion, typical for flat bodies, progressively disappear. The tumbling regime remains remarkably stable and is shown to be present down to
+              
+                
+                  
+                  \${\textbackslash}unicode[STIX]\{x1D712\}=2\$
+                
+              
+              . An interesting result consists in the evidence of the first two bifurcations typical for the sphere scenario (leading to steady oblique and oblique oscillating trajectories) present both for very flat and thick spheroids but absent at intermediate aspect ratios. The results pertaining to spheroids might be more useful in practical applications than those obtained for too idealized thin disks and perfect spheres.},
+	language = {en},
+	urldate = {2022-04-29},
+	journal = {Journal of Fluid Mechanics},
+	author = {Zhou, W. and Chrust, M. and Dušek, J.},
+	month = dec,
+	year = {2017},
+	pages = {445--468},
+}
