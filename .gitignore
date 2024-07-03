@@ -1,0 +1,9 @@
+*-diff.tex
+*.aux
+*.out
+*.log
+*.dvi
+*.fdb_latexmk
+*.fls
+.venv
+checkdir.tex

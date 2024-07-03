@@ -1,0 +1,1 @@
+$pdflatex = "latexdiff hid2-urban-building-cicd-old.tex hid2-urban-building-cicd.tex > hid2-urban-building-cicd-diff.tex; pdflatex --shell-escape   hid2-urban-building-cicd-diff"
