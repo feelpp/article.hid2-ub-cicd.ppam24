@@ -1,5 +1,5 @@
-= Ktirio Urban Building: A Computational Framework for City Energy Simulations Enhanced by CI/CD Innovations on EuroHPC Systems
-
+[separator=::]
+= Article:: Ktirio Urban Building: A Computational Framework for City Energy Simulations Enhanced by CI/CD Innovations on EuroHPC Systems
 :toc:
 :toclevels: 3
 
