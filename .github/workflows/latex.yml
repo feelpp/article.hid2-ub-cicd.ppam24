@@ -64,9 +64,7 @@ jobs:
             ./*.tex
             ./*.bbl
             ./readme.*
-            ./img-compressed-* # Include only img-compressed-* files
-            ./img*.pdf # Include all img* files
-            !./img*.png # Exclude all other img* files
+            ./img-*
             !./.git*
             !./.github*
             !./.vscode*
