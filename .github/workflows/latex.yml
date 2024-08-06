@@ -61,7 +61,12 @@ jobs:
           # get the name of the repo without the organisation
           name: ${{ steps.repo_name.outputs.prefixwithref }}
           path: |
-            ./
+            ./*.tex
+            ./*.bbl
+            ./readme.*
+            ./img-compressed-* # Include only img-compressed-* files
+            ./img*.pdf # Include all img* files
+            !./img*.png # Exclude all other img* files
             !./.git*
             !./.github*
             !./.vscode*
