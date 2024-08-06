@@ -51,7 +51,7 @@ jobs:
       - name: Archive Article
         run: |
           temp_dir=$(mktemp -d)
-          tar -czvf "${temp_dir}/${{ steps.repo_name.outputs.prefixwithref }}.tar.gz" --exclude="*.git*" --exclude="*.github*" --exclude="*.vscode*" --exclude="*.idea*" --exclude="*.gitignore" --exclude="*.DS_Store*" ./
+          tar -czvf "${temp_dir}/${{ steps.repo_name.outputs.prefixwithref }}.tar.gz" --exclude="*.git*" --exclude="*.github*" --exclude="*.vscode*" --exclude="*.idea*" --exclude="*.gitignore" --exclude="*.DS_Store*" --exclude="images/" --exclude=".venv/" ./
           mv "${temp_dir}/${{ steps.repo_name.outputs.prefixwithref }}.tar.gz" ./
           rm -rf "$temp_dir"
 
