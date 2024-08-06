@@ -1,0 +1,9 @@
+{
+    "description": "Ktirio Urban Building",
+    "scripts": {
+      "readme": "npx downdoc README.adoc"
+    },
+    "devDependencies": {
+      "downdoc": "^1.0.2"
+    }
+  }

@@ -5,5 +5,15 @@
 *.dvi
 *.fdb_latexmk
 *.fls
+*.bbl
+*.fls
+*.tdo
+*.blg
+*.toc
 .venv
 checkdir.tex
+*.DS_Store*
+article.hid2-ub-cicd.ppam24.pdf
+hid2-urban-building-cicd-diff.pdf
+main-d.pdf
+main-d.tex
