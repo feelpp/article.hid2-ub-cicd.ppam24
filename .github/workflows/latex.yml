@@ -62,6 +62,7 @@ jobs:
           name: ${{ steps.repo_name.outputs.prefixwithref }}
           path: |
             ./*.tex
+            ./*.bib
             ./*.bbl
             ./readme.*
             ./img-*
