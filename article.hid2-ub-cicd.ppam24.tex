@@ -13,28 +13,23 @@
 \definecolor{darkblue}{rgb}{0, 0, 0.5}
 \definecolor{darkmagenta}{rgb}{0.5, 0, 0.5}
 \usepackage{hyperref}
-\hypersetup{
-    colorlinks=true,      % Enable colored links
-    linkcolor=darkred,    % Color for internal links
-    filecolor=darkgreen,  % Color for file links
-    urlcolor=darkblue,    % Color for external URLs
-    citecolor=darkmagenta % Color for citations
+
+\IfFileExists{.git/gitHeadInfo.gin}{
+    \usepackage[pcount,grumpy,mark,markifdirty]{gitinfo2}
+}{%
+    \usepackage[local,pcount,grumpy,mark,markifdirty]{gitinfo2}
 }
 
-\usepackage{ifthen}
-
-\newcommand{\imagedir}{./} % default directory
-% Shell command to check if a directory exists
-\immediate\write18{if [ -d "./images" ]; then echo "\\\\renewcommand{\\imagedir}{./images/}"; fi > checkdir.tex}
-
-% Input the output commands from the shell
-\InputIfFileExists{checkdir.tex}{}{}
-
-\begin{document}
+%% By default, llncs tocdepth value is 0, so only chapters and parts are shown in the ToC, but no sections and deeper levels of structure.
+%% If \setcounter{tocdepth}{1} is used, the sections show up in the ToC.
+%% I suggest to use \usepackage{tocbibind} in order to add the LoF and LoT in the ToC as well, if the ToC should not be listed itself, use \usepackage[nottoc]{tocbibind} instead.
+%% As long as no figure or table environments with \caption commands or explicit \addcontentsline{lof}{...}{...} etc. are used, the LoF and LoT are empty of course.
+\setcounter{secnumdepth}{4}
+\setcounter{tocdepth}{1}
+\usepackage[section,notlof,notlot,nottoc,]{tocbibind}
 
 
 \title{Ktirio Urban Building: A Computational Framework for City Energy Simulations Enhanced by CI/CD Innovations on EuroHPC Systems}
-\author{}
 \author{Luca Berti\inst{1} \and Vincent Chabannes \inst{1}\orcidID{0009-0005-3602-3524} \and
 Javier Cladellas \inst{1}\orcidID{0009-0003-8687-7881} \and 
 Abdoulaye Diallo \inst{1}\orcidID{0009-0006-8731-0547}\ \and
@@ -43,11 +38,34 @@ Philippe Pinçon \inst{1}\orcidID{0009-0009-7724-3055 } \and
 Christophe Prud'homme\inst{1}\orcidID{0000-0003-2287-2961}}
 \institute{Cemosis, IRMA UMR 7501, University of Strasbourg, CNRS\\ 
 \email{\{vincent.chabannes,christophe.prudhomme\}@cemosis.fr}}
-
+\date{\gitReln\  \gitAuthorDate\ (\gitAbbrevHash)}
 \authorrunning{V. Chabannes et al.}
+
+% Define custom color
+\definecolor{CustomBlue}{rgb}{0.25, 0.41, 0.88} % RoyalBlue
+% Set up hyperref with the custom citecolor
+\hypersetup{
+    pdftitle={\@title},
+    pdfauthor={\@author},
+    pdfsubject={\@subject},
+    pdfkeywords={HPC, HPCOps, Urban building, City Energy Simulation},
+    bookmarksnumbered,bookmarksopen,linktocpage,
+    colorlinks=true,
+    citecolor=CustomBlue,
+    linkcolor=CustomBlue,
+    urlcolor=blue
+}
+
+
+\begin{document}
+
+
+
 
 
 \maketitle
+
+
 
 \begin{abstract}
 The building sector in the European Union significantly impacts energy consumption and greenhouse gas emissions. The EU's Horizon 2050 initiative sets ambitious goals to reduce these impacts through enhanced building renovation rates. The CoE HiDALGO2 supports this initiative by developing high-performance computing solutions, specifically through the Urban Building pilot application, which utilizes advanced CI/CD methodologies to streamline simulation and deployment across various computational platforms, such as the EuroHPC JU supercomputers. The present work provides an overview of the Ktirio Urban Building framework (KUB), starting with an overview of the workflow and a description of some of the main ingredients of the software stack and discusses some current results performed on EuroHPC JU supercomputers using an innovative CI/CD pipeline.
@@ -56,9 +74,14 @@ The building sector in the European Union significantly impacts energy consumpti
 
 \end{abstract}
 
+\tableofcontents
+\listoffigures
+%\listoftables
 
 
 \section{Introduction}
+\label{sec:introduction}
+
 The building sector accounts for approximately 40\% of final energy consumption and 36\% of greenhouse gas emissions within the European Union~\cite{european_commision_energy_2020}. In response, the EU has established ambitious targets under the Horizon 2050 framework to double energy renovation rates over the next decade~\cite{european_commision_stakeholder_2021}, highlighting the need for innovative solutions to drive these initiatives forward. The Centre of Excellence (CoE) HiDALGO2 project, focusing on high-performance computing and advanced simulations, is at the forefront of tackling this challenge, mainly through its Urban Building pilot application.
 
 The Ktirio Urban Building (KUB) pilot in CoE HiDALGO2 aims to leverage high-performance computing to enhance city energy simulation for better energy management and air quality assessment. Advanced simulation tools predict energy consumption, thermal comfort, and indoor air quality across both the building and urban scales. These simulations support detailed individual building-level analysis and extend to broader urban environments, influencing urban planning and policy-making. KUB is part of the platform Ktirio~\cite{cemosis_ktirio_2024} which itself is based on Feel++~\cite{christophe_prudhomme_feelppfeelpp_2024}.
@@ -74,6 +97,8 @@ The paper is organized as follows: Section 2 discusses KUB's current workflow, S
 %Feel++\cite{christophe_prudhomme_feelppfeelpp_2024}
 
 \section{Ktirio Urban Building Workflow}
+\label{sec:kub-workflow}
+
 
 \begin{figure}
     \centering
@@ -85,6 +110,8 @@ The paper is organized as follows: Section 2 discusses KUB's current workflow, S
 The Ktirio urban building workflow, see Figure~\ref{fig:kub-workflow}, integrates various data sources and computational tools to simulate and analyze urban building energy and its impact on urban environments. The process encompasses data acquisition, processing, simulation, and analysis, eventually coupled with urban air pollution (UAP) models.
 
 \subsection{Data Handling and Simulation Process}
+\label{sec:data-handling}
+
 The workflow begins with collecting and preparing GIS and weather data, transforming it into a format usable for simulations. This data is then partitioned for scalable processing and converted into Modelica and Feel++\cite{christophe_prudhomme_feelppfeelpp_2024} compatible formats through the UBEM Generator.
 
 This processed data is employed to simulate energy consumption and indoor environmental quality using the Urban Building Energy Model (UBEM). The simulation focuses on radiative heat transfer, enhancing the accuracy of the energy models. It also computes view factors and shading masks, assessing how buildings affect each other's exposure to natural light and heat, influencing the urban heat island effect and overall building energy needs.
@@ -92,12 +119,15 @@ This processed data is employed to simulate energy consumption and indoor enviro
 The building simulation outputs are then optionally fed into the urban air pollution (UAP) simulator to evaluate the impact of building emissions on urban air quality. A feedback loop refines the building simulation scenarios based on intermediate outputs from the UAP simulator, ensuring that the models accurately reflect the complex interdependencies between urban building energy usage and urban air quality.
 
 \subsection{Final Analysis and Urban Scale Energy Evaluation}
+\label{sec:final-analysis}
+
 The final step involves the UBEM Simulator, which generates large-scale outputs that summarize the overall energy consumption and environmental impact of buildings on an urban scale. This comprehensive urban scale analysis merges data from the building energy and air quality models to provide a holistic view of urban environmental quality.
 
 This streamlined workflow is critical for accurately simulating and understanding urban sustainability challenges, supporting our application's broader objectives of improving urban living conditions and environmental impact.
 
 
 \section{Overview of Urban Building Modeling and Simulation}
+\label{sec:urban-building}
 
 We now provide an overview of the geometrical and physical modeling and simulation components of the Urban building application.
 
