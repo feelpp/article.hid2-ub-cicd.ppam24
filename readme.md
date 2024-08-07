@@ -1,0 +1,44 @@
+# Article:: Ktirio Urban Building: A Computational Framework for City Energy Simulations Enhanced by CI/CD Innovations on EuroHPC Systems
+
+## Overview
+
+The building sector in the European Union significantly impacts energy consumption and greenhouse gas emissions. The EU’s Horizon 2050 initiative sets ambitious goals to reduce these impacts through enhanced building renovation rates. The CoE HiDALGO2 supports this initiative by developing high-performance computing solutions, specifically through the Urban Building pilot application, which utilizes advanced CI/CD methodologies to streamline simulation and deployment across various computational platforms, such as the EuroHPC JU supercomputers.
+
+This repository contains the materials related to the paper titled _Ktirio Urban Building: A Computational Framework for City Energy Simulations Enhanced by CI/CD Innovations on EuroHPC Systems_, accepted at PPAM 2024.
+
+## Authors
+
+* Luca Berti, Cemosis, IRMA UMR 7501, University of Strasbourg, CNRS
+* Vincent Chabannes, Cemosis, IRMA UMR 7501, University of Strasbourg, CNRS
+* Javier Cladellas, Cemosis, IRMA UMR 7501, University of Strasbourg, CNRS
+* Abdoulaye Diallo, Cemosis, IRMA UMR 7501, University of Strasbourg, CNRS
+* Maryam Maslek Elayam, Cemosis, IRMA UMR 7501, University of Strasbourg, CNRS
+* Philippe Pinçon, Cemosis, IRMA UMR 7501, University of Strasbourg, CNRS
+* Christophe Prud’homme, Cemosis, IRMA UMR 7501, University of Strasbourg, CNRS
+
+## Abstract
+
+The building sector in the European Union significantly impacts energy consumption and greenhouse gas emissions. The EU’s Horizon 2050 initiative sets ambitious goals to reduce these impacts through enhanced building renovation rates. The CoE HiDALGO2 supports this initiative by developing high-performance computing solutions, specifically through the Urban Building pilot application, which utilizes advanced CI/CD methodologies to streamline simulation and deployment across various computational platforms, such as the EuroHPC JU supercomputers. 
+
+The present work provides an overview of the Ktirio Urban Building framework (KUB), starting with an overview of the workflow and a description of some of the main ingredients of the software stack and discusses some current results performed on EuroHPC JU supercomputers using an innovative CI/CD pipeline.
+
+## Keywords
+
+* HPC
+* HPCOps
+* Urban building
+* City Energy Simulation
+
+## Access to the Paper
+
+The paper is available on HAL: [https://hal.science/hal-04590586](https://hal.science/hal-04590586)
+
+It has been accepted in PPAM 2024: [https://ppam.edu.pl/](https://ppam.edu.pl/)
+
+## Contact
+
+For more information, you can contact the authors at [vincent.chabannes@cemosis.fr](mailto:vincent.chabannes@cemosis.fr) and [christophe.prudhomme@cemosis.fr](mailto:christophe.prudhomme@cemosis.fr).
+
+## License
+
+This project is licensed under the terms of the MIT license. See the LICENSE file for details.

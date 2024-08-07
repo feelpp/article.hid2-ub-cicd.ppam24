@@ -1,7 +1,0 @@
-\RequirePackage{shellesc}
-\ShellEscape{pdflatex hid2-urban-buildong-cicd.tex}
-\ShellEscape{bibtex hid2-urban-buildong-cicd}
-\ShellEscape{latexdiff hid2-urban-buildong-cicd-old.bbl hid2-urban-buildong-cicd.bbl > output.bbl}
-\ShellEscape{latexdiff --append-safecmd="cmpd" --append-mboxsafecmd="qty,qtylist,qtyproduct,qtyrange,complexqty" hid2-urban-buildong-cicd-old.tex hid2-urban-buildong-cicd.tex > diff_result.tex}
-\input{diff_result}
-\documentclass{dummy}
