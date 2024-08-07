@@ -72,6 +72,13 @@ jobs:
       - name: List Artifact
         run: ls -R ${{ github.workspace }}
 
+      - name: Archive Article
+        run: |
+          temp_dir=$(mktemp -d)
+          tar -czvf "${temp_dir}/${{ steps.repo_name.outputs.prefixwithref }}.tar.gz" -C artifact ./
+          mv "${temp_dir}/${{ steps.repo_name.outputs.prefixwithref }}.tar.gz" ./
+          rm -rf "$temp_dir"
+
       - name: Check compilation of LaTeX document from artifact
         uses: xu-cheng/latex-action@v3
         with:
@@ -93,4 +100,4 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           files: |
             ${{ steps.repo_name.outputs.pdf }}
-            ${{ github.workspace }}/artifact/${{ steps.repo_name.outputs.prefixwithref }}.tar.gz
+            ${{ steps.repo_name.outputs.prefixwithref }}.tar.gz
