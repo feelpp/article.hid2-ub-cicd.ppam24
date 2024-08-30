@@ -300,6 +300,92 @@ Our strategy aims to improve the efficiency and scalability of the mesh generati
 
 We now turn to describing the physical modeling of city energy simulation.
 To do this, we built on two main tools: Feel++ and Modelica. 
+\subsubsection{Governing equation of the simulation}
+The physical model of the city is based on a multizone model. One zone is allocated per building floor. The energy balance for each zone is calculated taking into account energy exchanges with adjacents zone and the environment.
+The energy balance is written according to the first law of thermodynamics, in an isolated system the sum of all form of energy is constant.
+\begin{equation}
+    C\cdot \frac{dT}{dt}=\phi_{HVAC}+\phi_{gain}-\phi_{losses}
+\end{equation}
+To give an overview of the equation's term we will give a brief summary.
+\begin{itemize}
+  \item $C\cdot \frac{dT}{dt}$ : thermal inertia of the construction. 
+  \item $\phi_{HVAC}$ : energy output of the Heating Ventilation and Air Conditioning systems. 
+  \item $\phi_{gain}$ : often reffered to as free energy gain, depends on solar gains, and building's occupation.
+  \item $\phi_{losses}$ : energy losses throught wall/roof/slab, and air exchange.
+\end{itemize}
+
+
+
+\textbf{HVAC heatflow}
+
+As for now we fixed the heating system as an ideal heat source.
+Meaning the heatflow adapt to maintain a set temperature inside the building.
+
+\textbf{Heat gain}
+
+The heatflow gain is composed of solar gain and internal gain.
+
+\textbf{Internal heat gain}
+  
+The internal heat gain are a function of human presence inside of a building :
+\begin{equation}
+  \phi_{int}=Met\cdot d_{inhabitant}(timetable)
+\end{equation}
+
+\textbf{Solar heat gain}
+  
+The solar heat gain can be written as a sum of the different solar fluxes : direct, diffuse and reflected.
+\begin{equation}
+  \phi_{swl}=\alpha\cdot S\cdot(E_{dir}+E_{diff}+E_{ref})\cdot 
+\end{equation}
+
+The direct solar radiation is written as such :
+\begin{equation}
+  E_{dir}=F_{dir}\cdot cos(I)
+\end{equation}
+
+$F_{dir}$ is a function of the horizontal solar radiation measured by a weather station.
+\begin{equation}
+  F_{dir}=\frac{F_{dir,Hz}}{sin(H_s)}
+\end{equation}
+\begin{equation}
+  cos(I)=cos(H_s)\cdot sin(\beta)\cdot cos(A_{zs}-A_{z})+sin(H_s)\cdot cos(\beta)
+\end{equation}
+
+The diffuse solar radiation is written as such :
+\begin{equation}
+  E_{dif}=F_{dif,Hz}+\frac{1+cos(\beta)}{2}
+\end{equation}
+
+The reflected solar radiation is written as such :
+\begin{equation}
+  E_{ref}=[F_{dir,Hz}+F_{dif,Hz}]\cdot \frac{1+cos(\beta)}{2}\cdot albedo
+\end{equation}
+
+\textbf{Conduction losses}
+
+\underline {I need to dive in the modelica model to extract the equation for the convection losses}
+
+In this scenario we do not compute the thermal brige for the models.
+\begin{equation}
+  \phi_{wall}=\sum_{j} U_j\cdot S_j\cdot \Delta T
+\end{equation}
+
+\textbf{Radiation losses}
+
+\underline{I'm not sure the Radiation exchange within a zone are taken into account, i need to check but i saw somewhere that} 
+\underline{for LOD0-1 only the big wave length heatflow with external wall surface->sky are taken into account}
+\begin{equation}
+  \phi_{net,i}=\sum_{j\not=i}\frac{J_i-J_j}{\frac{1}{S_i\cdot F_{ij}}}
+\end{equation}
+\begin{equation}
+  \phi_{net,i}=S_i\cdot \frac{\epsilon_i}{1-\epsilon_i}\cdot (\sigma\cdot T_i^4-J_i)
+\end{equation}
+
+\textbf{Air change}
+\begin{equation}
+  \phi_{air}=0,34\cdot Q_v\cdot \Delta T
+\end{equation}
 
 \subsubsection{KUB is based on the Feel++ toolchain}
 
@@ -496,6 +582,58 @@ Finally the authors would like to acknowledge the many fruitful discussions with
 % grants from Company W. Author B has received a speaker honorarium from
 % Company X and owns stock in Company Y. Author C is a member of committee Z.
 \end{credits}
+
+\textbf{Nomenclature}
+
+$\alpha$ : Absorption of a material.
+  
+$\beta$ : Angle of inclination of the wall to the horizontal.
+  
+$\Delta T$ : Temperature difference. [K]
+  
+$\epsilon$ : Emissivity of the surface.
+  
+$\phi_{air}$ : Air heatflow. [W]
+  
+$\phi_{net}$ : radiative heatflow. [W]
+  
+$\phi_{swl}$ : Solar heatflow from short wave lenght. [W]
+  
+$\phi_{wall}$ : Heatflow through a wall. [W]
+  
+$albedo$ : Reflective properties of the material.
+  
+$A_z$ : Azimuth of the surface.
+  
+$A_{zs}$ : Azimuth of the sun.
+  
+$C$ : Heatcapacity of the zone. [W$\cdot K^{-1}$]
+
+$d_{inhabitant}(timetable)$ : density of inhabitant in a building as a function of a timetable set for the building type.
+  
+$E_{dir}$ : Direct solar heatflow. [W$\cdot m^{-2}$]
+  
+$E_{dif}$ : Diffuse solar heatflow. [W$\cdot m^{-2}$]
+  
+$E_{ref}$ : Reflected solar heatflow. [W$\cdot m^{-2}$]
+  
+$F_{dir}$ : Direct solar radiation. [W$\cdot m^{-2}$]
+  
+$F_{dir,Hz}$ : Direct solar radiation on a horizontal surface given by climate data. [W$\cdot m^{-2}$]
+  
+$F_{ij}$ : View factor between a $surface_{(i)}$ and a $surface_{(j)}$.
+  
+$H_s$ : Angular height of the sun. 
+  
+$J$ : Radiosity of a surface. [$W\cdot m^{-2}$]
+
+$Met$ : Metabolic rate [W]
+
+$0.34\cdot Q_v$ : Airflow as a fraction of the zone's volume per hour multiplied by the air volumetric heat capacity [$W\cdot K^{-1}$]
+  
+$S$ : Surface. [$m^2$]
+  
+$U_j$ : Conductance of a $wall_j$. [$W\cdot m^{-2}\cdot K^{-1}$]
 
 \bibliographystyle{splncs04}
 \bibliography{references}
