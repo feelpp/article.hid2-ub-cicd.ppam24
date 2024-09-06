@@ -377,7 +377,6 @@ In our current model, we simplify the calculations by not including the effects 
   \phi_{wall}=\sum_{j} U_j\cdot S_j\cdot \Delta T
 \end{equation}
 
-\textbf{Convection losses}
 
 The convection losses are computed differently regarding the surface of the wall they are applied to.
 
@@ -391,13 +390,15 @@ On the exterior surface we use a forced convection model :
   \phi_{conv,ext}=(1.8+4.8\cdot v_{air}) \cdot \Delta T
 \end{equation}
 
+\textbf{Radiation losses}
+
 Radiation losses describe the heat energy lost due to thermal radiation. 
 This is an important factor in buildings as it impacts both energy efficiency and thermal comfort.
 We differentiate between the exterior of the wall that exchange with the sky and the interior where the walls exchange between each other.
 
 Exterior radiation exchange. 
 \begin{equation}
-  \phi_{net,sky} = \varepsilon_i \cdot \sigma \cdot (T_i^4-T_{sky})
+  \phi_{net,sky} = \varepsilon_i \cdot \sigma \cdot (T_i^4-T_{sky}^4)
 \end{equation}
 Interior radiation exchange.
 \begin{equation}
