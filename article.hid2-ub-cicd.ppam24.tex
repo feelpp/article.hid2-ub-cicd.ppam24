@@ -31,13 +31,15 @@
 
 
 \title{Ktirio Urban Building: A Computational Framework for City Energy Simulations Enhanced by CI/CD Innovations on EuroHPC Systems}
-\author{Luca Berti\inst{1} \and Vincent Chabannes \inst{1}\orcidID{0009-0005-3602-3524} \and
-Javier Cladellas \inst{1}\orcidID{0009-0003-8687-7881} \and 
+\author{Luca Berti\inst{1} \and 
+Vincent Chabannes \inst{1}\orcidID{0009-0005-3602-3524} \and
+Gwennolé Chappron \inst{1}\orcidID{0009-0003-7588-3370} \and
+Javier Cladellas \inst{1}\orcidID{0009-0003-8687-7881} \and
 Abdoulaye Diallo \inst{1}\orcidID{0009-0006-8731-0547}\ \and
 Maryam Maslek Elayam \inst{1}\orcidID{0000-0003-0880-5180} \and
 Philippe Pinçon \inst{1}\orcidID{0009-0009-7724-3055 } \and
 Christophe Prud'homme\inst{1}\orcidID{0000-0003-2287-2961}}
-\institute{Cemosis, IRMA UMR 7501, University of Strasbourg, CNRS\\ 
+\institute{Cemosis, IRMA UMR 7501, University of Strasbourg, CNRS\\
 \email{\{vincent.chabannes,christophe.prudhomme\}@cemosis.fr}}
 \date{\gitReln\  \gitAuthorDate\ (\gitAbbrevHash)}
 \authorrunning{V. Chabannes et al.}
@@ -56,7 +58,7 @@ Christophe Prud'homme\inst{1}\orcidID{0000-0003-2287-2961}}
     linkcolor=CustomBlue,
     urlcolor=blue
 }
-
+\usepackage{cleveref}
 
 \begin{document}
 
@@ -93,18 +95,18 @@ Thanks to synergies with other CoE HiDALGO2 pilots, the KUB project is set to in
 
 Implementing the proposed KUB workflow will facilitate more informed urban planning decisions, support policy development for energy efficiency, and contribute to reducing urban greenhouse gas emissions. The project also focuses on enhancing the interactions between different environmental models to provide a holistic view of urban ecosystems.
 
-This paper is organized as follows: Section~\ref{sec:kub-workflow} discusses KUB's current workflow, Section~\ref{sec:urban-building} provides an overview of some modeling and simulation components, and finally, Section~\ref{sec:cicd-framework} delves into the CI/CD processes from standard DevOps to HPCops tailored for EuroHPC environments.
+This paper is organized as follows: \cref{sec:kub-workflow} discusses KUB's current workflow, \cref{sec:urban-building} provides an overview of some modeling and simulation components, and finally, \cref{sec:cicd-framework} delves into the CI/CD processes from standard DevOps to HPCops tailored for EuroHPC environments.
 
 %Feel++\cite{christophe_prudhomme_feelppfeelpp_2024}
 
 \section{Ktirio Urban Building Workflow}
 \label{sec:kub-workflow}
 
-The Ktirio urban building workflow, see Figure~\ref{fig:kub-workflow}, integrates various data sources and computational tools to simulate and analyze urban building energy and its impact on urban environments. The process encompasses data acquisition, processing, simulation, and analysis, eventually coupled with Urban Air Pollution (UAP) models.
+The Ktirio urban building workflow, see \cref{fig:kub-workflow}, integrates various data sources and computational tools to simulate and analyze urban building energy and its impact on urban environments. The process encompasses data acquisition, processing, simulation, and analysis, eventually coupled with Urban Air Pollution (UAP) models.
 
 \begin{figure}
     \centering
-    \includegraphics[width=.9\textwidth]{img-kub-workflow.pdf}
+    \includegraphics[width=.9\textwidth,page=1]{img-kub-workflow.pdf}
     \caption{Current Urban Building Workflow from localization to city energy simulation report.}
     \label{fig:kub-workflow}
 \end{figure}
@@ -172,9 +174,15 @@ We describe our definition of Levels of Detail for Buildings such as:
 
 \caption{Different representations of a building using our LOD definition}
 \label{fig:buildings}
+
 \end{figure}
 
-In the figure~\ref{fig:buildings}, we illustrate the different levels of details. Panel~\ref{fig:building-lod0} displays the LOD-0 of a building with its bounding box. Panel~\ref{fig:building-lod1} displays the LOD-1 of a building using its footprint elevated to its height. Panel~\ref{fig:building-lod2} and~\ref{fig:building-lod2-zoom} display the LOD-2 representation using BIM. In the figure~\ref{fig:city-strasbourg}, we display an illustration of the center of the city of Strasbourg with LOD-0, see panel~\ref{fig:city-strasbourg-lod0}, and LOD-1, see panel~\ref{fig:city-strasbourg-lod1}, representations.
+In \cref{fig:buildings}, we illustrate the different levels of details. 
+\Cref{fig:building-lod0} displays the LOD-0 of a building with its bounding box. 
+\Cref{fig:building-lod1} displays the LOD-1 of a building using its footprint elevated to its height. 
+\Cref{fig:building-lod2} and~\cref{fig:building-lod2-zoom} display the LOD-2 representation using BIM. 
+In \Cref{fig:city-strasbourg}, we display an illustration of the center of the city of Strasbourg with LOD-0, see \cref{fig:city-strasbourg-lod0}, and LOD-1, see \cref{fig:city-strasbourg-lod1}, representations.
+
 
 
 
@@ -193,7 +201,9 @@ However, this method provides a very refined mesh, even when the terrain is flat
 %Subsequently, isolines for elevation are computed, and mesh adaptation techniques are applied to reduce mesh density where feasible. Finally, each tile is glued together to ensure the continuity of the terrain mesh.
 
 \subsubsection{Vegetation Modeling}
+
 Including vegetation (trees) in our geometric model is essential for the simulation of buildings. The shading provided by trees and the cooling provided by wooded areas had a significant impacts on building environment  . We use the OpenStreetMap database to obtain the metadata associated with the vegetation. In addition to the position of the trees, we can also obtain other information, such as the tree's height and species. The current strategy is as follows:
+
 \begin{itemize}
 \item Definition of a reference tree library that lists a certain number of tree species at different levels of precision (LOD). These geometric entities are parameterized so that a transformation can be applied.
 \item Fetching vegetation metadata via OpenStreetMap. The attributes (height, species) are not always available, so we try to define them as best as we can (by searching around).
@@ -201,10 +211,13 @@ Including vegetation (trees) in our geometric model is essential for the simulat
 \end{itemize}
 
 \subsubsection{Integration of all urban geometric components}
-This process involves creating a conforming mesh that includes all components (buildings, terrains, vegetation). Moreover, this step requires accomplishing some challenges by using complex geometric algorithms to realize the following points: \textit{(i)} Ensure that buildings on slopes are accurately modeled by adapting their height and embedding them into the terrain mesh. The figure~\ref{fig:city-grenoble-terrain} illustrates this aspect; \textit{(ii)} applies the intersection of buildings and consequently defines contact zones that can be included in building thermal models (coupling). \textit{(iii)} Apply the intersection of vegetation with buildings and terrain; and finally \textit{(iv)} Improve mesh quality after the previous geometric operations (mesh adaption).
+
+This process involves creating a conforming mesh that includes all components (buildings, terrains, vegetation). Moreover, this step requires accomplishing some challenges by using complex geometric algorithms to realize the following points: \textit{(i)} Ensure that buildings on slopes are accurately modeled by adapting their height and embedding them into the terrain mesh. 
+\Cref{fig:city-grenoble-terrain} illustrates this aspect; \textit{(ii)} applies the intersection of buildings and consequently defines contact zones that can be included in building thermal models (coupling). \textit{(iii)} Apply the intersection of vegetation with buildings and terrain; and finally \textit{(iv)} Improve mesh quality after the previous geometric operations (mesh adaption).
+
 
 \subsubsection{Visual Representation}
-Advanced rendering techniques visualize the multi-fidelity urban models, supporting detailed analysis and general urban planning discussions. 
+Advanced rendering techniques visualize the multi-fidelity urban models, supporting detailed analysis and general urban planning discussions.
 These visualizations are crucial for assessing the impact of urban changes and for stakeholder engagement.
 
 This approach enhances urban models' accuracy, utility, and scalability, making them vital for comprehensive urban analysis and planning in the HiDALGO2 project.
@@ -234,7 +247,7 @@ This approach enhances urban models' accuracy, utility, and scalability, making 
 
 In the urban modeling process, particularly in generating building meshes, the Computational Geometry Algorithms Library (CGAL) plays a pivotal role. CGAL, \cite{the_cgal_project_cgal_2024} is renowned for its robust and efficient algorithms, which are crucial for handling complex geometric data and generating high-quality meshes. This library is currently used for the following operations: boolean operation of polygon, multi-polygon repairs~\cite{loriot_polygon_2024}, mesh generation, mesh intersection, mesh adaptation, and building roof skeleton.
 
-Features using CGAL algorithms are not yet operational in our framework. We can reconstruct a geometric model of an urban area whose location is arbitrary so that the user can select an area anywhere in the world. The final mesh comprises all buildings in LOD-0 or LOD-1 and the terrain with elevation. The integration of all the urban components is currently being investigated. This part requires fairly costly algorithms (mesh intersection), for which it will be necessary to form groups intelligently to reduce the computational cost.  
+All the features described above are not yet operational in our framework. We can reconstruct a geometric model of an urban area whose location is arbitrary so that the user can select an area anywhere in the world. The final mesh comprises all buildings LOD-0 or LOD-1 and the terrain with elevation. The integration of all the urban components is currently being investigated. This part requires fairly costly algorithms (mesh intersection), for which it will be necessary to form groups intelligently to reduce the computational cost.
 
 \paragraph{Current Mesh Generation Strategy}
 The current strategy for mesh generation employs multi-threading (MT) to handle various stages of the mesh construction process. Initially, the tiles used are determined based on the specified location, a task performed sequentially. Following this, GIS data, including buildings and elevation information, is downloaded in parallel. Next, polygons are repaired~\cite{loriot_polygon_2024} to ensure they are suitable for mesh generation, with this process executed in parallel using MT. The terrain mesh is then generated in parallel, employing CGAL's algorithms to ensure precision and efficiency. Union operations at tile junctions are performed to ensure continuity, a step that is currently sequential. Finally, building meshes are generated using a parallel MT approach, leveraging CGAL for its advanced mesh generation capabilities.
@@ -270,7 +283,7 @@ The current version of our simulation framework has implemented case 0 and case 
 \label{fig:partitioning}
 \end{wrapfigure}
 
-The figure~\ref{fig:partitioning} illustrates the different strategies discussed previously and presents a reconstruction of New York City in figure \ref{fig:city-ny-largescale}. This geometric model has an area of 400 $km^2$ (20 km square side of 20 km) and has generated around 450000 buildings. This example requires the large-scale approach discussed but not yet implemented or tested. 
+\Cref{fig:partitioning} illustrates the different strategies discussed previously and presents a reconstruction of New York City in \cref{fig:city-ny-largescale}. This geometric model has an area of 400 $km^2$ (20 km square side of 20 km) and has generated around 450000 buildings. This example requires the large-scale approach discussed but not yet implemented or tested.
 
 \begin{figure}[htbp]
 \centering
@@ -299,7 +312,7 @@ Our strategy aims to improve the efficiency and scalability of the mesh generati
 \subsection{Modeling and simulations}
 
 We now turn to describing the physical modeling of city energy simulation.
-To do this, we built on two main tools: Feel++ and Modelica. 
+To do this, we built on two main tools: Feel++ and Modelica.
 
 \subsubsection{KUB is based on the Feel++ toolchain}
 
@@ -347,7 +360,7 @@ Feel++ facilitates these computations through its robust numerical methods optim
 \label{fig:solar-masks-vf}
 \end{figure}
 
-In the figure~\ref{fig:solar-masks-vf}, we illustrate \textit{(i)} the solar masks of building face oriented eastwise for a discretization of the sun position in the panel~\ref{fig:sm-building-east}, \textit{(ii)} the solar masks for an entire building for discretization of the sun position in the panel~\ref{fig:sm-whole-building}, \textit{(iii)} a visualization of the solar mask early morning of the city center of Strasbourg in panel~\ref{fig:sm-strasbourg} and \textit{(iv)} an image of a standard benchmark~\cite{van_eck_surface_2016} for the computation of view-factors and solving the heat transfer problems between three building blocks in 2D subsequently in panel~\ref{fig:view-factor}.
+In \cref{fig:solar-masks-vf}, we illustrate \textit{(i)} the solar masks of building face oriented eastwise for a discretization of the sun position in \cref{fig:sm-building-east}, \textit{(ii)} the solar masks for an entire building for discretization of the sun position in \cref{fig:sm-whole-building}, \textit{(iii)} a visualization of the solar mask early morning of the city center of Strasbourg in \cref{fig:sm-strasbourg} and \textit{(iv)} an image of a standard benchmark~\cite{van_eck_surface_2016} for the computation of view-factors and solving the heat transfer problems between three building blocks in 2D subsequently in \cref{fig:view-factor}.
 
 \subsubsection{Heat Transfer Modeling with Feel++ and Modelica}
 In the Urban Building Energy Model (UBEM), heat transfer analysis is crucial for predicting energy consumption, internal air temperature variations, and overall building energy performance. This analysis is facilitated by a combination of Feel++ and Modelica, enabling detailed simulations of heat dynamics within urban buildings.
@@ -378,30 +391,33 @@ One of the main challenges in urban building simulation is managing the computat
 The Urban Building pilot utilizes the Feel++ framework, supported by a robust CI/CD framework that facilitates efficient development and deployment. %This section outlines how GitHub Actions and Docker streamline the entire process, ensuring the robustness and productivity of the software development lifecycle.
 
 \subsection{Standard CI/CD DevOps}
-The development and deployment of KUB builds on top of the Feel++ CI/CD framework. It employs GitHub Actions and Docker: GitHub Actions automate real-time workflows to compile, test, and validate code changes, facilitating rapid development cycles and ensuring code quality. On the other hand, Docker provides a containerized environment that encapsulates Feel++ and its dependencies, ensuring consistent operations across diverse computing environments. These Docker images, customized for various system requirements, are maintained on the GitHub Container Registry (ghcr.io) to accommodate multiple deployment scenarios.
+The development and deployment of KUB builds on top of the Feel++ CI/CD framework. It employs GitHub Actions and Docker: GitHub Actions automate real-time workflows to compile, test, and validate code changes, facilitating rapid development cycles and ensuring code quality.
+On the other hand, Docker provides a containerized environment that encapsulates Feel++ and its dependencies, ensuring consistent operations across diverse computing environments.
+These Docker images, customized for various system requirements, are maintained on the GitHub Container Registry (ghcr.io) to accommodate multiple deployment scenarios.
 
 \begin{figure}
     \centering
-    \includegraphics[width=\textwidth]{img-compressed-feelpp-devops.png}
+    \includegraphics[width=\textwidth]{img-feelpp-devops.pdf}
     \caption{CI/CD DevOps for Feel++}
     \label{fig:feelpp-devops}
 \end{figure}
-The CI/CD workflow, see Figure~\ref{fig:feelpp-devops}, is crucial for efficiently integrating and deploying updates across all projects that utilize the Feel++ framework. The workflow leverages various main ingredients of GitHub Actions features.
+The CI/CD workflow, see \cref{fig:feelpp-devops}, is crucial for efficiently integrating and deploying updates across all projects that utilize the Feel++ framework. 
+The workflow leverages various main ingredients of GitHub Actions features.
 \begin{enumerate}
     \item \textbf{Pull Requests and Merges:} Triggering CI to verify that new code integrations meet all tests and standards.
-    \item \textbf{Graphical User Interface (GUI) thanks to \texttt{workflow\_dispatch}:} Enabling developers to manually trigger pipelines through a GUI, which facilitates rapid deployment or testing. 
+    \item \textbf{Graphical User Interface (GUI) thanks to \texttt{workflow\_dispatch}:} Enabling developers to manually trigger pipelines through a GUI, which facilitates rapid deployment or testing.
     \item \textbf{Scheduled Runs:} Conducting regular updates and maintenance checks to ensure continuous system integrity and responsiveness.
 \end{enumerate}
 
 \subsection{HPC DevOps (HPCOps)}
-Feel++ CI/CD workflow for high-performance computing applications incorporates specialized HPCOps (HPC DevOps) practices that ensure the software performs consistently across various HPC systems. 
+Feel++ CI/CD workflow for high-performance computing applications incorporates specialized HPCOps (HPC DevOps) practices that ensure the software performs consistently across various HPC systems.
 
 %This advanced CI/CD strategy uses Apptainer (formerly Singularity) for secure and reproducible deployments across HPC environments without root privileges.
 
-Figure~\ref{fig:feelpp-hpcops} illustrates the HPC CI/CD or HPCOps workflow for Feel++. 
+\Cref{fig:feelpp-hpcops} illustrates the HPC CI/CD or HPCOps workflow for Feel++.
 \begin{figure}
     \centering
-    \includegraphics[width=\textwidth]{img-compressed-feelpp-hpcops.png}
+    \includegraphics[width=\textwidth]{img-feelpp-hpcops.pdf}
     \caption{CI/CD HPCOps for Feel++}
     \label{fig:feelpp-hpcops}
 \end{figure}
@@ -411,34 +427,39 @@ The tools and strategies for HPCOps are  \textit{(i) }\textbf{Reframe-HPC:} Util
 
 Integration with EuroHPC JU supercomputers such as LUMI, Karolina, Meluxina, Discoverer, Vega, and Leonardo enhances the capability to perform large-scale simulations and check the parallel properties and correctness of Feel++. The operations include automatic testing that triggers larger-scale tests on designated HPC nodes once new changes are integrated and verified by standard CI/CD pipelines.
 
-Regarding monitoring and reporting, performance results from these operations are automatically captured and uploaded to the data storage system, such as the performance reports 
+Regarding monitoring and reporting, performance results from these operations are automatically captured and uploaded to the data storage system, such as the performance reports
 
 \begin{wrapfigure}{R}{.7\linewidth}
     \centering
-    \includegraphics[width=\linewidth]{img-ub-devops.pdf}
+    \includegraphics[width=\linewidth,page=1]{img-ub-devops-hpcops.pdf}
     \caption{KUB standard DevOps}
     \label{fig:kub-devops}
 \end{wrapfigure}
-This framework leverages cutting-edge computational technologies, ensuring the high performance and accuracy of the Feel++ framework and Feel++-based applications. 
+This framework leverages cutting-edge computational technologies, ensuring the high performance and accuracy of the Feel++ framework and Feel++-based applications.
 It sets a benchmark for integrating modern software frameworks with advanced HPC infrastructure to significantly advance computational research and applications.
 
-Figure~\ref{fig:kub-devops} shows that the CI/CD standard DevOps framework for KUB uses similar steps.
+\Cref{fig:kub-devops} shows that the CI/CD standard DevOps framework for KUB uses similar steps.
 
 
 
-Figure~\ref{fig:kub-hpcops} finally shows the HPCOps deployed on EuroHPC systems to check the parallel properties and correctness of the pilot on large-scale cases. It extends Feel++ HPC ops with additional steps to handle our complex pre- and post-processing steps.
+\Cref{fig:kub-hpcops} finally shows the HPCOps deployed on EuroHPC systems to check the parallel properties and correctness of the pilot on large-scale cases. It extends Feel++ HPC ops with additional steps to handle our complex pre- and post-processing steps.
 
 \begin{figure}
     \centering
-    \includegraphics[width=\textwidth]{img-ub-hpcops.pdf}
+    \includegraphics[width=\linewidth,page=2]{img-ub-devops-hpcops.pdf}
     \caption{Ktirio Urban Building HPCOps workflow}
     \label{fig:kub-hpcops}
 \end{figure}
 
 \subsection{Benchmarking KUB}
+\label{sec:benchmarking}
 
-Finally, we display some results of our benchmarking activities~\cite{hidalgo2_d31_2024} for the KUB application regarding HPC performance. Running these experiments regularly is essential for maintaining the program's efficiency when developing the application and after machine updates. 
-Hence, we have used the KUB application in the Strasbourg city center, with a square area of $4 \mathrm{km}^2$ (approximately 17K buildings). The scalability results were realized on EuroHPC JU systems obtained with our HPCOps pipeline; see Figure~\ref{fig:kub-hpcops}. Figure \ref{fig:scalability} depicts the speedup achieved on Discoverer, Karolina, and MeluXina. They present results for the total execution (end-to-end) of the KUB application and the simulation component.
+Finally, we display some results of our benchmarking activities~\cite{hidalgo2_d31_2024} for the KUB application regarding HPC performance.
+Running these experiments regularly is essential for maintaining the program's efficiency when developing the application and after machine updates.
+Hence, we have used the KUB application in the Strasbourg city center, with a square area of $4 \mathrm{km}^2$ (approximately 17K buildings).
+The scalability results were realized on EuroHPC JU systems obtained with our HPCOps pipeline; see \cref{fig:kub-hpcops}.
+\Cref{fig:scalability} depicts the speedup achieved on Discoverer, Karolina, and MeluXina.
+They present results for the total execution (end-to-end) of the KUB application and the simulation component.
 
 \begin{wrapfigure}{R}{0.6\textwidth}  % Adjust 'R' and width as needed
   \centering
@@ -456,7 +477,8 @@ Hence, we have used the KUB application in the Strasbourg city center, with a sq
 \end{wrapfigure}
 The pipeline's simulation part scales almost linearly, which is expected as the buildings are not coupled together in the model currently used for the simulation. On the other hand, the total execution of the pilot's pipeline does not scale; as more nodes are employed, the performance degrades.
 
-To better understand what causes this degradation, we measure the computing times of the different stages of the pipeline and present the execution breakdown in Figure \ref{fig:execution-breakdown}. This figure reports the portion of the total execution taken by:
+To better understand what causes this degradation, we measure the computing times of the different stages of the pipeline and present the execution breakdown in \cref{fig:execution-breakdown}. 
+\cref{fig:execution-breakdown} reports the portion of the total execution taken by:
 \begin{itemize}
 \item Pre-processing (Pre-proc): The time elapsed in initialization before entering the time loop of the simulation
 \item Simulation (Simulation): The cumulative time spent calculating the new solution at each time step
@@ -483,7 +505,7 @@ Part of this work was also funded by \textit{(i)} the France 2030 NumPEx Exa-MA 
 We acknowledge the EuroHPC Joint Undertaking for awarding this project access through  EuroHPC Development Access grants EHPC-DEV-2024D05-025 and EHPC-DEV-2023D08-047 to the EuroHPC JU supercomputers : \textit{(i)} Kumi, hosted by CSC (Finland) and the Lumi consortium, \textit{(ii)} MeluXina hosted by LuxProvide, Luxembourg, \textit{(iii)} Karolina hosted by IT4Innovations National Supercomputing Center, Czechia, \textit{(iv)} Discoverer hosted by Sofia Tech Park, Bulgaria, \textit{(v)} Vega hosted by IZUM, Slovenia, and \textit{(vi)} Leonardo hosted by CINECA, Italy.
 
 
-Finally the authors would like to acknowledge the many fruitful discussions with our partners Luc Kern from Synapse Concept and Leopold Fischer from Cisco Meraki, our colleagues \textit{(i)} from Hidalgo2 ICCS Kostis Nikas, Aristomenis Theodoridis and Petros Anastasiadis for the discussions on Reframe and joining their EuroHPC access grant, \textit{(ii)} Hidalgo2 HLRS Sameer Haroon for the discussions on CI/CD, \textit{(iii)} Pierre Alliez from INRIA Titane and Andreas Fabri from Geometry Factory regarding the discussions on CGAL and using Polygon Repair, and finally \textit{(iv)} our former colleague Zohra Djatouti, now at Kipsum, which whom we initiated this endeavor. 
+Finally the authors would like to acknowledge the many fruitful discussions with our partners Luc Kern from Synapse Concept and Leopold Fischer from Cisco Meraki, our colleagues \textit{(i)} from Hidalgo2 ICCS Kostis Nikas, Aristomenis Theodoridis and Petros Anastasiadis for the discussions on Reframe and joining their EuroHPC access grant, \textit{(ii)} Hidalgo2 HLRS Sameer Haroon for the discussions on CI/CD, \textit{(iii)} Pierre Alliez from INRIA Titane and Andreas Fabri from Geometry Factory regarding the discussions on CGAL and using Polygon Repair, and finally \textit{(iv)} our former colleague Zohra Djatouti, now at Kipsum, which whom we initiated this endeavor.
 
 % \subsubsection{\discintname}
 % It is now necessary to declare any competing interests or to specifically
