@@ -126,6 +126,25 @@ The building simulation outputs are then optionally fed into the \textit{Urban A
 
 The final step involves the \textit{UBEM Simulator}, which generates large-scale outputs that summarize the overall energy consumption and environmental impact of buildings on an urban scale. This comprehensive urban scale analysis merges data from the building energy and air quality models to provide a holistic view of urban environmental quality.
 
+In addition to these exports, the simulator condenses, aggregates and saves relevant quantities on the fly to avoid having to manipulate large data volumes after the simulation. These metrics concern weather information, energy consumption and comfort assessment, and are exported in JSON format. The produced files are uploaded to a data management platform via the CI/CD pipeline (see \cref{fig:kub-devops}), who is then in charge of notifying a different workflow in order to render insightful figures that showcase the simulation results, as detailed in \cref{sec:cicd-framework}.
+
+Insights are presented in the form of a comprehensive report and are automatically deployed on a website built using the \textit{Antora} framework. End users are finally able to explore the simulation outputs in a detailed but malleable manner, for both the city and the building scales.
+
+\Cref{fig:ktirio-cases-report} presents a gallery of city reports that are taken as test cases for the Urban Building pilot, as well as an example of a city report section showing the occlusion factor and heat flow plot.
+\begin{figure}[htbp]
+  \centering
+  \subfloat[Gallery of test case cities reports\label{fig:city-gallery}]{%
+    \includegraphics[width=0.45\textwidth]{img-compressed-city-gallery.png}
+  }
+  \hfill
+  \subfloat[Section of a city report\label{fig:city-report-section}]{%
+    \includegraphics[width=0.45\textwidth]{img-compressed-city-report-section.png}
+  }
+  \caption{Screenshots of the \url{https://cases.ktirio.fr} reporting website.}
+  \label{fig:ktirio-cases-report}
+\end{figure}
+
+
 The described streamlined workflow is critical for accurately simulating and understanding urban sustainability challenges, supporting our application's broader objectives of improving urban living conditions and environmental impact.
 
 
