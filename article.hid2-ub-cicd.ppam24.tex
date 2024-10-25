@@ -372,6 +372,42 @@ One of the main challenges in urban building simulation is managing the computat
 
 %CD practices are tailored to manage deployment complexities across different HPC environments using containerization through Apptainer. This approach facilitates consistent, reproducible deployments, optimizing performance and resource utilization.
 
+\subsubsection{Input data}
+
+To run a KUB simulation, several input files need to be generated.
+We have several metadata files (in JSON format), mesh data files (in MSH format), and
+meteorological measurement files (in CSV format).
+In the table \ref{tab:input-data-size-comparison}, we have listed these files
+with their corresponding sizes.
+In this comparison, we used New York City as the location
+and a duration of one year for the simulation.
+In addition, we compared the size of the input data with the size of the zone.
+
+\begin{table}[h]
+\begin{center}
+  \begin{tabular}{|c|| c | c | c|} 
+    \hline
+    Files & $4 \times 4 \mathrm{km}^2$ & $10 \times 10 \mathrm{km}^2$ & $20 \times 20 \mathrm{km}^2$ \\ [0.5ex] 
+    \hline\hline
+    geographicdata\_setup.json & 4.0 K  & 4.0 K & 4.0 K \\ 
+    \hline
+    gis.json & 23 M & 117M & 470 M \\
+    \hline
+    mesh\_lod0.msh & 17 M & 112M & 496 M \\
+    \hline
+    mesh\_lod1.msh & 44 M & 240M & 896 M \\
+    \hline
+    weather-data-0.hourly-variables.csv & 384 K  & 384 K  & 384 K  \\
+    \hline
+    weather-data.json & 4.0 K  & 4.0 K & 4.0 K  \\ [1ex] 
+    \hline
+  \end{tabular}
+\end{center}
+\caption{Size comparison of input data using New York city.}
+\label{tab:input-data-size-comparison}
+\end{table}
+
+
 \section{CI/CD Framework for the Urban Building Pilot}
 \label{sec:cicd-framework}
 
@@ -462,6 +498,9 @@ To better understand what causes this degradation, we measure the computing time
 \item Simulation (Simulation): The cumulative time spent calculating the new solution at each time step
 \item Post-processing (Post-proc): The cumulative time spent exporting results, i.e., generating files containing the output of the UB model.
 \end{itemize}
+
+The total elapsed time varies from 100 seconds to 1000 seconds in function of the number of Nodes.
+All machines tested have an elapsed time of the same magnitude order.
 
 Pre-processing does not scale. However, it occupies only a small part of the total execution, and thus it is not performance-critical. On the other hand, as more nodes are employed and the time spent in the actual simulation is decreased, the post-processing stage dominates the execution. It becomes the main bottleneck, causing the previously observed performance degradation.
 This behavior is caused by the multiple files being written in parallel on the shared file system. More specifically, most of the writing time is spent in opening and closing files in parallel. We are investigating potential solutions, such as asynchronous writes, data caching, etc. Finally, as the project progresses, we expect the urban building models used in the simulation to become more complex, leading to an increase in the time occupied by the simulation part and, hence, to a reduction of the impact of post-processing on the total execution time of the pilot.
