@@ -56,7 +56,7 @@ Christophe Prud'homme\inst{1}\orcidID{0000-0003-2287-2961}}
     linkcolor=CustomBlue,
     urlcolor=blue
 }
-
+\usepackage{cleveref}
 
 \begin{document}
 
@@ -124,7 +124,7 @@ The building simulation outputs are then optionally fed into the \textit{Urban A
 
 The final step involves the \textit{UBEM Simulator}, which generates large-scale outputs that summarize the overall energy consumption and environmental impact of buildings on an urban scale. This comprehensive urban scale analysis merges data from the building energy and air quality models to provide a holistic view of urban environmental quality.
 
-In addition to these exports, the simulator condenses, aggregates and saves relevant quantities on the fly to avoid having to manipulate large data volumes after the simulation. These metrics concern weather information, energy consumption and comfort assessment, and are exported in JSON format. The produced files are uploaded to a data management platform via the CI/CD pipeline \cref{fig:kub-devops}, who is then in charge of notifying a different workflow in order to render insightful figures that showcase the simulation results \cref{sec:cicd-framework}.
+In addition to these exports, the simulator condenses, aggregates and saves relevant quantities on the fly to avoid having to manipulate large data volumes after the simulation. These metrics concern weather information, energy consumption and comfort assessment, and are exported in JSON format. The produced files are uploaded to a data management platform via the CI/CD pipeline (see \cref{fig:kub-devops}), who is then in charge of notifying a different workflow in order to render insightful figures that showcase the simulation results, as detailed in \cref{sec:cicd-framework}.
 
 Insights are presented in the form of a comprehensive report and are automatically deployed on a website built using the \textit{Antora} framework. End users are finally able to explore the simulation outputs in a detailed but malleable manner, for both the city and the building scales.
 
