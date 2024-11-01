@@ -77,7 +77,7 @@ Christophe Prud'homme\inst{1}\orcidID{0000-0003-2287-2961}}
 
 
 \begin{abstract}
-The building sector in the European Union significantly impacts energy consumption and greenhouse gas emissions. The EU's Horizon 2050 initiative sets ambitious goals to reduce these impacts through enhanced building renovation rates. The CoE HiDALGO2 supports this initiative by developing high-performance computing solutions, specifically through the Urban Building pilot application, which utilizes advanced CI/CD methodologies to streamline simulation and deployment across various computational platforms, such as the EuroHPC JU supercomputers. The present work provides an overview of the Ktirio Urban Building framework (KUB), starting with an overview of the workflow and a description of some of the main ingredients of the software stack and discusses some current results performed on EuroHPC JU supercomputers using an innovative CI/CD pipeline.
+The building sector in the European Union significantly impacts energy consumption and greenhouse gas emissions. The EU's Horizon 2050 initiative sets ambitious goals to reduce these impacts through enhanced building renovation rates. The CoE HiDALGO2 supports this initiative by developing high-performance computing solutions, specifically through the Urban Building pilot application, which utilizes advanced CI/CD methodologies to streamline simulation and deployment across various computational platforms, such as the EuroHPC JU supercomputers. The present work provides an overview of the Ktirio Urban Building framework (KUB), starting with its workflow and a description of some of the main ingredients of the software stack, it then discusses some results performed on EuroHPC JU supercomputers using an innovative CI/
 
 \keywords{HPC, HPCOps, Urban building, City Energy Simulation.}
 
@@ -105,8 +105,14 @@ Thanks to synergies with other CoE HiDALGO2 pilots, the KUB project is set to in
 
 Implementing the proposed KUB workflow will facilitate more informed urban planning decisions, support policy development for energy efficiency, and contribute to reducing urban greenhouse gas emissions. The project also focuses on enhancing the interactions between different environmental models to provide a holistic view of urban ecosystems.
 
-This paper is organized as follows: \cref{sec:kub-workflow} discusses KUB's current workflow, \cref{sec:urban-building} provides an overview of some modeling and simulation components, and finally, \cref{sec:cicd-framework} delves into the CI/CD processes from standard DevOps to HPCops tailored for EuroHPC environments.
+This paper is organized as follows: 
+\begin{inparaenum}[\it (i)]
+    \item \cref{sec:kub-workflow} presents the KUB workflow, detailing the data handling and simulation processes, and the final analysis and urban scale energy evaluation;
+    \item \cref{sec:urban-building} provides an overview of the geometrical and physical modeling components of the urban building application;
+    \item \cref{sec:cicd-framework} delves into the CI/CD processes tailored for EuroHPC environments;
+    \item \cref{sec:conclusion} concludes the paper.
 
+\end{inparaenum}
 %Feel++\cite{christophe_prudhomme_feelppfeelpp_2024}
 
 \section{Ktirio Urban Building Workflow}
@@ -154,8 +160,6 @@ Insights are presented in the form of a comprehensive report and are automatical
   \label{fig:ktirio-cases-report}
 \end{figure}
 
-
-The described streamlined workflow is critical for accurately simulating and understanding urban sustainability challenges, supporting our application's broader objectives of improving urban living conditions and environmental impact.
 
 
 \section{Overview of Urban Building Modeling and Simulation}
@@ -288,10 +292,10 @@ The following steps in enhancing the mesh generation process involve moving towa
 Data partitioning is a crucial stage in the deployment of the supercomputer simulator. We need to partition the geometry of the city in such a way as to distribute the simulation computation correctly.
 Different partitioning strategies are considered depending on the specific requirements of the simulation use cases :
 \begin{inparadesc}
-\item[Case 0] simulate simple scenarios where buildings do not interact with their environment, a basic listing and weighting strategy is sufficient;
-\item[Case 1] simulate buildings interact with environmental elements, a more complex partitioning strategy is necessary that considers both the buildings and their immediate non-building surroundings; the build meshes and environment meshes (terrain, vegetation) are integrated conformably; each component can be partitioned separately;
-\item[Case 2] simulate full interaction models where the partitioning strategy starts with the buildings and extends to the entire urban mesh, ensuring all elements are considered to minimize communication overhead;
-\item[Case 3] simulate scenarios with extreme partitioning and employ a multi-grid approach to  define coarse and fine meshes and manage computational resources efficiently; this multi-fidelity approach enhances the accuracy and applicability of urban models in simulations and ensures scalability across different computational platforms, making it a cornerstone of urban analysis.
+\item[Case 0] simulates simple scenarios where buildings do not interact with their environment, a basic listing and weighting strategy is sufficient;
+\item[Case 1] simulates buildings interact with environmental elements, a more complex partitioning strategy is necessary that considers both the buildings and their immediate non-building surroundings; the build meshes and environment meshes (terrain, vegetation) are integrated conformably; each component can be partitioned separately;
+\item[Case 2] simulates full interaction models where the partitioning strategy starts with the buildings and extends to the entire urban mesh, ensuring all elements are considered to minimize communication overhead;
+\item[Case 3] simulates scenarios with extreme partitioning and employ a multi-grid approach to  define coarse and fine meshes and manage computational resources efficiently; this multi-fidelity approach enhances the accuracy and applicability of urban models in simulations and ensures scalability across different computational platforms, making it a cornerstone of urban analysis.
 \end{inparadesc}
 
 The current version of our simulation framework has implemented case 0 and case 1. Cases 2 and 3 require a full conformal mesh, which is not yet available. Moreover, these partitioning strategies are costly, so we have planned to use other third-party tools, such as Zoltan2~\cite{the_zoltan2_team_zoltan2_nodate}, to improve efficiency.
@@ -693,6 +697,7 @@ As the project progresses, we anticipate that the urban building models used in 
 
 
 \section{Conclusion}
+\label{sec:conclusion}
 
 We are developing the computational Ktirio Urban Building(KUB) framework: assembling this very compelling application encompasses challenges in mathematics --- scalable modeling and simulation, large-scale watertight robust mesh generation, advanced analysis including data simulation --- and computer science --- scalable framework, software architecture, modern development, testing and packaging environment including standard DevOps and now HPCOps.---
 The overall programming, integration, delivery, and deployment environment is critical to develop such an application. To our knowledge, this is the first application that can be automatically benchmarked and executed on EuroHPC JU systems thanks to CI/CD or HPCOps. Moreover, the workflow from Feel++ to KUB provides a considerable gain in terms of development and testing time, automated as much as possible, and enabling researchers and developers to focus their work better.
