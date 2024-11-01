@@ -441,9 +441,8 @@ These models are then transformed into Functional Mock-up Units (FMUs) compliant
 FMUs encapsulate the models and enable them to be shared and integrated across different simulation environments.
 
 
-\paragraph{Conclusion}
-
-By integrating these models within a high-performance computing framework, it is possible to simulate the thermal behavior of city-scale building clusters. This facilitates the assessment of energy consumption, thermal comfort, and the impact of various energy-saving strategies under different environmental conditions and operational scenarios.
+\paragraph{Conclusion} By integrating these models within a high-performance computing framework, it is possible to simulate the thermal behavior of city-scale building clusters.
+This facilitates the assessment of energy consumption, thermal comfort, and the impact of various energy-saving strategies under different environmental conditions and operational scenarios.
 
 \subsubsection{KUB is based on the Feel++ toolchain}
 
@@ -469,10 +468,13 @@ This powerful toolchain is essential for KUB.
 
 The FMUs built from \cref{sec:heat-transfer-in-buildings} are loaded by the \texttt{Feel++} environment.
 
-Input data for the models are sourced from available building information, such as geometric dimensions, material properties, and occupancy schedules.
+Input data for the models are sourced from available building information, such as geometric dimensions and material properties.
 When specific data are unavailable, default values are assigned based on the building's construction year, referencing standard building codes or typical practices from that period.
-This approach ensures that the models can be applied to a wide range of buildings, even when detailed information is limited.
 
+Occupancy schedules are given as input to the models using reglementary occupancy.
+We are currently working on parametrized occupancy profiles, which are adjusted based on the building's use type (e.g., residential, office, commercial).
+
+This approach ensures that the models can be applied to a wide range of buildings, even when detailed information is limited.
 
 \subsubsection{Computing Shading Masks and View Factors with Feel++}
 
@@ -668,7 +670,8 @@ Finally the authors would like to acknowledge the many fruitful discussions with
 \end{credits}
 
 
-\textbf{Nomenclature}\\
+\section*{Nomenclature}
+
 \begin{multicols}{2}
 $\alpha$ : Absorption of a material.\hfill[-]\\
 $\alpha_{conv}$=10 : Heat conductance of convection.\hfill[-]\\
