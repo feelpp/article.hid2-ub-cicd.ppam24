@@ -168,11 +168,11 @@ The primary challenge lies in accurately representing the complex urban landscap
 
 
 We describe our definition of Levels of Detail for Buildings such as:
-\begin{itemize}
-    \item \textbf{LOD-0:} The most straightforward form, representing buildings as oriented bounding boxes. This level is typically used for large-scale preliminary analyses and quick visual assessments.
-    \item \textbf{LOD-1:} Buildings are represented as polygonal extrusions, with added roof structures to improve the visual accuracy and utility in simulations that do not require detailed internal features.
-    \item \textbf{LOD-2:} At this level, buildings are detailed using Industry Foundation Classes (IFC) standards, supporting detailed thermal and structural analyses. This includes detailed geometries for each building entity, often using complex surface models like B-REP, swept solids, or CSG techniques.
-\end{itemize}
+\begin{description}
+    \item[LOD-0] The most straightforward form, representing buildings as oriented bounding boxes. This level is typically used for large-scale preliminary analyses and quick visual assessments.
+    \item[LOD-1] Buildings are represented as polygonal extrusions, with added roof structures to improve the visual accuracy and utility in simulations that do not require detailed internal features.
+    \item[LOD-2] At this level, buildings are detailed using Industry Foundation Classes (IFC) standards, supporting detailed thermal and structural analyses. This includes detailed geometries for each building entity, often using complex surface models like B-REP, swept solids, or CSG techniques.
+\end{description}
 
 
 \begin{figure}[ht]%{R}{1\textwidth} % 'R' or 'L' for right or left, and width
@@ -219,21 +219,20 @@ Building meshes are generated from metadata fetched from web services like OpenS
 \subsubsection{Terrain Modeling}
 The terrain modeling process utilizes elevation data extracted from raster images. The initial step involves creating a uniform mesh based on the size of the raster image. Following this, the elevation at each node is evaluated.
 However, this method provides a very refined mesh, even when the terrain is flat. For this reason, we plan to apply a mesh adaptation technique to reduce mesh density where feasible, using the following processing:
-\begin{itemize}
+\begin{inparaenum}[\it (i)]
     \item Compute an arbitrary number of isolines for elevation,
     \item Build a new terrain mesh conform with the isolines nodes and adapt to terrain elevation gradient.
-\end{itemize}
+\end{inparaenum}
 %Subsequently, isolines for elevation are computed, and mesh adaptation techniques are applied to reduce mesh density where feasible. Finally, each tile is glued together to ensure the continuity of the terrain mesh.
 
 \subsubsection{Vegetation Modeling}
 
 Including vegetation (trees) in our geometric model is essential for the simulation of buildings. The shading provided by trees and the cooling provided by wooded areas had a significant impacts on building environment  . We use the OpenStreetMap database to obtain the metadata associated with the vegetation. In addition to the position of the trees, we can also obtain other information, such as the tree's height and species. The current strategy is as follows:
-
-\begin{itemize}
+\begin{inparaenum}[\it (i)]
 \item Definition of a reference tree library that lists a certain number of tree species at different levels of precision (LOD). These geometric entities are parameterized so that a transformation can be applied.
 \item Fetching vegetation metadata via OpenStreetMap. The attributes (height, species) are not always available, so we try to define them as best as we can (by searching around).
 \item Creating a tree geometric model using an affine transformation of the reference tree model.
-\end{itemize}
+\end{inparaenum}
 
 \subsubsection{Integration of all urban geometric components}
 
@@ -284,12 +283,12 @@ The following steps in enhancing the mesh generation process involve moving towa
 
 Data partitioning is a crucial stage in the deployment of the supercomputer simulator. We need to partition the geometry of the city in such a way as to distribute the simulation computation correctly.
 Different partitioning strategies are considered depending on the specific requirements of the simulation use cases :
-\begin{itemize}
-\item Case 0: simple scenarios where buildings do not interact with their environment, a basic listing and weighting strategy is sufficient
-\item Case 1: buildings interact with environmental elements, a more complex partitioning strategy is necessary that considers both the buildings and their immediate non-building surroundings. The build meshes and environment meshes (terrain, vegetation) are integrated conformably; each component can be partitioned separately.
-\item Case 2: for full interaction models, the partitioning strategy starts with the buildings and extends to the entire urban mesh, ensuring all elements are considered to minimize communication overhead.
-\item Case 3: Regarding scenarios with extreme partitioning needs, Test Case 3 employs a multi-grid approach, defining coarse and fine meshes to manage computational resources efficiently. This multi-fidelity approach enhances the accuracy and applicability of urban models in simulations and ensures scalability across different computational platforms, making it a cornerstone of urban analysis.
-\end{itemize}
+\begin{inparadesc}
+\item[Case 0] simulate simple scenarios where buildings do not interact with their environment, a basic listing and weighting strategy is sufficient;
+\item[Case 1] simulate buildings interact with environmental elements, a more complex partitioning strategy is necessary that considers both the buildings and their immediate non-building surroundings; the build meshes and environment meshes (terrain, vegetation) are integrated conformably; each component can be partitioned separately;
+\item[Case 2] simulate full interaction models where the partitioning strategy starts with the buildings and extends to the entire urban mesh, ensuring all elements are considered to minimize communication overhead;
+\item[Case 3] simulate scenarios with extreme partitioning and employ a multi-grid approach to  define coarse and fine meshes and manage computational resources efficiently; this multi-fidelity approach enhances the accuracy and applicability of urban models in simulations and ensures scalability across different computational platforms, making it a cornerstone of urban analysis.
+\end{inparadesc}
 
 The current version of our simulation framework has implemented case 0 and case 1. Cases 2 and 3 require a full conformal mesh, which is not yet available. Moreover, these partitioning strategies are costly, so we have planned to use other third-party tools, such as Zoltan2~\cite{the_zoltan2_team_zoltan2_nodate}, to improve efficiency.
 \begin{wrapfigure}{R}{0.6\textwidth}
@@ -338,13 +337,12 @@ Our strategy aims to improve the efficiency and scalability of the mesh generati
 \subsection{Modeling and simulations}
 
 We now turn to describing the physical modeling of city energy simulation.
-
 To do this, we built on two main tools: Feel++ and Modelica.
 
 \subsubsection{Heat transfer model in buildings}
 \label{sec:heat-transfer-in-buildings}
 
-The physical model of city buildings is based on a multizone model.
+The physical model of city buildings is currently based on a multizone model.
 One zone is allocated per building floor. 
 The energy balance for each zone is calculated by taking into account energy exchanges with adjacent zones and the environment.
 
@@ -363,17 +361,16 @@ where
     \item $\phi_{\mathrm{losses}}$ represents the energy lost through walls, roofs, floors, and air exchanges with the environment.
 \end{inparaenum}
 
-\paragraph{HVAC heat flow} In the version of the model at the time of writing, the HVAC system is treated as an ideal heat source, which means it adjusts its output to maintain a set temperature within the building.
+\begin{description}
+  \item[HVAC heat flow] In the version of the model at the time of writing, the HVAC system is treated as an ideal heat source, which means it adjusts its output to maintain a set temperature within the building.
+  \item[Heat gain] Heat gain is the addition of energy to the building, derived from two sources: \textbf{internal heat gains} and \textbf{solar heat gains}.
+  \item[Internal heat gain] The internal heat gain captures the heat produced by occupants inside the building. 
+  It is modeled as a function of metabolic rate $\mathrm{Met}$ and the number of inhabitants, $d_i$, which varies over time $t$:
+  \begin{equation}
+    \phi_{\mathrm{int}} = \mathrm{Met} \cdot d_i(t)
+  \end{equation}
 
-\paragraph{Heat gain} Heat gain is the addition of energy to the building, derived from two sources: \textbf{internal heat gains} and \textbf{solar heat gains}.
-
-\paragraph{Internal heat gain} The internal heat gain captures the heat produced by occupants inside the building. 
-It is modeled as a function of metabolic rate $\mathrm{Met}$ and the number of inhabitants, $d_i$, which varies over time $t$:
-\begin{equation}
-  \phi_{\mathrm{int}} = \mathrm{Met} \cdot d_i(t)
-\end{equation}
-
-\paragraph{Solar heat gain} The total solar heat gain includes contributions from direct, diffuse, and reflected solar radiation, taking into account the building’s surface characteristics and shading coefficient:
+\item[Solar heat gain] The total solar heat gain includes contributions from direct, diffuse, and reflected solar radiation, taking into account the building’s surface characteristics and shading coefficient:
 \begin{equation}
   \phi_{\mathrm{solar}} = \alpha \cdot S \cdot \left( E_{\mathrm{dir}} + E_{\mathrm{diff}} + E_{\mathrm{ref}} \right) \cdot S_C
 \end{equation}
@@ -398,7 +395,7 @@ Reflected solar radiation is calculated using the total horizontal radiation and
   E_{\mathrm{ref}} = \left[ F_{\mathrm{dir,Hz}} + F_{\mathrm{dif,Hz}} \right] \cdot \left( \dfrac{1 + \cos(\beta)}{2} \right) \cdot \text{albedo}
 \end{equation}
 
-\paragraph{Conduction losses} Energy loss through walls is computed by summing the losses across all wall segments. It depends on the heat transfer coefficient, the wall area, and the temperature difference between the indoor and outdoor environments. In our current model, we simplify the calculations by not including the effects of thermal bridges, as they depend on specific information about the building's envelope, which we do not have:
+\item[Conduction losses] Energy loss through walls is computed by summing the losses across all wall segments. It depends on the heat transfer coefficient, the wall area, and the temperature difference between the indoor and outdoor environments. In our current model, we simplify the calculations by not including the effects of thermal bridges, as they depend on specific information about the building's envelope, which we do not have:
 \begin{equation}
   \phi_{\mathrm{wall}} = \sum_{j} U_j \cdot S_j \cdot \Delta T
 \end{equation}
@@ -411,7 +408,7 @@ On the exterior surface, we use a forced convection model:
   \phi_{\mathrm{conv,ext}} = \left( 1.8 + 4.8 \cdot v_{\mathrm{air}} \right) \cdot \Delta T
 \end{equation}
 
-\paragraph{Radiation losses} Radiation losses describe the heat energy lost due to thermal radiation, impacting both energy efficiency and thermal comfort.
+\item[Radiation losses] Radiation losses describe the heat energy lost due to thermal radiation, impacting both energy efficiency and thermal comfort.
 We differentiate between the exterior of the wall that exchanges with the sky and the interior where the walls exchange with each other.
 namely, for the exterior radiation exchange:
 \begin{equation}
@@ -435,11 +432,11 @@ Net radiation flow $Q_{\mathrm{flow}}[i]$ considers:
     \item $\dfrac{\varepsilon_i}{1.0 - \varepsilon_i} \cdot \left( \sigma \cdot T_i^4 - J[i] \right)$, which calculates the net heat flow due to radiation for surface $i$, considering the difference between the heat emitted by the surface and the heat received from other surfaces. The ratio $\dfrac{\varepsilon_i}{1.0 - \varepsilon_i}$ scales the net flow based on the emissivity of the surface.
 \end{inparaenum}
 
-\paragraph{Air change} This term represents the energy loss due to air exchange between the zone and the exterior:
+\item[Air change] This term represents the energy loss due to air exchange between the zone and the exterior:
 \begin{equation}
   \phi_{\mathrm{air}} = 0.34 \cdot Q_v \cdot \Delta T
 \end{equation}
-
+\end{description}
 The described thermal models are implemented using the Modelica language, which is an object-oriented, equation-based language well-suited for modeling complex physical systems. 
 These models are then transformed into Functional Mock-up Units (FMUs) compliant with the Functional Mock-up Interface (FMI) standard. 
 FMUs encapsulate the models and enable them to be shared and integrated across different simulation environments.
@@ -474,10 +471,10 @@ In city energy simulations, the computation of shading masks and view factors is
 
 \paragraph{Numerical Methods and Challenges}
 Both shading masks and view factors are computed using Monte Carlo and ray tracing techniques, which allow for handling complex geometries with various obstructions. Despite being purely geometric quantities, these calculations face significant challenges such as:
-\begin{itemize}
+\begin{inparaenum}[\it (i)]
     \item Efficient computation of integrals for view factors, especially when considering specular surfaces that require multiple ray bounces.
     \item Managing large-scale mesh computations and data storage, particularly when detailed urban environments are modeled.
-\end{itemize}
+\end{inparaenum}
 
 \paragraph{Implementation in Feel++}
 Feel++ facilitates these computations through its robust numerical methods optimized for high performance and parallel execution. For each face of a building, Feel++ computes solar masks using a Monte Carlo approach for various sun positions, ensuring efficient and scalable processing across multiple CPU cores. This enables the integration of dynamic solar shading effects into the simulation of building energy performance, providing a more accurate representation of real-world conditions.
@@ -540,7 +537,7 @@ Additionally, the mesh partitioning techniques discussed earlier are employed to
 
 To run a KUB simulation, several input files need to be generated.
 We have several metadata files (in JSON format), mesh data files (in MSH format), and meteorological measurement files (in CSV format).
-\Cref{tab:input-data-size-comparison} lists these files with their corresponding sizes for New York City and a duration of one year for the simulation.
+\Cref{tab:input-data-size-comparison} lists these files with their corresponding sizes for New York City, see~\cref{fig:city-ny-largescale}, and a duration of one year for the simulation.
 In addition, we compared the size of the input data with the size of the zone.
 
 \begin{table}[ht]
@@ -582,11 +579,11 @@ These Docker images, customized for various system requirements, are maintained 
 \end{figure}
 The CI/CD workflow, see \cref{fig:feelpp-devops}, is crucial for efficiently integrating and deploying updates across all projects that utilize the Feel++ framework. 
 The workflow leverages various main ingredients of GitHub Actions features.
-\begin{enumerate}
+\begin{inparaenum}[\it (1)]
     \item \textbf{Pull Requests and Merges:} Triggering CI to verify that new code integrations meet all tests and standards.
     \item \textbf{Graphical User Interface (GUI) thanks to \texttt{workflow\_dispatch}:} Enabling developers to manually trigger pipelines through a GUI, which facilitates rapid deployment or testing.
     \item \textbf{Scheduled Runs:} Conducting regular updates and maintenance checks to ensure continuous system integrity and responsiveness.
-\end{enumerate}
+\end{inparaenum}
 
 
 
@@ -661,11 +658,11 @@ The pipeline's simulation part scales almost linearly, which is expected as the 
 
 To better understand what causes this degradation, we measure the computing times of the different stages of the pipeline and present the execution breakdown in \cref{fig:execution-breakdown}. 
 \cref{fig:execution-breakdown} reports the portion of the total execution taken by:
-\begin{itemize}
-\item Pre-processing (Pre-proc): The time elapsed in initialization before entering the time loop of the simulation
-\item Simulation (Simulation): The cumulative time spent calculating the new solution at each time step
-\item Post-processing (Post-proc): The cumulative time spent exporting results, i.e., generating files containing the output of the UB model.
-\end{itemize}
+\begin{description}
+\item[Pre-processing (Pre-proc)] The time elapsed in initialization before entering the time loop of the simulation
+\item[Simulation (Simulation)] The cumulative time spent calculating the new solution at each time step
+\item[Post-processing (Post-proc)] The cumulative time spent exporting results, i.e., generating files containing the output of the UB model.
+\end{description}
 
 The total elapsed time varies from 100 seconds to 1000 seconds in function of the number of Nodes.
 All machines tested have an elapsed time of the same magnitude order.
