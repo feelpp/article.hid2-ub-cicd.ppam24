@@ -9,6 +9,7 @@ Contact Author: Christophe Prud'homme <christophe.prudhomme@cemosis.fr>
 
 - Luca Berti, Cemosis, IRMA UMR 7501, University of Strasbourg, CNRS
 - Vincent Chabannes, Cemosis, IRMA UMR 7501, University of Strasbourg, CNRS
+- Gwennolé Chappron, Cemosis, IRMA UMR 7501, University of Strasbourg, CNRS
 - Javier Cladellas, Cemosis, IRMA UMR 7501, University of Strasbourg, CNRS
 - Abdoulaye Diallo, Cemosis, IRMA UMR 7501, University of Strasbourg, CNRS
 - Maryam Maslek Elayam, Cemosis, IRMA UMR 7501, University of Strasbourg, CNRS
