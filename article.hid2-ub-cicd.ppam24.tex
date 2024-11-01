@@ -95,7 +95,11 @@ The building sector accounts for approximately 40\% of final energy consumption 
 
 The Ktirio Urban Building (KUB) pilot in CoE HiDALGO2 aims to leverage high-performance computing to enhance city energy simulation for better energy management and air quality assessment. Advanced simulation tools predict energy consumption, thermal comfort, and indoor air quality across both the building and urban scales. These simulations support detailed individual building-level analysis and extend to broader urban environments, influencing urban planning and policy-making. KUB is part of the platform Ktirio~\cite{cemosis_ktirio_2024} which itself is based on Feel++~\cite{christophe_prudhomme_feelppfeelpp_2024}.
 
-Building on the foundations of the Feel++ framework, this paper introduces an innovative CI/CD environment specifically designed for deployment on EuroHPC JU supercomputers. This environment enhances our ability to develop and test simulations rapidly and provides a robust platform for deploying and running these simulations at multiple scales. Integrating EuroHPC JU infrastructures represents a significant advancement in making high-performance computing resources accessible for urban simulation studies.
+Building on the foundations of the Feel++ framework, this paper introduces an innovative CI/CD environment specifically designed for deployment on EuroHPC JU supercomputers. 
+This environment enhances our ability to develop and test simulations rapidly and provides a robust platform for deploying and running these simulations at multiple scales. 
+By leveraging containerized environments, we ensure that all dependencies are encapsulated, making the simulations portable and reproducible across different supercomputing resources. 
+These containers are deployed on EuroHPC JU infrastructures, which represents a significant advancement in making high-performance computing resources accessible for urban simulation studies. 
+The use of containers also simplifies software management and ensures consistency in the deployment process, enabling seamless scalability and reliability across EuroHPC systems.
 
 Thanks to synergies with other CoE HiDALGO2 pilots, the KUB project is set to integrate building simulations with Urban Air Pollution (UAP) pilot models to comprehensively assess the environmental impact of building stocks soon. This integration improves the predictive accuracy of the simulations by incorporating real-time data such as wind speed and solar radiation, enhancing the models' responsiveness and forecasts to environmental conditions.
 
@@ -564,7 +568,11 @@ These enhancements will increase the complexity and accuracy of the simulation a
 \section{CI/CD Framework for the Urban Building Pilot}
 \label{sec:cicd-framework}
 
-The Urban Building pilot utilizes the Feel++ framework, supported by a robust CI/CD framework that facilitates efficient development and deployment. %This section outlines how GitHub Actions and Docker streamline the entire process, ensuring the robustness and productivity of the software development lifecycle.
+The Urban Building pilot utilizes the Feel++ framework, supported by a robust CI/CD framework that facilitates efficient development and deployment.
+A critical component for both Feel++ and KUB is the use of containerized environments, which encapsulate all necessary dependencies and configurations.
+
+
+%This section outlines how GitHub Actions and Docker streamline the entire process, ensuring the robustness and productivity of the software development lifecycle.
 
 \subsection{Standard CI/CD DevOps}
 The development and deployment of KUB builds on top of the Feel++ CI/CD framework. It employs GitHub Actions and Docker: GitHub Actions automate real-time workflows to compile, test, and validate code changes, facilitating rapid development cycles and ensuring code quality.
@@ -604,7 +612,8 @@ Feel++ CI/CD workflow for high-performance computing applications incorporates s
 The tools and strategies for HPCOps are  \textit{(i) }\textbf{Reframe-HPC:} Utilized to define and manage systematic benchmarks that are reproducible across different HPC environments, facilitating the testing of performance and scalability, see~\cite{karakasis_reframe-hpcreframe_2024};
 \textit{(ii)}\textbf{SLURM:} Employs its REST API if available, \textit{e.g.} on MeLuXiNa, otherwise scripted SLURM usage for CI/CD for scheduling and managing jobs on integrated HPC systems, allowing programmable job submission and monitoring directly from CI workflows, see~\cite{slurm_development_team_slurm_2024}; and \textit{(iii)} \textbf{Apptainer:} Ensures that Docker containers can be deployed securely and efficiently in HPC settings, supporting portability and consistency, see~\cite{apptainer_contributors_apptainer_2024}.
 
-Integration with EuroHPC JU supercomputers such as LUMI, Karolina, Meluxina, Discoverer, Vega, and Leonardo enhances the capability to perform large-scale simulations and check the parallel properties and correctness of Feel++. The operations include automatic testing that triggers larger-scale tests on designated HPC nodes once new changes are integrated and verified by standard CI/CD pipelines.
+Integration with EuroHPC JU supercomputers such as LUMI, Karolina, Meluxina, Discoverer, Vega, and Leonardo enhances the capability to perform large-scale simulations and check the parallel properties and correctness of Feel++. 
+The operations include automatic testing that triggers larger-scale tests on designated HPC nodes once new changes are integrated and verified by standard CI/CD pipelines.
 
 Regarding monitoring and reporting, performance results from these operations are automatically captured and uploaded to the data storage system, such as the performance reports
 
@@ -616,11 +625,7 @@ Regarding monitoring and reporting, performance results from these operations ar
 \end{wrapfigure}
 This framework leverages cutting-edge computational technologies, ensuring the high performance and accuracy of the Feel++ framework and Feel++-based applications.
 It sets a benchmark for integrating modern software frameworks with advanced HPC infrastructure to significantly advance computational research and applications.
-
 \Cref{fig:kub-devops} shows that the CI/CD standard DevOps framework for KUB uses similar steps.
-
-
-
 \Cref{fig:kub-hpcops} finally shows the HPCOps deployed on EuroHPC systems to check the parallel properties and correctness of the pilot on large-scale cases. It extends Feel++ HPC ops with additional steps to handle our complex pre- and post-processing steps.
 
 \begin{figure}
