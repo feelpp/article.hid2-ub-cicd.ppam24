@@ -669,7 +669,7 @@ To better understand what causes this degradation, we measure the computing time
 \item[Post-processing (Post-proc)] The cumulative time spent exporting results, i.e., generating files containing the output of the UB model.
 \end{description}
 
-The total elapsed time varies from 100 seconds to 1000 seconds in function of the number of Nodes.
+In~\cref{fig:combined-metrics}, the total elapsed time varies from 100 seconds to 1000 seconds in function of the number of nodes.
 All machines tested have an elapsed time of the same magnitude order.
 
 Pre-processing does not scale. However, it occupies only a small part of the total execution, and thus it is not performance-critical. On the other hand, as more nodes are employed and the time spent in the actual simulation is decreased, the post-processing stage dominates the execution. It becomes the main bottleneck, causing the previously observed performance degradation.
