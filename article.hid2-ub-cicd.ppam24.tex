@@ -464,18 +464,6 @@ Furthermore, its integration with Specx for task-based parallel execution optimi
 Documentation and further details can be accessed through Feel++ Toolboxes Documentation\footnote{\url{https://docs.feelpp.org/toolboxes/latest/}}.
 This powerful toolchain is essential for KUB.
 
-\subsubsection{Modelica for Multizone Heat Transfer}
-
-The FMUs built from \cref{sec:heat-transfer-in-buildings} are loaded by the \texttt{Feel++} environment.
-
-Input data for the models are sourced from available building information, such as geometric dimensions and material properties.
-When specific data are unavailable, default values are assigned based on the building's construction year, referencing standard building codes or typical practices from that period.
-
-Occupancy schedules are given as input to the models using reglementary occupancy.
-We are currently working on parametrized occupancy profiles, which are adjusted based on the building's use type (e.g., residential, office, commercial).
-
-This approach ensures that the models can be applied to a wide range of buildings, even when detailed information is limited.
-
 \subsubsection{Computing Shading Masks and View Factors with Feel++}
 
 In city energy simulations, the computation of shading masks and view factors is crucial for accurately modeling the impact of solar radiation on building surfaces. Shading masks quantify the percentage of blocked solar radiation for each building surface (including walls and roofs) depending on the sun's direction. This is influenced by nearby structures such as other buildings, vegetation, and urban furniture. The view factors describe the fraction of radiation that leaves one surface and strikes another, essential for calculating radiative heat exchanges between building surfaces.
@@ -517,6 +505,13 @@ In the Urban Building Energy Model (UBEM), heat transfer analysis is crucial for
 
 \paragraph{Modelica for Multizone Heat Transfer}
 Modelica offers extensive capabilities for multizone building energy simulations, utilizing models that range from simple (LOD-0) to more complex (LOD-1) representations. The multizone approach in Modelica is beneficial for modular and scalable simulations, where each building zone can be modeled with different fidelity based on the simulation requirements. This method leverages the generation of Functional Mock-up Units (FMUs), which integrate seamlessly into larger C/C++ applications, providing a robust framework for handling complex simulations involving multiple interacting systems.
+The FMUs built from \cref{sec:heat-transfer-in-buildings} are loaded by the \texttt{Feel++} environment.
+Input data for the models are sourced from available building information, such as geometric dimensions and material properties.
+When specific data are unavailable, default values are assigned based on the building's construction year, referencing standard building codes or typical practices from that period.
+Occupancy schedules are given as input to the models using reglementary occupancy.
+We are currently working on parametrized occupancy profiles, which are adjusted based on the building's use type (e.g., residential, office, commercial).
+This approach ensures that the models can be applied to a wide range of buildings, even when detailed information is limited.
+
 
 \paragraph{Finite Element Analysis with Feel++}
 Complementing Modelica's capabilities, Feel++ provides robust tools for finite element analysis, particularly in handling the detailed aspects of heat transfer within urban environments. It uses advanced numerical methods like reduced basis methods for rapid scenario testing and parallel-in-time algorithms for efficient simulations. This is particularly important for assessing the impact of solar radiation and external shading, which are modeled using geometric and dynamic shading masks derived from solar paths.
@@ -525,7 +520,9 @@ Complementing Modelica's capabilities, Feel++ provides robust tools for finite e
 The integration of Feel++ and Modelica is exemplified in their use of shading masks and view factors, which are critical for accurate solar heat gain calculations. These masks are computed using Monte Carlo simulations and ray tracing methods to assess the percentage of solar radiation impacting various building surfaces. This data feeds into the Modelica simulations, enhancing the accuracy of the thermal load predictions.
 
 \paragraph{Challenges and Solutions}
-One of the main challenges in urban building simulation is managing the computational load, which is addressed through computing strategies that leverage currently CPUs but in the GPUs but, in the future, will enable hybrid computing with both CPUs and GPUs. This approach ensures that large-scale simulations, necessary for city-wide energy analysis, remain feasible and efficient. Additionally, the mesh partitioning techniques discussed earlier are employed to optimize the data handling and processing times, further integrating the spatial data management with the thermal modeling processes.
+One of the main challenges in urban building simulation is managing the computational load, which is addressed through computing strategies that leverage currently CPUs but in the GPUs but, in the future, will enable hybrid computing with both CPUs and GPUs. 
+This approach ensures that large-scale simulations, necessary for city-wide energy analysis, remain feasible and efficient. 
+Additionally, the mesh partitioning techniques discussed earlier are employed to optimize the data handling and processing times, further integrating the spatial data management with the thermal modeling processes.
 
 %By utilizing the combined strengths of Feel++ for detailed finite element analysis and Modelica for system-level energy simulation, the UBEM framework is a tool capable of %%addressing the complex dynamics of urban heat transfer and energy management.%
 
