@@ -673,15 +673,23 @@ To better understand what causes this degradation, we measure the computing time
 \cref{fig:execution-breakdown} reports the portion of the total execution taken by:
 \begin{description}
 \item[Pre-processing (Pre-proc)] The time elapsed in initialization before entering the time loop of the simulation
-\item[Simulation (Simulation)] The cumulative time spent calculating the new solution at each time step
+\item[Simulation (Simulation)] The cumulative time spent calculating the new solution at each time step of the simulation described in \cref{sec:heat-transfer-in-buildings}.
 \item[Post-processing (Post-proc)] The cumulative time spent exporting results, i.e., generating files containing the output of the UB model.
 \end{description}
 
 In~\cref{fig:combined-metrics}, the total elapsed time varies from 100 seconds to 1000 seconds in function of the number of nodes.
 All machines tested have an elapsed time of the same magnitude order.
 
-Pre-processing does not scale. However, it occupies only a small part of the total execution, and thus it is not performance-critical. On the other hand, as more nodes are employed and the time spent in the actual simulation is decreased, the post-processing stage dominates the execution. It becomes the main bottleneck, causing the previously observed performance degradation.
-This behavior is caused by the multiple files being written in parallel on the shared file system. More specifically, most of the writing time is spent in opening and closing files in parallel. We are investigating potential solutions, such as asynchronous writes, data caching, etc. Finally, as the project progresses, we expect the urban building models used in the simulation to become more complex, leading to an increase in the time occupied by the simulation part and, hence, to a reduction of the impact of post-processing on the total execution time of the pilot.
+
+Pre-processing does not scale efficiently, but it occupies only a small portion of the total execution time and is therefore not performance-critical.
+As more nodes are employed and the actual simulation time decreases, the post-processing stage becomes the dominant component of execution, posing a potential bottleneck and causing the previously observed performance degradation.
+This behavior is primarily due to multiple files being written in parallel to the shared file system, with a significant portion of time spent opening and closing files simultaneously.
+
+However, our end-user approach focuses not on the complete solution fields, unlike this benchmark, but rather on outputs of interest and automatically generated analysis reports, which occupy only a small fraction of the typical post-processing time.
+By targeting specific metrics and reports, we minimize the post-processing overhead and reduce data transfer and storage demands (see \cref{sec:final-analysis} for more information).
+
+We are nevertheless actively exploring potential solutions to further streamline the processing of solution fields, such as asynchronous writes, data caching, and other strategies to mitigate the impact of file operations. 
+As the project progresses, we anticipate that the urban building models used in the simulation will grow in complexity, leading to increased time spent in the simulation itself (\cref{sec:heat-transfer-in-buildings}) and subsequently reducing the relative impact of post-processing on the overall execution time of the pilot.
 
 
 \section{Conclusion}
