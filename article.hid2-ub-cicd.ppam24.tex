@@ -6,6 +6,9 @@
 \usepackage{wrapfig}
 \usepackage[]{subcaption}
 \usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{siunitx}
+\usepackage{ragged2e}
 \usepackage{multicol}
 \usepackage{url}
 \usepackage{tikz}
@@ -540,24 +543,26 @@ We have several metadata files (in JSON format), mesh data files (in MSH format)
 \Cref{tab:input-data-size-comparison} lists these files with their corresponding sizes for New York City and a duration of one year for the simulation.
 In addition, we compared the size of the input data with the size of the zone.
 
-\begin{table}[h]
-\begin{center}
-  \begin{tabular}{lccc} 
-    \toprule
-    Files & $4 \times 4 \mathrm{km}^2$ & $10 \times 10 \mathrm{km}^2$ & $20 \times 20 \mathrm{km}^2$ \\ [0.5ex] 
-    geographicdata\_setup.json & 4.0 K  & 4.0 K & 4.0 K \\ 
-    gis.json & 23 M & 117M & 470 M \\
-    mesh\_lod0.msh & 17 M & 112M & 496 M \\
-    mesh\_lod1.msh & 44 M & 240M & 896 M \\
-    weather-data-0.hourly-variables.csv & 384 K  & 384 K  & 384 K  \\
-    weather-data.json & 4.0 K  & 4.0 K & 4.0 K  \\ [1ex] 
-    \bottomrule
-  \end{tabular}
-\end{center}
-\caption{Size comparison of input data using New York city.}
-\label{tab:input-data-size-comparison}
-\end{table}
+\begin{table}[ht]
+  \centering
+  \caption{Size comparison of input data files for different geographical extents in New York City}
+  \label{tab:input-data-size-comparison}
+  \begin{tabularx}{.8\linewidth}{l *{3}{>{\RaggedLeft\arraybackslash}X}} 
+      \toprule
+      \textbf{Files} & \textbf{\text{4 $\times$ 4} \si{\kilo\meter\squared}} & \textbf{\text{10 $\times$ 10} \si{\kilo\meter\squared}} & \textbf{\text{20 $\times$ 20} \si{\kilo\meter\squared}} \\
+      \midrule
+      \texttt{geographicdata\_setup.json} & \SI{4.0}{\kilo\byte} & \SI{4.0}{\kilo\byte} & \SI{4.0}{\kilo\byte} \\ 
+      \texttt{gis.json} & \SI{23}{\mega\byte} & \SI{117}{\mega\byte} & \SI{470}{\mega\byte} \\
+      \texttt{mesh\_lod0.msh} & \SI{17}{\mega\byte} & \SI{112}{\mega\byte} & \SI{496}{\mega\byte} \\
+      \texttt{mesh\_lod1.msh} & \SI{44}{\mega\byte} & \SI{240}{\mega\byte} & \SI{896}{\mega\byte} \\
+      \texttt{weather-data-0.hourly-variables.csv} & \SI{384}{\kilo\byte} & \SI{384}{\kilo\byte} & \SI{384}{\kilo\byte} \\
+      \texttt{weather-data.json} & \SI{4.0}{\kilo\byte} & \SI{4.0}{\kilo\byte} & \SI{4.0}{\kilo\byte} \\
+      \bottomrule
+  \end{tabularx}
+  \end{table}
 
+In the future, the input data is expected to grow even larger with the addition of new details such as roofs, building characteristics, vegetation (e.g., trees), and terrain information.
+These enhancements will increase the complexity and accuracy of the simulation and the amount of data required to accurately model the urban environment.
 
 \section{CI/CD Framework for the Urban Building Pilot}
 \label{sec:cicd-framework}
@@ -582,6 +587,9 @@ The workflow leverages various main ingredients of GitHub Actions features.
     \item \textbf{Graphical User Interface (GUI) thanks to \texttt{workflow\_dispatch}:} Enabling developers to manually trigger pipelines through a GUI, which facilitates rapid deployment or testing.
     \item \textbf{Scheduled Runs:} Conducting regular updates and maintenance checks to ensure continuous system integrity and responsiveness.
 \end{enumerate}
+
+
+
 
 \subsection{HPC DevOps (HPCOps)}
 Feel++ CI/CD workflow for high-performance computing applications incorporates specialized HPCOps (HPC DevOps) practices that ensure the software performs consistently across various HPC systems.
