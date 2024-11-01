@@ -182,22 +182,22 @@ We describe our definition of Levels of Detail for Buildings such as:
 \begin{figure}[ht]%{R}{1\textwidth} % 'R' or 'L' for right or left, and width
 \centering
 \subfloat[LOD-0: a building is represented by its bounding box]{%
-  \includegraphics[width=0.48\linewidth]{img-compressed-buildings-lod0.png}
+  \includegraphics[width=0.45\linewidth]{img-compressed-buildings-lod0.png}
   \label{fig:building-lod0}
-}
+}\hspace{0.05\linewidth}
 %\hfill % This ensures that the images are placed side by side
 \subfloat[LOD-1: a building is represented by its ground footprint elevated to its height]{%
-  \includegraphics[width=0.48\linewidth]{img-compressed-buildings-lod1.png}
+  \includegraphics[width=0.45\linewidth]{img-compressed-buildings-lod1.png}
   \label{fig:building-lod1}
 }\\ % Ends the line for the first row of figures
 
 \subfloat[LOD-2: a building in full detail using BIM. Note that LOD-2 and LOD-1 are mixed.]{%
-  \includegraphics[width=0.48\linewidth]{img-compressed-buildings-lod2.png}
+  \includegraphics[width=0.45\linewidth]{img-compressed-buildings-lod2.png}
   \label{fig:building-lod2}
-}
+}\hspace{0.05\linewidth}
 %\hfill
 \subfloat[LOD-2: A zoom on the LOD-2 building.]{%
-  \includegraphics[width=0.48\linewidth]{img-compressed-buildings-lod2-zoom.png}
+  \includegraphics[width=0.45\linewidth]{img-compressed-buildings-lod2-zoom.png}
   \label{fig:building-lod2-zoom}
 }
 
@@ -295,14 +295,14 @@ Different partitioning strategies are considered depending on the specific requi
 \end{inparadesc}
 
 The current version of our simulation framework has implemented case 0 and case 1. Cases 2 and 3 require a full conformal mesh, which is not yet available. Moreover, these partitioning strategies are costly, so we have planned to use other third-party tools, such as Zoltan2~\cite{the_zoltan2_team_zoltan2_nodate}, to improve efficiency.
-\begin{wrapfigure}{R}{0.6\textwidth}
+\begin{wrapfigure}{R}{0.7\textwidth}
 \centering
 \subfloat[Partitioning Case 0\label{fig:city-strasbourg-lod0-parts}]{%
-  \includegraphics[width=0.48\linewidth]{img-compressed-city-strasbourg-lod0-parts.png}
-}
+  \includegraphics[width=0.46\linewidth]{img-compressed-city-strasbourg-lod0-parts.png}
+}\hspace{0.02\linewidth}
 %\hfill % Ensures that the images are placed side by side
 \subfloat[Partitioning Case 1\label{fig:city-strasbourg-lod1-parts}]{%
-  \includegraphics[width=0.48\linewidth]{img-compressed-city-strasbourg-lod1-parts.png}
+  \includegraphics[width=0.46\linewidth]{img-compressed-city-strasbourg-lod1-parts.png}
 }
 %\subfloat[Partitioning Case 3: Large scale\label{fig:city-ny-largescale}]{%
 %  \includegraphics[width=0.4\textwidth]{img-compressed-city-newyork-largescale.png}
