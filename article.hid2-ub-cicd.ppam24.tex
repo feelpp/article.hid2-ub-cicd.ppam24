@@ -6,9 +6,12 @@
 \usepackage{wrapfig}
 \usepackage[]{subcaption}
 \usepackage{booktabs}
+\usepackage{multicol}
 \usepackage{url}
 \usepackage{tikz}
 \usepackage{xcolor}
+\usepackage{paralist}
+\usepackage{amsmath}
 \definecolor{darkred}{rgb}{0.6, 0, 0}
 \definecolor{darkgreen}{rgb}{0, 0.5, 0}
 \definecolor{darkblue}{rgb}{0, 0, 0.5}
@@ -31,13 +34,15 @@
 
 
 \title{Ktirio Urban Building: A Computational Framework for City Energy Simulations Enhanced by CI/CD Innovations on EuroHPC Systems}
-\author{Luca Berti\inst{1} \and Vincent Chabannes \inst{1}\orcidID{0009-0005-3602-3524} \and
-Javier Cladellas \inst{1}\orcidID{0009-0003-8687-7881} \and 
+\author{Luca Berti\inst{1} \and 
+Vincent Chabannes \inst{1}\orcidID{0009-0005-3602-3524} \and
+Gwennolé Chappron \inst{1}\orcidID{0009-0003-7588-3370} \and
+Javier Cladellas \inst{1}\orcidID{0009-0003-8687-7881} \and
 Abdoulaye Diallo \inst{1}\orcidID{0009-0006-8731-0547}\ \and
 Maryam Maslek Elayam \inst{1}\orcidID{0000-0003-0880-5180} \and
 Philippe Pinçon \inst{1}\orcidID{0009-0009-7724-3055 } \and
 Christophe Prud'homme\inst{1}\orcidID{0000-0003-2287-2961}}
-\institute{Cemosis, IRMA UMR 7501, University of Strasbourg, CNRS\\ 
+\institute{Cemosis, IRMA UMR 7501, University of Strasbourg, CNRS\\
 \email{\{vincent.chabannes,christophe.prudhomme\}@cemosis.fr}}
 \date{\gitReln\  \gitAuthorDate\ (\gitAbbrevHash)}
 \authorrunning{V. Chabannes et al.}
@@ -56,7 +61,7 @@ Christophe Prud'homme\inst{1}\orcidID{0000-0003-2287-2961}}
     linkcolor=CustomBlue,
     urlcolor=blue
 }
-
+\usepackage{cleveref}
 
 \begin{document}
 
@@ -93,18 +98,18 @@ Thanks to synergies with other CoE HiDALGO2 pilots, the KUB project is set to in
 
 Implementing the proposed KUB workflow will facilitate more informed urban planning decisions, support policy development for energy efficiency, and contribute to reducing urban greenhouse gas emissions. The project also focuses on enhancing the interactions between different environmental models to provide a holistic view of urban ecosystems.
 
-This paper is organized as follows: Section~\ref{sec:kub-workflow} discusses KUB's current workflow, Section~\ref{sec:urban-building} provides an overview of some modeling and simulation components, and finally, Section~\ref{sec:cicd-framework} delves into the CI/CD processes from standard DevOps to HPCops tailored for EuroHPC environments.
+This paper is organized as follows: \cref{sec:kub-workflow} discusses KUB's current workflow, \cref{sec:urban-building} provides an overview of some modeling and simulation components, and finally, \cref{sec:cicd-framework} delves into the CI/CD processes from standard DevOps to HPCops tailored for EuroHPC environments.
 
 %Feel++\cite{christophe_prudhomme_feelppfeelpp_2024}
 
 \section{Ktirio Urban Building Workflow}
 \label{sec:kub-workflow}
 
-The Ktirio urban building workflow, see Figure~\ref{fig:kub-workflow}, integrates various data sources and computational tools to simulate and analyze urban building energy and its impact on urban environments. The process encompasses data acquisition, processing, simulation, and analysis, eventually coupled with Urban Air Pollution (UAP) models.
+The Ktirio urban building workflow, see \cref{fig:kub-workflow}, integrates various data sources and computational tools to simulate and analyze urban building energy and its impact on urban environments. The process encompasses data acquisition, processing, simulation, and analysis, eventually coupled with Urban Air Pollution (UAP) models.
 
 \begin{figure}
     \centering
-    \includegraphics[width=.9\textwidth]{img-kub-workflow.pdf}
+    \includegraphics[width=.9\textwidth,page=1]{img-kub-workflow.pdf}
     \caption{Current Urban Building Workflow from localization to city energy simulation report.}
     \label{fig:kub-workflow}
 \end{figure}
@@ -123,6 +128,25 @@ The building simulation outputs are then optionally fed into the \textit{Urban A
 \label{sec:final-analysis}
 
 The final step involves the \textit{UBEM Simulator}, which generates large-scale outputs that summarize the overall energy consumption and environmental impact of buildings on an urban scale. This comprehensive urban scale analysis merges data from the building energy and air quality models to provide a holistic view of urban environmental quality.
+
+In addition to these exports, the simulator condenses, aggregates and saves relevant quantities on the fly to avoid having to manipulate large data volumes after the simulation. These metrics concern weather information, energy consumption and comfort assessment, and are exported in JSON format. The produced files are uploaded to a data management platform via the CI/CD pipeline (see \cref{fig:kub-devops}), who is then in charge of notifying a different workflow in order to render insightful figures that showcase the simulation results, as detailed in \cref{sec:cicd-framework}.
+
+Insights are presented in the form of a comprehensive report and are automatically deployed on a website built using the \textit{Antora} framework. End users are finally able to explore the simulation outputs in a detailed but malleable manner, for both the city and the building scales.
+
+\Cref{fig:ktirio-cases-report} presents a gallery of city reports that are taken as test cases for the Urban Building pilot, as well as an example of a city report section showing the occlusion factor and heat flow plot.
+\begin{figure}[htbp]
+  \centering
+  \subfloat[Gallery of test case cities reports\label{fig:city-gallery}]{%
+    \includegraphics[width=0.45\textwidth]{img-compressed-city-gallery.png}
+  }
+  \hfill
+  \subfloat[Section of a city report\label{fig:city-report-section}]{%
+    \includegraphics[width=0.45\textwidth]{img-compressed-city-report-section.png}
+  }
+  \caption{Screenshots of the \url{https://cases.ktirio.fr} reporting website.}
+  \label{fig:ktirio-cases-report}
+\end{figure}
+
 
 The described streamlined workflow is critical for accurately simulating and understanding urban sustainability challenges, supporting our application's broader objectives of improving urban living conditions and environmental impact.
 
@@ -172,9 +196,15 @@ We describe our definition of Levels of Detail for Buildings such as:
 
 \caption{Different representations of a building using our LOD definition}
 \label{fig:buildings}
+
 \end{figure}
 
-In the figure~\ref{fig:buildings}, we illustrate the different levels of details. Panel~\ref{fig:building-lod0} displays the LOD-0 of a building with its bounding box. Panel~\ref{fig:building-lod1} displays the LOD-1 of a building using its footprint elevated to its height. Panel~\ref{fig:building-lod2} and~\ref{fig:building-lod2-zoom} display the LOD-2 representation using BIM. In the figure~\ref{fig:city-strasbourg}, we display an illustration of the center of the city of Strasbourg with LOD-0, see panel~\ref{fig:city-strasbourg-lod0}, and LOD-1, see panel~\ref{fig:city-strasbourg-lod1}, representations.
+In \cref{fig:buildings}, we illustrate the different levels of details. 
+\Cref{fig:building-lod0} displays the LOD-0 of a building with its bounding box. 
+\Cref{fig:building-lod1} displays the LOD-1 of a building using its footprint elevated to its height. 
+\Cref{fig:building-lod2} and~\cref{fig:building-lod2-zoom} display the LOD-2 representation using BIM. 
+In \Cref{fig:city-strasbourg}, we display an illustration of the center of the city of Strasbourg with LOD-0, see \cref{fig:city-strasbourg-lod0}, and LOD-1, see \cref{fig:city-strasbourg-lod1}, representations.
+
 
 
 
@@ -193,7 +223,9 @@ However, this method provides a very refined mesh, even when the terrain is flat
 %Subsequently, isolines for elevation are computed, and mesh adaptation techniques are applied to reduce mesh density where feasible. Finally, each tile is glued together to ensure the continuity of the terrain mesh.
 
 \subsubsection{Vegetation Modeling}
+
 Including vegetation (trees) in our geometric model is essential for the simulation of buildings. The shading provided by trees and the cooling provided by wooded areas had a significant impacts on building environment  . We use the OpenStreetMap database to obtain the metadata associated with the vegetation. In addition to the position of the trees, we can also obtain other information, such as the tree's height and species. The current strategy is as follows:
+
 \begin{itemize}
 \item Definition of a reference tree library that lists a certain number of tree species at different levels of precision (LOD). These geometric entities are parameterized so that a transformation can be applied.
 \item Fetching vegetation metadata via OpenStreetMap. The attributes (height, species) are not always available, so we try to define them as best as we can (by searching around).
@@ -201,10 +233,13 @@ Including vegetation (trees) in our geometric model is essential for the simulat
 \end{itemize}
 
 \subsubsection{Integration of all urban geometric components}
-This process involves creating a conforming mesh that includes all components (buildings, terrains, vegetation). Moreover, this step requires accomplishing some challenges by using complex geometric algorithms to realize the following points: \textit{(i)} Ensure that buildings on slopes are accurately modeled by adapting their height and embedding them into the terrain mesh. The figure~\ref{fig:city-grenoble-terrain} illustrates this aspect; \textit{(ii)} applies the intersection of buildings and consequently defines contact zones that can be included in building thermal models (coupling). \textit{(iii)} Apply the intersection of vegetation with buildings and terrain; and finally \textit{(iv)} Improve mesh quality after the previous geometric operations (mesh adaption).
+
+This process involves creating a conforming mesh that includes all components (buildings, terrains, vegetation). Moreover, this step requires accomplishing some challenges by using complex geometric algorithms to realize the following points: \textit{(i)} Ensure that buildings on slopes are accurately modeled by adapting their height and embedding them into the terrain mesh. 
+\Cref{fig:city-grenoble-terrain} illustrates this aspect; \textit{(ii)} applies the intersection of buildings and consequently defines contact zones that can be included in building thermal models (coupling). \textit{(iii)} Apply the intersection of vegetation with buildings and terrain; and finally \textit{(iv)} Improve mesh quality after the previous geometric operations (mesh adaption).
+
 
 \subsubsection{Visual Representation}
-Advanced rendering techniques visualize the multi-fidelity urban models, supporting detailed analysis and general urban planning discussions. 
+Advanced rendering techniques visualize the multi-fidelity urban models, supporting detailed analysis and general urban planning discussions.
 These visualizations are crucial for assessing the impact of urban changes and for stakeholder engagement.
 
 This approach enhances urban models' accuracy, utility, and scalability, making them vital for comprehensive urban analysis and planning in the HiDALGO2 project.
@@ -234,7 +269,7 @@ This approach enhances urban models' accuracy, utility, and scalability, making 
 
 In the urban modeling process, particularly in generating building meshes, the Computational Geometry Algorithms Library (CGAL) plays a pivotal role. CGAL, \cite{the_cgal_project_cgal_2024} is renowned for its robust and efficient algorithms, which are crucial for handling complex geometric data and generating high-quality meshes. This library is currently used for the following operations: boolean operation of polygon, multi-polygon repairs~\cite{loriot_polygon_2024}, mesh generation, mesh intersection, mesh adaptation, and building roof skeleton.
 
-Features using CGAL algorithms are not yet operational in our framework. We can reconstruct a geometric model of an urban area whose location is arbitrary so that the user can select an area anywhere in the world. The final mesh comprises all buildings in LOD-0 or LOD-1 and the terrain with elevation. The integration of all the urban components is currently being investigated. This part requires fairly costly algorithms (mesh intersection), for which it will be necessary to form groups intelligently to reduce the computational cost.  
+All the features described above are not yet operational in our framework. We can reconstruct a geometric model of an urban area whose location is arbitrary so that the user can select an area anywhere in the world. The final mesh comprises all buildings LOD-0 or LOD-1 and the terrain with elevation. The integration of all the urban components is currently being investigated. This part requires fairly costly algorithms (mesh intersection), for which it will be necessary to form groups intelligently to reduce the computational cost.
 
 \paragraph{Current Mesh Generation Strategy}
 The current strategy for mesh generation employs multi-threading (MT) to handle various stages of the mesh construction process. Initially, the tiles used are determined based on the specified location, a task performed sequentially. Following this, GIS data, including buildings and elevation information, is downloaded in parallel. Next, polygons are repaired~\cite{loriot_polygon_2024} to ensure they are suitable for mesh generation, with this process executed in parallel using MT. The terrain mesh is then generated in parallel, employing CGAL's algorithms to ensure precision and efficiency. Union operations at tile junctions are performed to ensure continuity, a step that is currently sequential. Finally, building meshes are generated using a parallel MT approach, leveraging CGAL for its advanced mesh generation capabilities.
@@ -249,7 +284,7 @@ Different partitioning strategies are considered depending on the specific requi
 \begin{itemize}
 \item Case 0: simple scenarios where buildings do not interact with their environment, a basic listing and weighting strategy is sufficient
 \item Case 1: buildings interact with environmental elements, a more complex partitioning strategy is necessary that considers both the buildings and their immediate non-building surroundings. The build meshes and environment meshes (terrain, vegetation) are integrated conformably; each component can be partitioned separately.
-\item  Case 2: for full interaction models, the partitioning strategy starts with the buildings and extends to the entire urban mesh, ensuring all elements are considered to minimize communication overhead.
+\item Case 2: for full interaction models, the partitioning strategy starts with the buildings and extends to the entire urban mesh, ensuring all elements are considered to minimize communication overhead.
 \item Case 3: Regarding scenarios with extreme partitioning needs, Test Case 3 employs a multi-grid approach, defining coarse and fine meshes to manage computational resources efficiently. This multi-fidelity approach enhances the accuracy and applicability of urban models in simulations and ensures scalability across different computational platforms, making it a cornerstone of urban analysis.
 \end{itemize}
 
@@ -270,7 +305,7 @@ The current version of our simulation framework has implemented case 0 and case 
 \label{fig:partitioning}
 \end{wrapfigure}
 
-The figure~\ref{fig:partitioning} illustrates the different strategies discussed previously and presents a reconstruction of New York City in figure \ref{fig:city-ny-largescale}. This geometric model has an area of 400 $km^2$ (20 km square side of 20 km) and has generated around 450000 buildings. This example requires the large-scale approach discussed but not yet implemented or tested. 
+\Cref{fig:partitioning} illustrates the different strategies discussed previously and presents a reconstruction of New York City in \cref{fig:city-ny-largescale}. This geometric model has an area of 400 $km^2$ (20 km square side of 20 km) and has generated around 450000 buildings. This example requires the large-scale approach discussed but not yet implemented or tested.
 
 \begin{figure}[htbp]
 \centering
@@ -294,18 +329,135 @@ The figure~\ref{fig:partitioning} illustrates the different strategies discussed
 
 
 \subsubsection{Conclusion on mesh construction}
+
 Our strategy aims to improve the efficiency and scalability of the mesh generation process and enhance the fidelity and accuracy of the urban models used in simulations.
 
 \subsection{Modeling and simulations}
 
 We now turn to describing the physical modeling of city energy simulation.
-To do this, we built on two main tools: Feel++ and Modelica. 
+
+To do this, we built on two main tools: Feel++ and Modelica.
+
+\subsubsection{Heat transfer model in buildings}
+\label{sec:heat-transfer-in-buildings}
+
+The physical model of city buildings is based on a multizone model.
+One zone is allocated per building floor. 
+The energy balance for each zone is calculated by taking into account energy exchanges with adjacent zones and the environment.
+
+The energy balance is written according to the first law of thermodynamics: in an isolated system, the sum of all forms of energy is constant.
+
+\begin{equation}
+    C \frac{dT}{dt} = \phi_{\mathrm{HVAC}} + \phi_{\mathrm{gain}} - \phi_{\mathrm{losses}}
+\end{equation}
+where
+\begin{inparaenum}[\it (i)]
+    \item $C \dfrac{dT}{dt}$ represents the thermal inertia of the construction, quantifying how the temperature of the zone changes over time due to its thermal mass. Specifically,
+    $C$ is a measure of how much heat a material can store and release, combining the heat capacity of the construction (how much energy is required to change the temperature) with the rate of temperature change and 
+    $\dfrac{dT}{dt}$ is the rate of change of temperature with respect to time. A higher thermal inertia means the construction will have a slower rate of temperature change in response to energy inputs and losses, effectively buffering temperature fluctuations;
+    \item $\phi_{\mathrm{HVAC}}$ represents the energy input from the Heating, Ventilation, and Air Conditioning (HVAC) systems. It includes energy added to the zone to maintain desired temperature levels;
+    \item $\phi_{\mathrm{gain}}$, referred to as free energy gain, includes solar gains (heat from sunlight) and internal gains (heat generated by occupants and equipment);
+    \item $\phi_{\mathrm{losses}}$ represents the energy lost through walls, roofs, floors, and air exchanges with the environment.
+\end{inparaenum}
+
+\paragraph{HVAC heat flow} In the version of the model at the time of writing, the HVAC system is treated as an ideal heat source, which means it adjusts its output to maintain a set temperature within the building.
+
+\paragraph{Heat gain} Heat gain is the addition of energy to the building, derived from two sources: \textbf{internal heat gains} and \textbf{solar heat gains}.
+
+\paragraph{Internal heat gain} The internal heat gain captures the heat produced by occupants inside the building. 
+It is modeled as a function of metabolic rate $\mathrm{Met}$ and the number of inhabitants, $d_i$, which varies over time $t$:
+\begin{equation}
+  \phi_{\mathrm{int}} = \mathrm{Met} \cdot d_i(t)
+\end{equation}
+
+\paragraph{Solar heat gain} The total solar heat gain includes contributions from direct, diffuse, and reflected solar radiation, taking into account the building’s surface characteristics and shading coefficient:
+\begin{equation}
+  \phi_{\mathrm{solar}} = \alpha \cdot S \cdot \left( E_{\mathrm{dir}} + E_{\mathrm{diff}} + E_{\mathrm{ref}} \right) \cdot S_C
+\end{equation}
+Direct solar radiation is the component of solar radiation adjusted for the angle of incidence of the sunlight:
+\begin{equation}
+  E_{\mathrm{dir}} = F_{\mathrm{dir}} \cdot \cos(I)
+\end{equation}
+Here, $F_{\mathrm{dir}}$ is the direct solar radiation, which is a function of the horizontal solar radiation measured by a weather station:
+\begin{equation}
+  F_{\mathrm{dir}} = \dfrac{F_{\mathrm{dir,Hz}}}{\sin(H_s)}
+\end{equation}
+The term $\cos(I)$ calculates the cosine of the angle of incidence of sunlight, incorporating the sun's altitude and azimuth angles as well as the building's tilt angle:
+\begin{equation}
+  \cos(I) = \cos(H_s) \cdot \sin(\beta) \cdot \cos(A_{zs} - A_z) + \sin(H_s) \cdot \cos(\beta)
+\end{equation}
+Diffuse solar radiation includes contributions from the sky dome and is adjusted for the building's tilt:
+\begin{equation}
+  E_{\mathrm{diff}} = F_{\mathrm{dif,Hz}} \cdot \left( \dfrac{1 + \cos(\beta)}{2} \right)
+\end{equation}
+Reflected solar radiation is calculated using the total horizontal radiation and the environment's albedo:
+\begin{equation}
+  E_{\mathrm{ref}} = \left[ F_{\mathrm{dir,Hz}} + F_{\mathrm{dif,Hz}} \right] \cdot \left( \dfrac{1 + \cos(\beta)}{2} \right) \cdot \text{albedo}
+\end{equation}
+
+\paragraph{Conduction losses} Energy loss through walls is computed by summing the losses across all wall segments. It depends on the heat transfer coefficient, the wall area, and the temperature difference between the indoor and outdoor environments. In our current model, we simplify the calculations by not including the effects of thermal bridges, as they depend on specific information about the building's envelope, which we do not have:
+\begin{equation}
+  \phi_{\mathrm{wall}} = \sum_{j} U_j \cdot S_j \cdot \Delta T
+\end{equation}
+The convection losses are computed differently depending on the surface of the wall to which they are applied. On the interior surface, we apply a constant:
+\begin{equation}
+  \phi_{\mathrm{conv,int}} = \alpha_{\mathrm{conv}} \cdot \Delta T
+\end{equation}
+On the exterior surface, we use a forced convection model:
+\begin{equation}
+  \phi_{\mathrm{conv,ext}} = \left( 1.8 + 4.8 \cdot v_{\mathrm{air}} \right) \cdot \Delta T
+\end{equation}
+
+\paragraph{Radiation losses} Radiation losses describe the heat energy lost due to thermal radiation, impacting both energy efficiency and thermal comfort.
+We differentiate between the exterior of the wall that exchanges with the sky and the interior where the walls exchange with each other.
+namely, for the exterior radiation exchange:
+\begin{equation}
+  \phi_{\mathrm{net,sky}} = \varepsilon_i \cdot \sigma \cdot \left( T_i^4 - T_{\mathrm{sky}}^4 \right)
+\end{equation}
+and for the interior radiation exchange:
+\begin{equation}
+  J[i] = \varepsilon_i \cdot \sigma \cdot T_i^4 + \left( 1.0 - \varepsilon_i \right) \cdot \sum_{j=1}^{n} F[i,j] \cdot J[j]
+\end{equation}
+where the radiative heat exchange $J[i]$ includes two terms:
+\begin{inparaenum}[\it (i)]
+    \item $\varepsilon_i \cdot \sigma \cdot T_i^4$, which calculates the heat radiated by surface $i$ where $\varepsilon_i$ measures how effectively the surface emits radiation and $T_i^4$ reflects that radiative heat loss increases rapidly with temperature; and
+    \item $\left( 1.0 - \varepsilon_i \right) \cdot \sum_{j=1}^{n} F[i,j] \cdot J[j]$, which accounts for the heat absorbed from other surfaces $j$ within the zone. The factor $\left( 1.0 - \varepsilon_i \right)$ adjusts for the fraction of incoming radiation not emitted by surface $i$.
+\end{inparaenum}
+The net radiation flow is given by:
+\begin{equation}
+  \phi_{\mathrm{net,int}}[i] = S \cdot \dfrac{\varepsilon_i}{1.0 - \varepsilon_i} \cdot \left( \sigma \cdot T_i^4 - J[i] \right)
+\end{equation}
+Net radiation flow $Q_{\mathrm{flow}}[i]$ considers:
+\begin{inparaenum}[\it (i)]
+    \item $\dfrac{\varepsilon_i}{1.0 - \varepsilon_i} \cdot \left( \sigma \cdot T_i^4 - J[i] \right)$, which calculates the net heat flow due to radiation for surface $i$, considering the difference between the heat emitted by the surface and the heat received from other surfaces. The ratio $\dfrac{\varepsilon_i}{1.0 - \varepsilon_i}$ scales the net flow based on the emissivity of the surface.
+\end{inparaenum}
+
+\paragraph{Air change} This term represents the energy loss due to air exchange between the zone and the exterior:
+\begin{equation}
+  \phi_{\mathrm{air}} = 0.34 \cdot Q_v \cdot \Delta T
+\end{equation}
+
+The described thermal models are implemented using the Modelica language, which is an object-oriented, equation-based language well-suited for modeling complex physical systems. 
+These models are then transformed into Functional Mock-up Units (FMUs) compliant with the Functional Mock-up Interface (FMI) standard. 
+FMUs encapsulate the models and enable them to be shared and integrated across different simulation environments.
+
+
+\paragraph{Conclusion} By integrating these models within a high-performance computing framework, it is possible to simulate the thermal behavior of city-scale building clusters.
+This facilitates the assessment of energy consumption, thermal comfort, and the impact of various energy-saving strategies under different environmental conditions and operational scenarios.
 
 \subsubsection{KUB is based on the Feel++ toolchain}
 
-Feel++ is a comprehensive framework designed to tackle problems based on Ordinary Differential Equations (ODEs) and Partial Differential Equations (PDEs). Using modern C++ (C++17 and C++20) standards coupled with a Python layer through Pybind11, Feel++ enables seamless parallelism and is equipped with default communicators that simplify handling complex computational tasks. The framework's versatility is evident in its deployment across various platforms, including research and educational environments and cloud services tailored for high-performance computing needs.
+Feel++ is a comprehensive framework designed to tackle problems based on Ordinary Differential Equations (ODEs) and Partial Differential Equations (PDEs). 
+Using modern C++ (C++17 and C++20) standards coupled with a Python layer through Pybind11, Feel++ enables seamless parallelism and is equipped with default communicators that simplify handling complex computational tasks.
+The framework's versatility is evident in its deployment across various platforms, including research and educational environments and cloud services tailored for high-performance computing needs.
 
-Key features of the Feel++ framework encompass an extensive range of numerical methods designed to address Partial Differential Equations (PDEs), see~\cite{christophe_prudhomme_feelppfeelpp_2024}. These methods include continuous Galerkin (cG), discontinuous Galerkin (dG), hybrid discontinuous Galerkin (hdG), and reduced basis methods (rb/mor). A Domain Specific Language (DSL) for Galerkin methods significantly enhances the ease of implementing and experimenting with new numerical methods. The de Rham complex provides a comprehensive toolkit for constructing finite element spaces of arbitrary order, facilitating precise mathematical modeling. The framework's automatic differentiation and symbolic integration capabilities effectively bridge the gap between mathematical expressions and their computational implementation. Feel++ supports diverse applications, from fluid dynamics and structural mechanics to heat transfer and electrostatics, demonstrating its flexibility and broad applicability. Furthermore, its integration with Specx for task-based parallel execution optimizes performance and scalability on modern computational architectures.
+Key features of the Feel++ framework encompass an extensive range of numerical methods designed to address Partial Differential Equations (PDEs), see~\cite{christophe_prudhomme_feelppfeelpp_2024}. 
+These methods include continuous Galerkin (cG), discontinuous Galerkin (dG), hybrid discontinuous Galerkin (hdG), and reduced basis methods (rb/mor). 
+A Domain Specific Language (DSL) for Galerkin methods significantly enhances the ease of implementing and experimenting with new numerical methods. 
+The de Rham complex provides a comprehensive toolkit for constructing finite element spaces of arbitrary order, facilitating precise mathematical modeling. 
+The framework's automatic differentiation and symbolic integration capabilities effectively bridge the gap between mathematical expressions and their computational implementation.
+Feel++ supports diverse applications, from fluid dynamics and structural mechanics to heat transfer and electrostatics, demonstrating its flexibility and broad applicability.
+Furthermore, its integration with Specx for task-based parallel execution optimizes performance and scalability on modern computational architectures.
 
 %\paragraph{Simulation Tools and Applications}
 %Feel++ comes equipped with various toolboxes tailored for specific application domains, offering pre-built scenarios for fluid dynamics, solid mechanics, and electromagnetism, among others. These toolboxes are designed to provide robust and efficient solutions, leveraging the capabilities of Feel++ to address complex multi-physics problems in real-world scenarios.
@@ -347,13 +499,20 @@ Feel++ facilitates these computations through its robust numerical methods optim
 \label{fig:solar-masks-vf}
 \end{figure}
 
-In the figure~\ref{fig:solar-masks-vf}, we illustrate \textit{(i)} the solar masks of building face oriented eastwise for a discretization of the sun position in the panel~\ref{fig:sm-building-east}, \textit{(ii)} the solar masks for an entire building for discretization of the sun position in the panel~\ref{fig:sm-whole-building}, \textit{(iii)} a visualization of the solar mask early morning of the city center of Strasbourg in panel~\ref{fig:sm-strasbourg} and \textit{(iv)} an image of a standard benchmark~\cite{van_eck_surface_2016} for the computation of view-factors and solving the heat transfer problems between three building blocks in 2D subsequently in panel~\ref{fig:view-factor}.
+In \cref{fig:solar-masks-vf}, we illustrate \textit{(i)} the solar masks of building face oriented eastwise for a discretization of the sun position in \cref{fig:sm-building-east}, \textit{(ii)} the solar masks for an entire building for discretization of the sun position in \cref{fig:sm-whole-building}, \textit{(iii)} a visualization of the solar mask early morning of the city center of Strasbourg in \cref{fig:sm-strasbourg} and \textit{(iv)} an image of a standard benchmark~\cite{van_eck_surface_2016} for the computation of view-factors and solving the heat transfer problems between three building blocks in 2D subsequently in \cref{fig:view-factor}.
 
 \subsubsection{Heat Transfer Modeling with Feel++ and Modelica}
 In the Urban Building Energy Model (UBEM), heat transfer analysis is crucial for predicting energy consumption, internal air temperature variations, and overall building energy performance. This analysis is facilitated by a combination of Feel++ and Modelica, enabling detailed simulations of heat dynamics within urban buildings.
 
 \paragraph{Modelica for Multizone Heat Transfer}
 Modelica offers extensive capabilities for multizone building energy simulations, utilizing models that range from simple (LOD-0) to more complex (LOD-1) representations. The multizone approach in Modelica is beneficial for modular and scalable simulations, where each building zone can be modeled with different fidelity based on the simulation requirements. This method leverages the generation of Functional Mock-up Units (FMUs), which integrate seamlessly into larger C/C++ applications, providing a robust framework for handling complex simulations involving multiple interacting systems.
+The FMUs built from \cref{sec:heat-transfer-in-buildings} are loaded by the \texttt{Feel++} environment.
+Input data for the models are sourced from available building information, such as geometric dimensions and material properties.
+When specific data are unavailable, default values are assigned based on the building's construction year, referencing standard building codes or typical practices from that period.
+Occupancy schedules are given as input to the models using reglementary occupancy.
+We are currently working on parametrized occupancy profiles, which are adjusted based on the building's use type (e.g., residential, office, commercial).
+This approach ensures that the models can be applied to a wide range of buildings, even when detailed information is limited.
+
 
 \paragraph{Finite Element Analysis with Feel++}
 Complementing Modelica's capabilities, Feel++ provides robust tools for finite element analysis, particularly in handling the detailed aspects of heat transfer within urban environments. It uses advanced numerical methods like reduced basis methods for rapid scenario testing and parallel-in-time algorithms for efficient simulations. This is particularly important for assessing the impact of solar radiation and external shading, which are modeled using geometric and dynamic shading masks derived from solar paths.
@@ -362,7 +521,9 @@ Complementing Modelica's capabilities, Feel++ provides robust tools for finite e
 The integration of Feel++ and Modelica is exemplified in their use of shading masks and view factors, which are critical for accurate solar heat gain calculations. These masks are computed using Monte Carlo simulations and ray tracing methods to assess the percentage of solar radiation impacting various building surfaces. This data feeds into the Modelica simulations, enhancing the accuracy of the thermal load predictions.
 
 \paragraph{Challenges and Solutions}
-One of the main challenges in urban building simulation is managing the computational load, which is addressed through computing strategies that leverage currently CPUs but in the GPUs but, in the future, will enable hybrid computing with both CPUs and GPUs. This approach ensures that large-scale simulations, necessary for city-wide energy analysis, remain feasible and efficient. Additionally, the mesh partitioning techniques discussed earlier are employed to optimize the data handling and processing times, further integrating the spatial data management with the thermal modeling processes.
+One of the main challenges in urban building simulation is managing the computational load, which is addressed through computing strategies that leverage currently CPUs but in the GPUs but, in the future, will enable hybrid computing with both CPUs and GPUs. 
+This approach ensures that large-scale simulations, necessary for city-wide energy analysis, remain feasible and efficient. 
+Additionally, the mesh partitioning techniques discussed earlier are employed to optimize the data handling and processing times, further integrating the spatial data management with the thermal modeling processes.
 
 %By utilizing the combined strengths of Feel++ for detailed finite element analysis and Modelica for system-level energy simulation, the UBEM framework is a tool capable of %%addressing the complex dynamics of urban heat transfer and energy management.%
 
@@ -404,30 +565,33 @@ In addition, we compared the size of the input data with the size of the zone.
 The Urban Building pilot utilizes the Feel++ framework, supported by a robust CI/CD framework that facilitates efficient development and deployment. %This section outlines how GitHub Actions and Docker streamline the entire process, ensuring the robustness and productivity of the software development lifecycle.
 
 \subsection{Standard CI/CD DevOps}
-The development and deployment of KUB builds on top of the Feel++ CI/CD framework. It employs GitHub Actions and Docker: GitHub Actions automate real-time workflows to compile, test, and validate code changes, facilitating rapid development cycles and ensuring code quality. On the other hand, Docker provides a containerized environment that encapsulates Feel++ and its dependencies, ensuring consistent operations across diverse computing environments. These Docker images, customized for various system requirements, are maintained on the GitHub Container Registry (ghcr.io) to accommodate multiple deployment scenarios.
+The development and deployment of KUB builds on top of the Feel++ CI/CD framework. It employs GitHub Actions and Docker: GitHub Actions automate real-time workflows to compile, test, and validate code changes, facilitating rapid development cycles and ensuring code quality.
+On the other hand, Docker provides a containerized environment that encapsulates Feel++ and its dependencies, ensuring consistent operations across diverse computing environments.
+These Docker images, customized for various system requirements, are maintained on the GitHub Container Registry (ghcr.io) to accommodate multiple deployment scenarios.
 
 \begin{figure}
     \centering
-    \includegraphics[width=\textwidth]{img-compressed-feelpp-devops.png}
+    \includegraphics[width=\textwidth]{img-feelpp-devops.pdf}
     \caption{CI/CD DevOps for Feel++}
     \label{fig:feelpp-devops}
 \end{figure}
-The CI/CD workflow, see Figure~\ref{fig:feelpp-devops}, is crucial for efficiently integrating and deploying updates across all projects that utilize the Feel++ framework. The workflow leverages various main ingredients of GitHub Actions features.
+The CI/CD workflow, see \cref{fig:feelpp-devops}, is crucial for efficiently integrating and deploying updates across all projects that utilize the Feel++ framework. 
+The workflow leverages various main ingredients of GitHub Actions features.
 \begin{enumerate}
     \item \textbf{Pull Requests and Merges:} Triggering CI to verify that new code integrations meet all tests and standards.
-    \item \textbf{Graphical User Interface (GUI) thanks to \texttt{workflow\_dispatch}:} Enabling developers to manually trigger pipelines through a GUI, which facilitates rapid deployment or testing. 
+    \item \textbf{Graphical User Interface (GUI) thanks to \texttt{workflow\_dispatch}:} Enabling developers to manually trigger pipelines through a GUI, which facilitates rapid deployment or testing.
     \item \textbf{Scheduled Runs:} Conducting regular updates and maintenance checks to ensure continuous system integrity and responsiveness.
 \end{enumerate}
 
 \subsection{HPC DevOps (HPCOps)}
-Feel++ CI/CD workflow for high-performance computing applications incorporates specialized HPCOps (HPC DevOps) practices that ensure the software performs consistently across various HPC systems. 
+Feel++ CI/CD workflow for high-performance computing applications incorporates specialized HPCOps (HPC DevOps) practices that ensure the software performs consistently across various HPC systems.
 
 %This advanced CI/CD strategy uses Apptainer (formerly Singularity) for secure and reproducible deployments across HPC environments without root privileges.
 
-Figure~\ref{fig:feelpp-hpcops} illustrates the HPC CI/CD or HPCOps workflow for Feel++. 
+\Cref{fig:feelpp-hpcops} illustrates the HPC CI/CD or HPCOps workflow for Feel++.
 \begin{figure}
     \centering
-    \includegraphics[width=\textwidth]{img-compressed-feelpp-hpcops.png}
+    \includegraphics[width=\textwidth]{img-feelpp-hpcops.pdf}
     \caption{CI/CD HPCOps for Feel++}
     \label{fig:feelpp-hpcops}
 \end{figure}
@@ -437,34 +601,39 @@ The tools and strategies for HPCOps are  \textit{(i) }\textbf{Reframe-HPC:} Util
 
 Integration with EuroHPC JU supercomputers such as LUMI, Karolina, Meluxina, Discoverer, Vega, and Leonardo enhances the capability to perform large-scale simulations and check the parallel properties and correctness of Feel++. The operations include automatic testing that triggers larger-scale tests on designated HPC nodes once new changes are integrated and verified by standard CI/CD pipelines.
 
-Regarding monitoring and reporting, performance results from these operations are automatically captured and uploaded to the data storage system, such as the performance reports 
+Regarding monitoring and reporting, performance results from these operations are automatically captured and uploaded to the data storage system, such as the performance reports
 
 \begin{wrapfigure}{R}{.7\linewidth}
     \centering
-    \includegraphics[width=\linewidth]{img-ub-devops.pdf}
+    \includegraphics[width=\linewidth,page=1]{img-ub-devops-hpcops.pdf}
     \caption{KUB standard DevOps}
     \label{fig:kub-devops}
 \end{wrapfigure}
-This framework leverages cutting-edge computational technologies, ensuring the high performance and accuracy of the Feel++ framework and Feel++-based applications. 
+This framework leverages cutting-edge computational technologies, ensuring the high performance and accuracy of the Feel++ framework and Feel++-based applications.
 It sets a benchmark for integrating modern software frameworks with advanced HPC infrastructure to significantly advance computational research and applications.
 
-Figure~\ref{fig:kub-devops} shows that the CI/CD standard DevOps framework for KUB uses similar steps.
+\Cref{fig:kub-devops} shows that the CI/CD standard DevOps framework for KUB uses similar steps.
 
 
 
-Figure~\ref{fig:kub-hpcops} finally shows the HPCOps deployed on EuroHPC systems to check the parallel properties and correctness of the pilot on large-scale cases. It extends Feel++ HPC ops with additional steps to handle our complex pre- and post-processing steps.
+\Cref{fig:kub-hpcops} finally shows the HPCOps deployed on EuroHPC systems to check the parallel properties and correctness of the pilot on large-scale cases. It extends Feel++ HPC ops with additional steps to handle our complex pre- and post-processing steps.
 
 \begin{figure}
     \centering
-    \includegraphics[width=\textwidth]{img-ub-hpcops.pdf}
+    \includegraphics[width=\linewidth,page=2]{img-ub-devops-hpcops.pdf}
     \caption{Ktirio Urban Building HPCOps workflow}
     \label{fig:kub-hpcops}
 \end{figure}
 
 \subsection{Benchmarking KUB}
+\label{sec:benchmarking}
 
-Finally, we display some results of our benchmarking activities~\cite{hidalgo2_d31_2024} for the KUB application regarding HPC performance. Running these experiments regularly is essential for maintaining the program's efficiency when developing the application and after machine updates. 
-Hence, we have used the KUB application in the Strasbourg city center, with a square area of $4 \mathrm{km}^2$ (approximately 17K buildings). The scalability results were realized on EuroHPC JU systems obtained with our HPCOps pipeline; see Figure~\ref{fig:kub-hpcops}. Figure \ref{fig:scalability} depicts the speedup achieved on Discoverer, Karolina, and MeluXina. They present results for the total execution (end-to-end) of the KUB application and the simulation component.
+Finally, we display some results of our benchmarking activities~\cite{hidalgo2_d31_2024} for the KUB application regarding HPC performance.
+Running these experiments regularly is essential for maintaining the program's efficiency when developing the application and after machine updates.
+Hence, we have used the KUB application in the Strasbourg city center, with a square area of $4 \mathrm{km}^2$ (approximately 17K buildings).
+The scalability results were realized on EuroHPC JU systems obtained with our HPCOps pipeline; see \cref{fig:kub-hpcops}.
+\Cref{fig:scalability} depicts the speedup achieved on Discoverer, Karolina, and MeluXina.
+They present results for the total execution (end-to-end) of the KUB application and the simulation component.
 
 \begin{wrapfigure}{R}{0.6\textwidth}  % Adjust 'R' and width as needed
   \centering
@@ -482,7 +651,8 @@ Hence, we have used the KUB application in the Strasbourg city center, with a sq
 \end{wrapfigure}
 The pipeline's simulation part scales almost linearly, which is expected as the buildings are not coupled together in the model currently used for the simulation. On the other hand, the total execution of the pilot's pipeline does not scale; as more nodes are employed, the performance degrades.
 
-To better understand what causes this degradation, we measure the computing times of the different stages of the pipeline and present the execution breakdown in Figure \ref{fig:execution-breakdown}. This figure reports the portion of the total execution taken by:
+To better understand what causes this degradation, we measure the computing times of the different stages of the pipeline and present the execution breakdown in \cref{fig:execution-breakdown}. 
+\cref{fig:execution-breakdown} reports the portion of the total execution taken by:
 \begin{itemize}
 \item Pre-processing (Pre-proc): The time elapsed in initialization before entering the time loop of the simulation
 \item Simulation (Simulation): The cumulative time spent calculating the new solution at each time step
@@ -512,7 +682,7 @@ Part of this work was also funded by \textit{(i)} the France 2030 NumPEx Exa-MA 
 We acknowledge the EuroHPC Joint Undertaking for awarding this project access through  EuroHPC Development Access grants EHPC-DEV-2024D05-025 and EHPC-DEV-2023D08-047 to the EuroHPC JU supercomputers : \textit{(i)} Kumi, hosted by CSC (Finland) and the Lumi consortium, \textit{(ii)} MeluXina hosted by LuxProvide, Luxembourg, \textit{(iii)} Karolina hosted by IT4Innovations National Supercomputing Center, Czechia, \textit{(iv)} Discoverer hosted by Sofia Tech Park, Bulgaria, \textit{(v)} Vega hosted by IZUM, Slovenia, and \textit{(vi)} Leonardo hosted by CINECA, Italy.
 
 
-Finally the authors would like to acknowledge the many fruitful discussions with our partners Luc Kern from Synapse Concept and Leopold Fischer from Cisco Meraki, our colleagues \textit{(i)} from Hidalgo2 ICCS Kostis Nikas, Aristomenis Theodoridis and Petros Anastasiadis for the discussions on Reframe and joining their EuroHPC access grant, \textit{(ii)} Hidalgo2 HLRS Sameer Haroon for the discussions on CI/CD, \textit{(iii)} Pierre Alliez from INRIA Titane and Andreas Fabri from Geometry Factory regarding the discussions on CGAL and using Polygon Repair, and finally \textit{(iv)} our former colleague Zohra Djatouti, now at Kipsum, which whom we initiated this endeavor. 
+Finally the authors would like to acknowledge the many fruitful discussions with our partners Luc Kern from Synapse Concept and Leopold Fischer from Cisco Meraki, our colleagues \textit{(i)} from Hidalgo2 ICCS Kostis Nikas, Aristomenis Theodoridis and Petros Anastasiadis for the discussions on Reframe and joining their EuroHPC access grant, \textit{(ii)} Hidalgo2 HLRS Sameer Haroon for the discussions on CI/CD, \textit{(iii)} Pierre Alliez from INRIA Titane and Andreas Fabri from Geometry Factory regarding the discussions on CGAL and using Polygon Repair, and finally \textit{(iv)} our former colleague Zohra Djatouti, now at Kipsum, which whom we initiated this endeavor.
 
 % \subsubsection{\discintname}
 % It is now necessary to declare any competing interests or to specifically
@@ -525,6 +695,41 @@ Finally the authors would like to acknowledge the many fruitful discussions with
 % grants from Company W. Author B has received a speaker honorarium from
 % Company X and owns stock in Company Y. Author C is a member of committee Z.
 \end{credits}
+
+
+\section*{Nomenclature}
+
+\begin{multicols}{2}
+$\alpha$ : Absorption of a material.\hfill[-]\\
+$\alpha_{conv}$=10 : Heat conductance of convection.\hfill[-]\\
+$\beta$ : Angle of inclination of the wall to the horizontal.\hfill[-]\\
+$\Delta T$ : Temperature difference.\hfill[K]\\
+$\epsilon$ : Emissivity of the surface.\hfill[-]\\
+$\phi_{air}$ : Air heat flow.\hfill[W]\\
+$\phi_{net}$ : Radiative heat flow.\hfill[W]\\
+$\phi_{solar}$ : Solar heat flow from short wavelength.\hfill[W]\\
+$\phi_{wall}$ : Heat flow through a wall.\hfill[W]\\
+$\sigma$ : Stefan-Boltzmann constant $5,67\cdot10^{-8}$.\hfill[W$\cdot m^{-2}\cdot K^{-4}$]\\
+$albedo$ : Reflective properties of the material.\hfill[-]\\
+$A_z$ : Azimuth of the surface.\hfill[-]\\
+$A_{zs}$ : Azimuth of the sun.\hfill[-]\\
+$C$ : Heat capacity of the zone.\hfill[W$\cdot K^{-1}$]\\
+$d_{inhabitant}(timetable)$ : Density of inhabitants as a function of the timetable set for the building type.\hfill[-]\\
+$E_{dir}$ : Direct solar heat flow.\hfill[W$\cdot m^{-2}$]\\
+$E_{diff}$ : Diffuse solar heat flow.\hfill[W$\cdot m^{-2}$]\\
+$E_{ref}$ : Reflected solar heat flow.\hfill[W$\cdot m^{-2}$]\\
+$F_{dir}$ : Direct solar radiation.\hfill[W$\cdot m^{-2}$]\\
+$F_{dir,Hz}$ : Direct solar radiation on a horizontal surface given by climate data.\hfill[W$\cdot m^{-2}$]\\
+$F_{ij}$ : View factor between $surface_{(i)}$ and $surface_{(j)}$.\hfill[-]\\
+$H_s$ : Angular height of the sun.\hfill[-]\\
+$J$ : Radiosity of a surface.\hfill[W$\cdot m^{-2}$]\\
+$Met$ : Metabolic rate.\hfill[W]\\
+$0.34\cdot Q_v$ : Airflow as a fraction of the zone's volume per hour multiplied by the air volumetric heat capacity.\hfill[W$\cdot K^{-1}$]\\
+$S$ : Surface area.\hfill[m$^2$]\\
+$S_C$ : Shading coefficient $\in$ [0,1].\hfill[-]\\
+$U_j$ : Conductance of a $wall_j$.\hfill[W$\cdot m^{-2}\cdot K^{-1}$]\\
+$V_{air}$ : Wind speed.\hfill[m$\cdot s^{-1}$]
+\end{multicols}
 
 \bibliographystyle{splncs04}
 \bibliography{references}
