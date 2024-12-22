@@ -447,17 +447,15 @@ Both shading masks and view factors are computed using Monte Carlo and ray traci
     \item Managing large-scale mesh computations and data storage, particularly when detailed urban environments are modeled.
 \end{inparaenum}
 
+
 \paragraph{Implementation in Feel++}
-Feel++ facilitates these computations through its robust numerical methods optimized for high performance and parallel execution. For each face of a building, Feel++ computes solar masks using a Monte Carlo approach for various sun positions, ensuring efficient and scalable processing across multiple CPU cores. This enables the integration of dynamic solar shading effects into the simulation of building energy performance, providing a more accurate representation of real-world conditions.
+Feel++ employs Monte Carlo methods for solar mask computations across multiple CPU cores, incorporating dynamic shading into building energy simulations. \Cref{fig:solar-masks-vf} shows:
+\textit{(i)} an east-facing mask (\cref{fig:sm-building-east});
+\textit{(ii)} a whole-building mask (\cref{fig:sm-whole-building});
+\textit{(iii)} a city-scale mask for Strasbourg (\cref{fig:sm-strasbourg}); and
+\textit{(iv)} a 2D benchmark~\cite{van_eck_surface_2016} used for view factors (\cref{fig:view-factor}).
 
-In \cref{fig:solar-masks-vf}, we illustrate several aspects of solar masks: \textit{(i)} the solar masks of a building face oriented eastward, showing a discretization of the sun's position in \cref{fig:sm-building-east}; \textit{(ii)} the solar masks for an entire building, representing a detailed discretization of the sun's position throughout the day in \cref{fig:sm-whole-building}; \textit{(iii)} a visualization of the solar mask in the early morning for the city center of Strasbourg in \cref{fig:sm-strasbourg}; and \textit{(iv)} an image of a standard benchmark~\cite{van_eck_surface_2016} used for the computation of view factors and solving heat transfer problems between three building blocks in 2D in \cref{fig:view-factor}.
-
-The grayscale values in each solar mask represent varying levels of solar obstruction for different azimuth and altitude angles.
-In these masks, the scale ranges from 0 to 1, where 0 (white) indicates no obstruction and full exposure to sunlight, and 1 (black) represents full obstruction, meaning no sunlight reaches that part of the building face for the given sun position. 
-Intermediate shades of gray indicate partial obstruction, where a portion of sunlight is blocked by surrounding buildings or other urban features.
-The level of detail in the solar mask depends on the chosen level of discretization (LOD), as illustrated in \cref{fig:sm-building-east} and \cref{fig:sm-whole-building}.
-
-%In \cref{fig:sm-building-east} (LOD-0), we see a coarser discretization with larger, generalized angular segments, leading to more abrupt transitions between obstructed and non-obstructed areas. In contrast, \cref{fig:sm-whole-building} (LOD-1) provides a finer level of detail, capturing more granular variations in solar accessibility across different sun angles. These masks help quantify the solar exposure of building surfaces over time, which is critical for accurately modeling heat gains and understanding the thermal dynamics of urban environments.
+Each mask’s grayscale ranges from 0 (white, no obstruction) to 1 (black, total obstruction). Intermediate shades denote partial shading from adjacent buildings or features. The chosen LOD (level of discretization) determines mask resolution, as illustrated in \cref{fig:sm-building-east,fig:sm-whole-building}.%In \cref{fig:sm-building-east} (LOD-0), we see a coarser discretization with larger, generalized angular segments, leading to more abrupt transitions between obstructed and non-obstructed areas. In contrast, \cref{fig:sm-whole-building} (LOD-1) provides a finer level of detail, capturing more granular variations in solar accessibility across different sun angles. These masks help quantify the solar exposure of building surfaces over time, which is critical for accurately modeling heat gains and understanding the thermal dynamics of urban environments.
 
 \begin{figure}[ht]
 \centering
