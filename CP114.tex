@@ -1,5 +1,5 @@
 \documentclass[runningheads]{llncs}
-\usepackage{fullpage}
+%\usepackage{fullpage}
 \usepackage{graphicx} % for including images
 \usepackage{float}
 \usepackage[T1]{fontenc}
@@ -21,11 +21,11 @@
 \definecolor{darkmagenta}{rgb}{0.5, 0, 0.5}
 \usepackage{hyperref}
 
-\IfFileExists{.git/gitHeadInfo.gin}{
-    \usepackage[pcount,grumpy,mark,markifdirty]{gitinfo2}
-}{%
-    \usepackage[local,pcount,grumpy,mark,markifdirty]{gitinfo2}
-}
+%%\IfFileExists{.git/gitHeadInfo.gin}{
+%%    \usepackage[pcount,grumpy,mark,markifdirty]{gitinfo2}
+%%}{%
+%%    \usepackage[local,pcount,grumpy,mark,markifdirty]{gitinfo2}
+%%}
 
 %% By default, llncs tocdepth value is 0, so only chapters and parts are shown in the ToC, but no sections and deeper levels of structure.
 %% If \setcounter{tocdepth}{1} is used, the sections show up in the ToC.
@@ -122,7 +122,7 @@ The Ktirio urban building workflow, see \cref{fig:kub-workflow}, integrates vari
 
 \begin{figure}
     \centering
-    \includegraphics[width=.9\textwidth,page=1]{img-kub-workflow.pdf}
+    \includegraphics[width=.9\textwidth,page=1]{CP114_img-kub-workflow.pdf}
     \caption{Current Urban Building Workflow from localization to city energy simulation report.}
     \label{fig:kub-workflow}
 \end{figure}
@@ -150,11 +150,11 @@ Insights are presented in the form of a comprehensive report and are automatical
 \begin{figure}[htbp]
   \centering
   \subfloat[Gallery of test case cities reports\label{fig:city-gallery}]{%
-    \includegraphics[width=0.45\textwidth]{img-compressed-city-gallery.png}
+    \includegraphics[width=0.45\textwidth]{CP114_img-city-gallery.png}
   }
   \hfill
   \subfloat[Section of a city report\label{fig:city-report-section}]{%
-    \includegraphics[width=0.45\textwidth]{img-compressed-city-report-section.png}
+    \includegraphics[width=0.45\textwidth]{CP114_img-city-report-section.png}
   }
   \caption{Screenshots of the \url{https://cases.ktirio.fr} reporting website.}
   \label{fig:ktirio-cases-report}
@@ -186,22 +186,22 @@ We describe our definition of Levels of Detail for Buildings such as:
 \begin{figure}[ht]%{R}{1\textwidth} % 'R' or 'L' for right or left, and width
 \centering
 \subfloat[LOD-0: a building is represented by its bounding box]{%
-  \includegraphics[width=0.45\linewidth]{img-compressed-buildings-lod0.png}
+  \includegraphics[width=0.45\linewidth]{CP114_img-buildings-lod0.png}
   \label{fig:building-lod0}
 }\hspace{0.05\linewidth}
 %\hfill % This ensures that the images are placed side by side
 \subfloat[LOD-1: a building is represented by its ground footprint elevated to its height]{%
-  \includegraphics[width=0.45\linewidth]{img-compressed-buildings-lod1.png}
+  \includegraphics[width=0.45\linewidth]{CP114_img-buildings-lod1.png}
   \label{fig:building-lod1}
 }\\ % Ends the line for the first row of figures
 
 \subfloat[LOD-2: a building in full detail using BIM. Note that LOD-2 and LOD-1 are mixed.]{%
-  \includegraphics[width=0.45\linewidth]{img-compressed-buildings-lod2.png}
+  \includegraphics[width=0.45\linewidth]{CP114_img-buildings-lod2.png}
   \label{fig:building-lod2}
 }\hspace{0.05\linewidth}
 %\hfill
 \subfloat[LOD-2: A zoom on the LOD-2 building.]{%
-  \includegraphics[width=0.45\linewidth]{img-compressed-buildings-lod2-zoom.png}
+  \includegraphics[width=0.45\linewidth]{CP114_img-buildings-lod2-zoom.png}
   \label{fig:building-lod2-zoom}
 }
 
@@ -258,20 +258,20 @@ This approach enhances urban models' accuracy, utility, and scalability, making 
 \begin{figure}[ht]
 \centering
 \subfloat[Representation of Strasbourg center with LOD-0\label{fig:city-strasbourg-lod0}]{%
-  \includegraphics[width=0.48\textwidth]{img-compressed-city-strasbourg-lod-0.png}
+  \includegraphics[width=0.48\textwidth]{CP114_img-city-strasbourg-lod-0.png}
 }
 \hfill % Ensures that the images are placed side by side
 \subfloat[Representation of Strasbourg center with LOD-1\label{fig:city-strasbourg-lod1}]{%
-  \includegraphics[width=0.48\textwidth]{img-compressed-city-strasbourg-lod-1.png}
+  \includegraphics[width=0.48\textwidth]{CP114_img-city-strasbourg-lod-1.png}
 }\\ % Ends the line for the first row of figures
 
 \subfloat[Representation of Grenoble LOD-1 terrain elevation\label{fig:city-grenoble-terrain}]{%
-  \includegraphics[width=0.48\textwidth]{img-compressed-city-grenoble-terrain.png}
+  \includegraphics[width=0.48\textwidth]{CP114_img-city-grenoble-terrain.png}
 }
 
 \caption{Various representations of cities and terrains}
 \label{fig:city-strasbourg}
-\vspace{-0.5cm}
+%\vspace{-0.5cm}
 \end{figure}
 %\end{wrapfigure}
 
@@ -302,14 +302,14 @@ The current version of our simulation framework has implemented case 0 and case 
 \begin{wrapfigure}{R}{0.7\textwidth}
 \centering
 \subfloat[Partitioning Case 0\label{fig:city-strasbourg-lod0-parts}]{%
-  \includegraphics[width=0.46\linewidth]{img-compressed-city-strasbourg-lod0-parts.png}
+  \includegraphics[width=0.46\linewidth]{CP114_img-city-strasbourg-lod0-parts.png}
 }\hspace{0.02\linewidth}
 %\hfill % Ensures that the images are placed side by side
 \subfloat[Partitioning Case 1\label{fig:city-strasbourg-lod1-parts}]{%
-  \includegraphics[width=0.46\linewidth]{img-compressed-city-strasbourg-lod1-parts.png}
+  \includegraphics[width=0.46\linewidth]{CP114_img-city-strasbourg-lod1-parts.png}
 }
 %\subfloat[Partitioning Case 3: Large scale\label{fig:city-ny-largescale}]{%
-%  \includegraphics[width=0.4\textwidth]{img-compressed-city-newyork-largescale.png}
+%  \includegraphics[width=0.4\textwidth]{CP114_img-city-newyork-largescale.png}
 %}
 \caption{Mesh partitioning illustrations}
 \label{fig:partitioning}
@@ -320,18 +320,18 @@ The current version of our simulation framework has implemented case 0 and case 
 \begin{figure}[htbp]
 \centering
 \subfloat[View on whole 3D mesh\label{fig:city-ny-largescale-whole}]{%
-  \includegraphics[width=0.45\textwidth]{img-compressed-city-newyork-largescale-whole.png}
+  \includegraphics[width=0.45\textwidth]{CP114_img-city-newyork-largescale-whole.png}
 }
 \hfill
 \subfloat[Zoom on Manhattan buildings\label{fig:city-ny-largescale-zoomB}]{%
-  \includegraphics[width=0.45\textwidth]{img-compressed-city-newyork-largescale-zoomB.png}
+  \includegraphics[width=0.45\textwidth]{CP114_img-city-newyork-largescale-zoomB.png}
 }\\
 \subfloat[Focus on Manhattan\label{fig:city-ny-largescale-zoomZ}]{%
-  \includegraphics[width=0.45\textwidth]{img-compressed-city-newyork-largescale-zoomA.png}
+  \includegraphics[width=0.45\textwidth]{CP114_img-city-newyork-largescale-zoomA.png}
 }
 \hfill
 \subfloat[Central Park\label{fig:city-ny-largescale-zoomC}]{%
-  \includegraphics[width=0.45\textwidth]{img-compressed-city-newyork-largescale-zoomC.png}
+  \includegraphics[width=0.45\textwidth]{CP114_img-city-newyork-largescale-zoomC.png}
 }
 \caption{$20 \times 20 \mathrm{km}^2\ $ geometric reconstruction of New York City (LOD-1)}
 \label{fig:city-ny-largescale}
@@ -490,18 +490,18 @@ Feel++ facilitates these computations through its robust numerical methods optim
 \begin{figure}[ht]
 \centering
 \subfloat[LOD-0\label{fig:sm-building-east}]{%
-  \includegraphics[width=0.45\textwidth]{img-compressed-solar-masks-east-facing.png}
+  \includegraphics[width=0.45\textwidth]{CP114_img-solar-masks-east-facing.png}
 }
 \hfill
 \subfloat[LOD-1\label{fig:sm-whole-building}]{%
-  \includegraphics[width=0.45\textwidth]{img-compressed-solar-masks-whole-building.png}
+  \includegraphics[width=0.45\textwidth]{CP114_img-solar-masks-whole-building.png}
 }\\
 \subfloat[LOD-1 Large scale\label{fig:sm-strasbourg}]{%
-  \includegraphics[width=0.45\textwidth]{img-compressed-solar-masks-strasbourg.png}
+  \includegraphics[width=0.45\textwidth]{CP114_img-solar-masks-strasbourg.png}
 }
 \hfill
 \subfloat[Heat transfer benchmark in 2D including view factors~\cite{van_eck_surface_2016}\label{fig:view-factor}]{%
-  \includegraphics[width=0.45\textwidth]{img-compressed-view-factors-benchmark.png}
+  \includegraphics[width=0.45\textwidth]{CP114_img-view-factors-benchmark.png}
 }
 \caption{Solar masks and view factors computations}
 \label{fig:solar-masks-vf}
@@ -560,7 +560,7 @@ In addition, we compared the size of the input data with the size of the zone.
   \centering
   \caption{Size comparison of input data files for different geographical extents in New York City}
   \label{tab:input-data-size-comparison}
-  \begin{tabularx}{.8\linewidth}{l *{3}{>{\RaggedLeft\arraybackslash}X}} 
+  \begin{tabularx}{.95\linewidth}{l *{3}{>{\RaggedLeft\arraybackslash}X}} 
       \toprule
       \textbf{Files} & \textbf{\text{4 $\times$ 4} \si{\kilo\meter\squared}} & \textbf{\text{10 $\times$ 10} \si{\kilo\meter\squared}} & \textbf{\text{20 $\times$ 20} \si{\kilo\meter\squared}} \\
       \midrule
@@ -593,7 +593,7 @@ These Docker images, customized for various system requirements, are maintained 
 
 \begin{figure}
     \centering
-    \includegraphics[width=\textwidth]{img-feelpp-devops.pdf}
+    \includegraphics[width=\textwidth]{CP114_img-feelpp-devops.pdf}
     \caption{CI/CD DevOps for Feel++}
     \label{fig:feelpp-devops}
 \end{figure}
@@ -616,7 +616,7 @@ Feel++ CI/CD workflow for high-performance computing applications incorporates s
 \Cref{fig:feelpp-hpcops} illustrates the HPC CI/CD or HPCOps workflow for Feel++.
 \begin{figure}
     \centering
-    \includegraphics[width=\textwidth]{img-feelpp-hpcops.pdf}
+    \includegraphics[width=\textwidth]{CP114_img-feelpp-hpcops.pdf}
     \caption{CI/CD HPCOps for Feel++}
     \label{fig:feelpp-hpcops}
 \end{figure}
@@ -631,7 +631,7 @@ Regarding monitoring and reporting, performance results from these operations ar
 
 \begin{wrapfigure}{R}{.7\linewidth}
     \centering
-    \includegraphics[width=\linewidth,page=1]{img-ub-devops-hpcops.pdf}
+    \includegraphics[width=\linewidth,page=1]{CP114_img-ub-devops-hpcops.pdf}
     \caption{KUB standard DevOps}
     \label{fig:kub-devops}
 \end{wrapfigure}
@@ -642,7 +642,7 @@ It sets a benchmark for integrating modern software frameworks with advanced HPC
 
 \begin{figure}
     \centering
-    \includegraphics[width=\linewidth,page=2]{img-ub-devops-hpcops.pdf}
+    \includegraphics[width=\linewidth,page=2]{CP114_img-ub-devops-hpcops.pdf}
     \caption{Ktirio Urban Building HPCOps workflow}
     \label{fig:kub-hpcops}
 \end{figure}
@@ -660,12 +660,12 @@ They present results for the total execution (end-to-end) of the KUB application
 \begin{wrapfigure}{R}{0.6\textwidth}  % Adjust 'R' and width as needed
   \centering
   \begin{subfloat}[Scalability tests on a few EuroHPC systems from 1 to 32 nodes of 128 cores per node]{
-    \includegraphics[width=0.9\linewidth]{img-compressed-kub-scalability.png}
+    \includegraphics[width=0.9\linewidth]{CP114_img-kub-scalability.png}
     \label{fig:scalability}
   }\end{subfloat}
   \\
   \begin{subfloat}[Execution breakdown on a few EuroHPC systems from 1 to 32 nodes of 128 cores per node]{
-    \includegraphics[width=0.9\linewidth]{img-compressed-kub-bencharkings-execution.png}
+    \includegraphics[width=0.9\linewidth]{CP114_img-kub-bencharkings-execution.png}
     \label{fig:execution-breakdown}
   }\end{subfloat}
   \caption{Detailed performance metrics for scalability and execution on EuroHPC systems}
@@ -763,6 +763,6 @@ $V_{air}$ : Wind speed.\hfill[m$\cdot s^{-1}$]
 \end{multicols}
 
 \bibliographystyle{splncs04}
-\bibliography{references}
+\bibliography{CP114_references}
 
 \end{document}
