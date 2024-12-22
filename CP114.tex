@@ -165,32 +165,32 @@ This section provides an overview of the geometrical and physical modeling and s
 \subsection{Geometry Reconstruction of the KUB Urban Model}
 
 \noindent
-KUB’s geometric reconstruction employs multi-fidelity approaches for buildings, terrain, vegetation, and roads. 
+KUB's geometric reconstruction employs multi-fidelity approaches for buildings, terrain, vegetation, and roads. 
 We use a tiled web map to manage data distribution and adapt the Level of Detail (LOD) as needed. 
-LOD-0 represents basic bounding boxes, LOD-1 uses polygonal extrusions (including roof structures), and LOD-2 integrates IFC-based standards with detailed geometry.
+\textbf{LOD-0} represents basic bounding boxes, \textbf{LOD-1} uses polygonal extrusions (including roof structures), and \textbf{LOD-2} integrates IFC-based standards with detailed geometry.
 
 \noindent
-\Cref{fig:buildings} illustrates these LODs: \Cref{fig:building-lod0} shows a bounding box (LOD-0), \Cref{fig:building-lod1} adds footprint extrusion (LOD-1), and \Cref{fig:building-lod2,fig:building-lod2-zoom} detail IFC-based BIM geometries (LOD-2). \Cref{fig:city-strasbourg} depicts Strasbourg’s center, showcasing LOD-0 (\cref{fig:city-strasbourg-lod0}) and LOD-1 (\cref{fig:city-strasbourg-lod1}) representations.
+\Cref{fig:buildings} illustrates these LODs: \Cref{fig:building-lod0} shows a bounding box (\textbf{LOD-0}), \Cref{fig:building-lod1} adds footprint extrusion (\textbf{LOD-1}), and \Cref{fig:building-lod2,fig:building-lod2-zoom} detail IFC-based BIM geometries (\textbf{LOD-2}). \Cref{fig:city-strasbourg} depicts Strasbourg's center, showcasing \textbf{LOD-0} (\cref{fig:city-strasbourg-lod0}) and \textbf{LOD-1} (\cref{fig:city-strasbourg-lod1}) representations.
 
 
 \begin{figure}[ht]%{R}{1\textwidth} % 'R' or 'L' for right or left, and width
 \centering
-\subfloat[LOD-0: a building is represented by its bounding box]{%
+\subfloat[\textbf{LOD-0}: a building is represented by its bounding box]{%
   \includegraphics[width=0.45\linewidth]{CP114_img-buildings-lod0.png}
   \label{fig:building-lod0}
 }\hspace{0.05\linewidth}
 %\hfill % This ensures that the images are placed side by side
-\subfloat[LOD-1: a building is represented by its ground footprint elevated to its height]{%
+\subfloat[\textbf{LOD-1}: a building is represented by its ground footprint elevated to its height]{%
   \includegraphics[width=0.45\linewidth]{CP114_img-buildings-lod1.png}
   \label{fig:building-lod1}
 }\\ % Ends the line for the first row of figures
 
-\subfloat[LOD-2: a building in full detail using BIM. Note that LOD-2 and LOD-1 are mixed.]{%
+\subfloat[\textbf{LOD-2}: a building in full detail using BIM. Note that \textbf{LOD-2} and \textbf{LOD-1} are mixed.]{%
   \includegraphics[width=0.45\linewidth]{CP114_img-buildings-lod2.png}
   \label{fig:building-lod2}
 }\hspace{0.05\linewidth}
 %\hfill
-\subfloat[LOD-2: A zoom on the LOD-2 building.]{%
+\subfloat[\textbf{LOD-2}: A zoom on the \textbf{LOD-2} building.]{%
   \includegraphics[width=0.45\linewidth]{CP114_img-buildings-lod2-zoom.png}
   \label{fig:building-lod2-zoom}
 }
@@ -204,10 +204,11 @@ LOD-0 represents basic bounding boxes, LOD-1 uses polygonal extrusions (includin
 
 
 \subsubsection{Building Modeling}
+
 Building meshes are generated from OpenStreetMap data~\cite{openstreetmap_contributors_planet_2017}, which provides multi-polygons with holes. For \textbf{LOD-0 and LOD-1}, 2D footprints are extruded to form 3D volumes, merging or subtracting intersecting buildings to create district-scale models. In \textbf{LOD-2}, conformal watertight meshes are produced from BIM data in IFC format, supporting detailed simulations of building components.
 
 \subsubsection{Terrain Modeling}
-Terrain is derived from elevation raster data, generating a uniform mesh sized to the raster. Each node’s elevation is then evaluated. To avoid over-refinement, we plan a mesh adaptation approach \begin{inparaenum}[\it (i)]\item computing multiple elevation isolines, and \item building a mesh conforming to these isolines\end{inparaenum}.
+Terrain is derived from elevation raster data, generating a uniform mesh sized to the raster. Each node's elevation is then evaluated. To avoid over-refinement, we plan a mesh adaptation approach \begin{inparaenum}[\it (i)]\item computing multiple elevation isolines, and \item building a mesh conforming to these isolines\end{inparaenum}.
 
 \subsubsection{Vegetation Modeling}
 Vegetation data (trees) from OpenStreetMap supplies positions, heights, and species. We maintain a reference library of tree geometries at various LODs, applying affine transformations as follows: \begin{inparaenum}[\it (i)]\item define a tree library, \item fetch metadata (height/species), and \item build a geometric model based on the library\end{inparaenum}. This accounts for shading and cooling effects in building environments.
@@ -220,7 +221,7 @@ We construct a conforming mesh that merges buildings, terrain, and vegetation. K
 \subsubsection{Visual Representation}
 Advanced rendering techniques visualize these multi-fidelity urban models for detailed analyses and broader urban planning discussions. Such visualizations help assess potential impacts of urban developments and engage diverse stakeholders.
 
-This methodology offers enhanced precision, utility, and scalability, making it integral to the HiDALGO2 project’s urban analysis and planning activities.
+This methodology offers enhanced precision, utility, and scalability, making it integral to the HiDALGO2 project's urban analysis and planning activities.
 
 %\begin{wrapfigure}{R}{0.6\textwidth}
 \begin{figure}[ht]
@@ -245,13 +246,14 @@ This methodology offers enhanced precision, utility, and scalability, making it 
 
 \subsubsection{Computational Tools for Mesh Generation}
 
-In our urban modeling, CGAL~\cite{the_cgal_project_cgal_2024} underpins complex geometric tasks such as boolean operations, multi-polygon repairs~\cite{loriot_polygon_2024}, mesh generation, mesh intersection, and roof skeleton computation. We can already reconstruct a geometric model for any selected location, assembling LOD-0 or LOD-1 buildings with terrain elevation. The integration of all urban components remains under development, since mesh intersection algorithms are computationally expensive and require strategic grouping to reduce costs.
+In our urban modeling, CGAL~\cite{the_cgal_project_cgal_2024} tackles complex geometric tasks such as boolean operations, multi-polygon repairs~\cite{loriot_polygon_2024}, mesh generation, mesh intersection, and roof skeleton computation. 
+We can already reconstruct a geometric model for any selected location, assembling LOD-0 or LOD-1 buildings with terrain elevation. The integration of all urban components remains under development, since mesh intersection algorithms are computationally expensive and require strategic grouping to reduce costs.
 
 \paragraph{Current Mesh Generation Strategy}
 We leverage multi-threading (MT) to download GIS data and repair polygons~\cite{loriot_polygon_2024} in parallel, then generate terrain meshes using CGAL. Union operations at tile edges run sequentially, while building meshes are created in parallel.
 
 \paragraph{Advancing Towards Full Parallelism}
-We plan to adopt MPI and MT for large-scale city meshes. Tiles with overlapping regions enable distributed computations while ensuring complete building geometry without excessive inter-process communication. Each process uses MT to build meshes locally, aligning with the project’s goal of handling entire cities or larger urban regions efficiently.
+We plan to adopt MPI and MT for large-scale city meshes. Tiles with overlapping regions enable distributed computations while ensuring complete building geometry without excessive inter-process communication. Each process uses MT to build meshes locally, aligning with the project's goal of handling entire cities or larger urban regions efficiently.
 
 \subsubsection{Partitioning Strategies Depending on Simulation Use Cases}
 
@@ -341,7 +343,7 @@ where
     \phi_{\mathrm{int}} = \mathrm{Met} \cdot d_i(t)
   \end{equation}
 
-\item[Solar heat gain] The total solar heat gain includes contributions from direct, diffuse, and reflected solar radiation, taking into account the building’s surface characteristics and shading coefficient:
+\item[Solar heat gain] The total solar heat gain includes contributions from direct, diffuse, and reflected solar radiation, taking into account the building's surface characteristics and shading coefficient:
 \begin{equation}
   \phi_{\mathrm{solar}} = \alpha \cdot S \cdot \left( E_{\mathrm{dir}} + E_{\mathrm{diff}} + E_{\mathrm{ref}} \right) \cdot S_C
 \end{equation}
@@ -455,7 +457,8 @@ Feel++ employs Monte Carlo methods for solar mask computations across multiple C
 \textit{(iii)} a city-scale mask for Strasbourg (\cref{fig:sm-strasbourg}); and
 \textit{(iv)} a 2D benchmark~\cite{van_eck_surface_2016} used for view factors (\cref{fig:view-factor}).
 
-Each mask’s grayscale ranges from 0 (white, no obstruction) to 1 (black, total obstruction). Intermediate shades denote partial shading from adjacent buildings or features. The chosen LOD (level of discretization) determines mask resolution, as illustrated in \cref{fig:sm-building-east,fig:sm-whole-building}.%In \cref{fig:sm-building-east} (LOD-0), we see a coarser discretization with larger, generalized angular segments, leading to more abrupt transitions between obstructed and non-obstructed areas. In contrast, \cref{fig:sm-whole-building} (LOD-1) provides a finer level of detail, capturing more granular variations in solar accessibility across different sun angles. These masks help quantify the solar exposure of building surfaces over time, which is critical for accurately modeling heat gains and understanding the thermal dynamics of urban environments.
+Each mask's grayscale ranges from 0 (white, no obstruction) to 1 (black, total obstruction). Intermediate shades denote partial shading from adjacent buildings or features. 
+The chosen LOD (level of discretization) determines mask resolution, as illustrated in \cref{fig:sm-building-east,fig:sm-whole-building}.%In \cref{fig:sm-building-east} (LOD-0), we see a coarser discretization with larger, generalized angular segments, leading to more abrupt transitions between obstructed and non-obstructed areas. In contrast, \cref{fig:sm-whole-building} (LOD-1) provides a finer level of detail, capturing more granular variations in solar accessibility across different sun angles. These masks help quantify the solar exposure of building surfaces over time, which is critical for accurately modeling heat gains and understanding the thermal dynamics of urban environments.
 
 \begin{figure}[ht]
 \centering
@@ -488,7 +491,7 @@ In the \textit{Urban Building Energy Model} (UBEM), heat transfer analysis predi
 Modelica accommodates LOD-0 to LOD-1 building representations by generating Functional Mock-up Units (FMUs), which \texttt{Feel++} then loads. Input data (e.g., geometry, materials, occupancy) come from building metadata; missing details default to typical values based on construction era. Future work includes parametrized occupancy profiles tailored to building functions.
 
 \paragraph{Finite Element Analysis with Feel++}
-Feel++ augments Modelica’s multizone models with detailed finite element analyses. Advanced techniques, such as reduced basis methods and parallel-in-time schemes, handle solar radiation and shading masks derived from geometric and dynamic conditions, improving the accuracy of solar heat gain calculations.
+Feel++ augments Modelica's multizone models with detailed finite element analyses. Advanced techniques, such as reduced basis methods and parallel-in-time schemes, handle solar radiation and shading masks derived from geometric and dynamic conditions, improving the accuracy of solar heat gain calculations.
 
 \paragraph{Integrated Approach and Challenges}
 Monte Carlo or ray-tracing methods compute shading masks and view factors, which feed Modelica for precise thermal load predictions. To manage the large computational demands of city-scale simulations, our approach leverages CPU resources (and, prospectively, GPUs) alongside mesh partitioning. This ensures city-wide analyses remain efficient, integrating spatial data handling with the thermal modeling processes.
