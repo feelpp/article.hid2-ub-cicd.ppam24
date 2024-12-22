@@ -1,0 +1,36 @@
+= Cover Letter
+Christophe Prud'homme <christophe.prudhomme@cemosis.fr>
+:revnumber: v2.0
+:revdate: November 1, 2024
+
+Dear Editor,
+
+We are pleased to resubmit our revised manuscript, titled “Ktirio Urban Building: A Computational Framework for City Energy Simulations Enhanced by CI/CD Innovations on EuroHPC Systems,” for consideration in the proceedings of PPAM'24. 
+We appreciate the valuable feedback from the reviewers, which has helped us strengthen our manuscript significantly.
+Below, we provide a summary of the changes made in response to each reviewer’s comments.
+
+Reviewer #1
+
+	1.	Detailed Information on Target PDEs and Models: We have added a section summarizing the most important mathematical models and target PDEs, along with a detailed description of the governing equations in section 3.2.1 
+	2.	Description of Data Size: We have included a detailed description of the size of the data handled by the simulation, outlining how it scales with different configurations, in section 3.2.5.
+	3.	Explanation of Expected Use of Results: An explanation on how end-users are expected to use the results has been added, along with details on how this will be achieved, see section 2.2.
+	4.	Importance of Real-Time Processing: We have removed the mention of real-time processing from the abstract to avoid any confusion.
+	5.	Supercomputing Environment Details: We have provided additional information about the supercomputing environments required to run the KUB framework, including dependencies and hardware specifications, see section 4. In particular, we use container (apptainer) technology to ensure portability across different HPC systems.
+	6.	Elapsed Time in Fig. 11: We have updated Figure 11 to include the total elapsed time, addressing the reviewer’s request for a clearer understanding of the overall execution timeline, see section 4.3.
+
+Reviewer #2
+
+	1.	Explanation of Grayscale Values in Solar Masks (Figures 6a and 6b): We added a detailed explanation regarding the meaning of grayscale values in solar masks to clarify how they represent solar exposure. This clarification has been included to improve understanding, see section 3.2.3.
+	2.	Improvement of Figure 3 (Captions and Layout): The spacing between the captions in Figures 3c and 3d has been adjusted for better readability.
+	3.	Governing Equations: A dedicated section on the governing equations has been added to improve clarity regarding the mathematical foundations of the models used. Please see Section 3.2.1 for more details.
+	4.	Correction of Typo: The typo “large-scaleale” has been corrected.
+	5.	Summary of Parallelization Strategy: We provided a summary of the most computationally intensive algorithms along with their parallelization strategies to aid readers in understanding performance scaling. The most compute intensive algorithms are associated with the solution of the models in section 3.2.1.
+
+We believe these revisions have addressed all the points raised by the reviewers and have improved the clarity and completeness of our manuscript. We hope that the changes meet with the approval of both reviewers and enhance the overall quality of our work.
+
+Thank you for your consideration, and we look forward to your response.
+
+Sincerely, +
+Christophe Prud'homme +
+Professor in Applied Mathematics +
+University of Strasbourg
